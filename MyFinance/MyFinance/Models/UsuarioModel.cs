@@ -12,17 +12,25 @@ namespace MyFinance.Models
     {
         [Key]
         public int idUsuario { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Campo nome obrigatório")]
         [Display(Name ="Nome")]
         public string NomeUsuario { get; set; }
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Campo E-mail obrigatório")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
+        
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Campo Senha obrigatório")]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Campo data obrigatório")]
         [Display(Name = "Data de nascimento")]
-        public DateTime Dt_nasc { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        public string Dt_nasc { get; set; }
 
         public bool ValidarLogin()
         {
@@ -35,11 +43,18 @@ namespace MyFinance.Models
                 {
                     idUsuario = int.Parse(dt.Rows[0]["idUsuario"].ToString());
                     NomeUsuario = dt.Rows[0]["NomeUsuario"].ToString();
-                    Dt_nasc = DateTime.Parse(dt.Rows[0]["Dt_nasc"].ToString());
+                    Dt_nasc = dt.Rows[0]["Dt_nasc"].ToString();
                     return true;
                 }
             }
             return false;
+        }
+        public void RegistrarUsuario()
+        {
+            //string datanasc = DateTime.Parse(Dt_nasc).ToString("yyyy/MM/dd");
+            string sql = $"Insert into Usuario(NomeUsuario,Email,Senha, Dt_Nasc) VALUES ('{NomeUsuario}', '{Email}','{Senha}', '{Dt_nasc}')";
+            DAL obj = new DAL();
+            obj.ExecutaComandoSql(sql);
         }
     }
    
