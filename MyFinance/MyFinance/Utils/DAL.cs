@@ -6,7 +6,6 @@ namespace MyFinance.Utils
     public class DAL
     {
         private static string server = "50.62.209.87";
-        private static string port = "3306";
         private static string database = "Finance_Project";
         private static string user = "finance";
         private static string password = "Pophets3003@";

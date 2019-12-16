@@ -3,31 +3,32 @@
     ViewData["Title"] = "Menu";
 }
 
-<h2>Menu</h2>
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAcessor
 
 <div class="row">
     <div class="col-lg-4 text-center">
-        <i class="fas fa-wallet" style="color:cadetblue; width:50px;height:100px"></i><h4>Conta</h4>
+        <a href="../Conta/Index"><i class="fas fa-wallet" style="color:cadetblue; width:50px;height:100px"></i><h4>Conta</h4></a>
     </div>
 
     <div class="col-lg-4 text-center">
-        <i class="fas fa-piggy-bank" style="color:green; width:50px;height:100px"></i><h4>Plano de Contas</h4>
+        <a href="../PlanoConta/Index"><i class="fas fa-piggy-bank" style="color:green; width:50px;height:100px"></i><h4>Plano de Contas</h4></a>
     </div>
 
     <div class="col-lg-4 text-center">
-        <i class="fas fa-credit-card" style="color:blue; width:50px;height:100px"></i><h4>Movimentações</h4>
+        <a href="../Transacao/Extrato"><i class="fas fa-credit-card" style="color:blue; width:50px;height:100px"></i><h4>Movimentações</h4></a>
     </div>
 
     <div class="col-lg-4 text-center">
-        <i class="fas fa-cash-register" style="color:chocolate; width:50px;height:100px"></i><h4>Registrar Transação</h4>
+        <a href="../Transacao/Index"> <i class="fas fa-cash-register" style="color:chocolate; width:50px;height:100px"></i><h4>Registrar Transação</h4></a>
     </div>
 
     <div class="col-lg-4 text-center">
-        <i class="fas fa-chart-bar" style="color:crimson; width:50px;height:100px"></i><h4>Dashboard</h4>
-    </div>
+        <a href="../Transacao/Dashboard"><i class="fas fa-chart-bar" style="color:crimson; width:50px;height:100px"></i><h4>Dashboard</h4></a>
+</div>
 
     <div class="col-lg-4 text-center">
-        <i class="fas fa-file-invoice" style="color:#cbc71d; width:50px;height:100px"></i><h4>Relatório</h4>
-    </div>
+        <a href="../Transacao/Relatorio"><i class="fas fa-file-invoice" style="color:#cbc71d; width:50px;height:100px"></i><h4>Relatório</h4></a>
+</div>
 
 </div>

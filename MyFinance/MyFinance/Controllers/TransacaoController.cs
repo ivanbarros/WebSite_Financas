@@ -22,6 +22,9 @@ namespace MyFinance.Controllers
             return View();
         }
 
-
+        public IActionResult Relatorio()
+        {
+            return View();
+        }
     }
 }
