@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MyFinance.Utils;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyFinance.Models
 {
