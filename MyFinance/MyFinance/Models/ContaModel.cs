@@ -12,15 +12,18 @@ namespace MyFinance.Models
         [Display(Name = "ID")]
         public int idConta { get; set; }
 
+        [Required(ErrorMessage = "Informe o nome da conta")]
         [Display(Name="Conta")]
         public string NomeConta { get; set; }
 
+        [Required(ErrorMessage = "Informe o saldo")]
         [Display(Name = "Saldo")]
         public double Saldo { get; set; }
 
+       
         [Display(Name = "Usuario")]
         public int Usuario_idUsuario { get; set; }
-        IHttpContextAccessor HttpContextAccessor;
+        public IHttpContextAccessor HttpContextAccessor { get; set; }
 
         public ContaModel()
         {
@@ -48,10 +51,18 @@ namespace MyFinance.Models
                 item.idConta = int.Parse(dt.Rows[i]["idConta"].ToString());
                 item.NomeConta = dt.Rows[i]["NomeConta"].ToString();
                 item.Saldo =  double.Parse(dt.Rows[i]["Saldo"].ToString());
-                item.idConta = int.Parse(dt.Rows[i]["Usuario_idUsuario"].ToString());
+                item.Usuario_idUsuario = int.Parse(dt.Rows[i]["Usuario_idUsuario"].ToString());
                 lista.Add(item);
             }
             return lista;
+        }
+
+        public void Insert()
+        {
+            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string sql = $"insert into Conta (NomeConta,Saldo,Usuario_idUsuario) values ('{NomeConta}','{Saldo}','{id_usuario_logado}')";
+            DAL objDAL = new DAL();
+            objDAL.ExecutaComandoSql(sql);
         }
     }
 }
