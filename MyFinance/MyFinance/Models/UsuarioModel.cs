@@ -43,6 +43,7 @@ namespace MyFinance.Models
                 {
                     idUsuario = int.Parse(dt.Rows[0]["idUsuario"].ToString());
                     NomeUsuario = dt.Rows[0]["NomeUsuario"].ToString();
+                    Email = dt.Rows[0]["Email"].ToString();
                     Dt_nasc = dt.Rows[0]["Dt_nasc"].ToString();
                     return true;
                 }

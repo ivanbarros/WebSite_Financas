@@ -8,9 +8,9 @@ namespace MyFinance.Controllers
 {
     public class MenuController : Controller
     {
-        public IActionResult Menu()
+        public IActionResult _PartialMenu()
         {
-            return View();
+            return PartialView("_PartialMenu");
         }
     }
 }

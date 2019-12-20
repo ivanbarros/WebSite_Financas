@@ -1,0 +1,53 @@
+﻿@model ContaModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>@Html.LabelFor(model => model.NomeConta)</th>
+                    <th>@Html.LabelFor(model => model.Saldo)</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>@Html.LabelFor(model => model.NomeConta)</th>
+                    <th>@Html.LabelFor(model => model.Saldo)</th>
+                </tr>
+            </tfoot>
+            @{
+                foreach (var item in (List<ContaModel>)ViewBag.ListaConta)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.idConta)">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                                </button>
+                            </td>
+
+                            <td>@item.NomeConta.ToString()</td>
+                            <td>@item.Saldo.ToString()</td>
+                        </tr>
+
+                    </tbody>
+                }
+            }
+
+        </table>
+    </div>
+
+<br />
+
+
+<script>
+    function ExcluirConta(id_conta) {
+        window.location.href = "../Conta/ExcluirConta/" + id_conta;
+    }
+</script>

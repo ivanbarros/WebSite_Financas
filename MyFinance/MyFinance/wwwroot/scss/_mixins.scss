@@ -1,56 +1,71 @@
-// Mixins
-// --------------------------
-
-@mixin fa-icon {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
 }
 
-@mixin fa-icon-rotate($degrees, $rotation) {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation})";
-  transform: rotate($degrees);
+@mixin box-shadow($shadowinfo) {
+    -webkit-box-shadow: $shadowinfo;
+    -moz-box-shadow: $shadowinfo;
+    -ms-box-shadow: $shadowinfo;
+    box-shadow: $shadowinfo;
 }
 
-@mixin fa-icon-flip($horiz, $vert, $rotation) {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$rotation}, mirror=1)";
-  transform: scale($horiz, $vert);
+@mixin transform($transform) {
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
 }
 
-
-// Only display content to screen readers. A la Bootstrap 4.
-//
-// See: http://a11yproject.com/posts/how-to-hide-content/
-
-@mixin sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+@mixin transition($transition) {
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
 }
 
-// Use in conjunction with .sr-only to only display content when it's focused.
-//
-// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
-//
-// Credit: HTML5 Boilerplate
+@mixin three-dots-overflow() {
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-@mixin sr-only-focusable {
-  &:active,
-  &:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-  }
+@mixin navbar-link-color($textcolor, $navbarcolor, $opacity) {
+    .navbar-brand,
+    .navbar-brand:hover,
+    .navbar-brand:active,
+    .navbar-brand:focus {
+        color: $textcolor;
+    }
+
+    .nav > li > a:hover,
+    .nav > li > a:focus,
+    .nav .open > a,
+    .nav .open > a:hover,
+    .nav .open > a:focus {
+        background-color: transparentize($navbarcolor, $opacity);
+    }
+
+    .nav > li > a {
+        color: $textcolor;
+    }
+
+    .bars {
+        float: left;
+        padding: 10px 20px;
+        font-size: 22px;
+        color: $textcolor;
+        margin-right: 10px;
+        margin-left: -10px;
+        margin-top: 4px;
+    }
+
+    .bars:hover {
+        background-color: rgba(0,0,0,0.08);
+    }
 }

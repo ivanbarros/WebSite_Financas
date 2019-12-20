@@ -19,6 +19,7 @@ namespace MyFinance.Controllers
                 {
                     HttpContext.Session.SetString("IdUsuarioLogado",string.Empty);
                     HttpContext.Session.SetString("NomeUsuarioLogado", string.Empty);
+                    HttpContext.Session.SetString("EmailUsuarioLogado", string.Empty);
                 }
             }
             return View();
@@ -31,17 +32,13 @@ namespace MyFinance.Controllers
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.NomeUsuario);
                 HttpContext.Session.SetString("IdUsuarioLogado", usuario.idUsuario.ToString());
-                return RedirectToAction("Menu", "Menu");
+                HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
+                return RedirectToAction("_PartialMenu", "Menu");
             }
             else
             {
-                //if (usuario.Email != typeof(usuario.Email))
-                //{
-
-                //}
-                TempData["LoginIvalido"] = "Usuario ou senha não estão corretos!";
-                //TempData["CorrigirEmail"] = "Campo E-mail incorreto!";
-                //TempData["CorrigirSenha"] = "Campo senha incorreto!";
+             
+                TempData["LoginIvalido"] = "Usuario ou senha não estão corretos!";                
                 return RedirectToAction("Login");
             }
         }

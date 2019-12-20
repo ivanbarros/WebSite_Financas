@@ -12,7 +12,7 @@ namespace MyFinance.Controllers
             HttpContextAccessor = httpContextAccessor;
         }
 
-        public IActionResult Index()
+        public IActionResult _PartialConta()
         {
             ContaModel objConta = new ContaModel(HttpContextAccessor);
             ViewBag.ListaConta = objConta.ListaConta();
@@ -26,7 +26,7 @@ namespace MyFinance.Controllers
             {
                 formulario.HttpContextAccessor = HttpContextAccessor;
                 formulario.Insert();
-              return  RedirectToAction("Index");
+              return  RedirectToAction("_PartialConta");
             }
             return View();
         }
@@ -37,5 +37,15 @@ namespace MyFinance.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public IActionResult ExcluirConta(int id)
+        {
+
+            ContaModel objConta = new ContaModel(HttpContextAccessor);
+            objConta.ExcluirConta(id);
+            return RedirectToAction("_PartialConta");
+        }
     }
+   
 }

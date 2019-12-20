@@ -39,7 +39,7 @@ namespace MyFinance.Models
             List<ContaModel> lista = new List<ContaModel>();
             ContaModel item;
             string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"select idConta, NomeConta, Saldo, Usuario_idUsuario from Conta Where Usuario_idUsuario = {id_usuario_logado}";
+            string sql = $"select idConta, NomeConta, Saldo, Usuario_idUsuario from Conta Where Usuario_idUsuario = {id_usuario_logado} and isActive = 1";
 
             DAL objDAL = new DAL();
 
@@ -60,7 +60,16 @@ namespace MyFinance.Models
         public void Insert()
         {
             string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"insert into Conta (NomeConta,Saldo,Usuario_idUsuario) values ('{NomeConta}','{Saldo}','{id_usuario_logado}')";
+            string sql = $"insert into Conta (NomeConta,Saldo,Usuario_idUsuario, isActive) values ('{NomeConta}','{Saldo}','{id_usuario_logado}', 1)";
+            DAL objDAL = new DAL();
+            objDAL.ExecutaComandoSql(sql);
+        }
+
+        public void ExcluirConta(int id)
+        {
+            
+            int id_Conta = id;
+            string sql = $"update Finance_Project.Conta set isActive = 0 where idConta = {id}";
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
         }
