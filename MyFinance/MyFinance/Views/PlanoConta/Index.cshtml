@@ -1,7 +1,67 @@
-﻿
+﻿@model PlanoContaModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Plano de Contas";
 }
 
-<h2>Index</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.Descricao)</th>
 
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.Descricao)</th>
+            </tr>
+        </tfoot>
+        @{
+            foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoConta)
+            {
+                <tbody>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-primary" type="submit" onclick="EditarConta(@item.idPlano_Contas)">
+                                        Editar
+                                        <i class="material-icons" style="color:#fff;">edit</i>
+                                    </button>
+                                </td>
+
+                                <td>
+                                <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.idPlano_Contas)">
+                                    Excluir
+                                    <i class="material-icons" style="color:#fff;">delete_forever</i>
+                                </button>
+                                </td>
+
+                                <td>@item.Tipo.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                                <td>@item.Descricao.ToString()</td>
+                            </tr>
+
+                </tbody>
+            }
+        }
+
+    </table>
+</div>
+
+<br />
+
+
+<script>
+    function ExcluirConta(id_conta) {
+        window.location.href = "../PlanoConta/ExcluirConta/" + id_conta;
+    }
+</script>
+
+<script>
+    function EditarConta(id_conta) {
+        window.location.href = "../PlanoConta/NovoPlanoConta/" + id_conta;
+    }
+</script>

@@ -34,7 +34,7 @@
     <link href="~/css/all.css" rel="stylesheet" />
 
 </head>
-<body class="theme-red" onload="CarregarUsuarioLogado()">
+<body class="theme-teal" onload="CarregarUsuarioLogado()">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -329,11 +329,21 @@
                     </li>
 
                     <li>
-                        <a href="../PlanoConta/Index">
-                            <i class="material-icons" style="color:green;">monetization_on</i>
-                            <span>Plano de Conta</span>
-                        </a>
-                    </li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            
+                                <i class="material-icons" style="color:green;">monetization_on</i>
+                                <span>Plano de Conta</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="../PlanoConta/NovoPlanoConta">Cadastrar Novo Plano de Conta</a>
+                                </li>
+                                <li>
+                                    <a href="../PlanoConta/Index">Visualizar Plano de Conta</a>
+                                </li>
+
+                            </ul>
+</li>
 
                     <li>
                         <a href="../Transacao/Extrato">
