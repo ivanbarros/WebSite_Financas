@@ -73,5 +73,14 @@ namespace MyFinance.Models
             }
             return lista;
         }
+
+        internal void EditarPlanoConta(PlanoContaModel formulario)
+        {
+            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            int id_Conta = formulario.idPlano_Contas;
+            string sql = $"update Plano_Contas set Descrição = {formulario.Descricao}, Tipo = {formulario.Tipo}  where idPlano_Contas = {id_Conta} and Usuario = {id_usuario_logado}";
+            DAL objDAL = new DAL();
+            objDAL.ExecutaComandoSql(sql);
+        }
     }
 }

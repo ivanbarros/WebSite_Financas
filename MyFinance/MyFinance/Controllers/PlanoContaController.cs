@@ -37,7 +37,7 @@ namespace MyFinance.Controllers
             if (id != null)
             {
                 PlanoContaModel objPlanoContas = new PlanoContaModel(HttpContextAccessor);
-               // ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
+                // ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
             }
 
             return View();
@@ -50,6 +50,26 @@ namespace MyFinance.Controllers
             PlanoContaModel objConta = new PlanoContaModel(HttpContextAccessor);
             objConta.ExcluirConta(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditarPlanoConta()
+        {
+
+            return View();
+
+        }
+
+        [HttpPut]
+        public IActionResult EditarPlanoConta(PlanoContaModel formulario)
+        {
+            if (ModelState.IsValid)
+            {
+                formulario.HttpContextAccessor = HttpContextAccessor;
+                formulario.EditarPlanoConta(formulario);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
     }

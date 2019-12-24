@@ -23,14 +23,15 @@
             @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="demo-radio-button">
-                    <input asp-for="Tipo" type="radio" id="radio_1" value="Receita"/>
-                    <input asp-for="Tipo" value="Despesa" type="radio" id="radio_2" />
-                    
-                    <input asp-for="Tipo" value="Receita" type="radio" class="with-gap" id="radio_3" />
-                    <label for="radio_3">Receita</label>
-                    <input asp-for="Tipo" value="Despsa" type="radio" id="radio_4" class="with-gap" />
-                    <label for="radio_4">If need some help...</label>
-                    <input asp-for="Tipo" value="Despesa" type="radio" id="radio_5" checked disabled />
+                    <div class="radio">
+                        <input asp-for="Tipo" value="Receita" type="radio" class="with-gap" id="radio_3" />
+                        <label for="radio_3">Receita</label>
+                    </div>
+                    <div class="radio">
+                        <input asp-for="Tipo" value="Despsa" type="radio" id="radio_4" class="with-gap" />
+                        <label for="radio_4">Despesa</label>
+                    </div>
+
                 </div>
             </div>
         </div>
