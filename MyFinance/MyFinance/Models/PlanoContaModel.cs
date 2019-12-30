@@ -13,14 +13,14 @@ namespace MyFinance.Models
         [Key]
         public int idPlano_Contas { get; set; }
 
-        [Required(ErrorMessage ="Informe a descrição")]
-        [Display(Name ="Descrição")]
+        [Required(ErrorMessage = "Informe a descrição")]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Informe o Tipo de conta")]
         [Display(Name = "Tipo de conta")]
         public string Tipo { get; set; }
-        public string[] Tipos = new[] { "Despesa", "Receita", "Outros" };
+
         public int Usuario_id { get; set; }
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
@@ -38,9 +38,33 @@ namespace MyFinance.Models
         internal void Insert()
         {
             string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"insert into Plano_Contas (Descricao, Tipo, Usuario_id, isActive) values ('{Descricao}','{Tipo}','{id_usuario_logado}', 1)";
+            string sql = "";
+            if (idPlano_Contas == 0)
+            {
+                sql = $"insert into Plano_Contas (Descricao, Tipo, Usuario_id, isActive) values ('{Descricao}','{Tipo}',{id_usuario_logado}, 1)";
+            }
+            else
+            {
+                sql = $"Update  Plano_Contas  set Descricao = '{Descricao}', Tipo = '{Tipo}' WHERE Usuario_id = {id_usuario_logado} AND idPlano_Contas = {idPlano_Contas}";
+            }
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
+        }
+
+        public PlanoContaModel CarregarRegistro(int? id)
+        {
+            PlanoContaModel item = new PlanoContaModel();
+            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {id_usuario_logado} and isActive = 1 and idPlano_Contas = {id}";
+            DAL objDAL = new DAL();
+            DataTable dt = objDAL.RetDataTable(sql);
+
+            item.idPlano_Contas = int.Parse(dt.Rows[0]["idPlano_Contas"].ToString());
+            item.Descricao = dt.Rows[0]["Descricao"].ToString();
+            item.Tipo = dt.Rows[0]["Tipo"].ToString();
+            item.Usuario_id = int.Parse(dt.Rows[0]["Usuario_id"].ToString());
+
+            return item;
         }
 
         public void ExcluirConta(int id)

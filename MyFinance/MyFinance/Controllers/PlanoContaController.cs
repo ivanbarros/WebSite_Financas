@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Models;
+using System;
 
 namespace MyFinance.Controllers
 {
@@ -20,7 +21,7 @@ namespace MyFinance.Controllers
         }
 
         [HttpPost]
-        public IActionResult NovoPlanoConta(PlanoContaModel formulario)
+        public IActionResult CriarPlanoConta(PlanoContaModel formulario)
         {
             if (ModelState.IsValid)
             {
@@ -32,19 +33,23 @@ namespace MyFinance.Controllers
         }
 
         [HttpGet]
-        public IActionResult NovoPlanoConta(int? id)
+        public IActionResult CriarPlanoConta(int? id)
         {
             if (id != null)
             {
                 PlanoContaModel objPlanoContas = new PlanoContaModel(HttpContextAccessor);
-                // ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
+                 ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
+                var vDescricao = @ViewBag.Registro.Descricao.ToString();
+                var vTipo = @ViewBag.Registro.Tipo.ToString();
+                Console.WriteLine(vDescricao, vTipo);
+               
             }
 
             return View();
         }
 
         [HttpGet]
-        public IActionResult ExcluirConta(int id)
+        public IActionResult ExcluirPlanoConta(int id)
         {
 
             PlanoContaModel objConta = new PlanoContaModel(HttpContextAccessor);
@@ -52,25 +57,7 @@ namespace MyFinance.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult EditarPlanoConta()
-        {
 
-            return View();
-
-        }
-
-        [HttpPut]
-        public IActionResult EditarPlanoConta(PlanoContaModel formulario)
-        {
-            if (ModelState.IsValid)
-            {
-                formulario.HttpContextAccessor = HttpContextAccessor;
-                formulario.EditarPlanoConta(formulario);
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-
+       
     }
 }

@@ -28,11 +28,8 @@
                 <tbody>
                     <tr>
                         <td>
-                            @*<button class="btn btn-primary" type="submit" onclick="EditarConta(@item.idPlano_Contas)">
-                                    Editar
-                                    <i class="material-icons" style="color:#fff;">edit</i>
-                                </button>*@
-                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta">TEAL</button>
+                           
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.idPlano_Contas)">Editar</button>
                         </td>
 
                         <td>
@@ -54,60 +51,16 @@
 </div>
 
 <br />
-@* Modal *@
-<div id="EditarPlanoConta" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
 
-        <!-- Modal content-->
-        <div class="modal-content modal-col-teal">
-            <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">@ViewData["Title"] - MyFinance</h4>
-            </div>
-            <div class="modal-body">
-                @using (Html.BeginForm("EditarPlanoConta", "PlanoConta", FormMethod.Post))
-                {
-                    <fieldset>
-                        <legend>Editar Plano de Conta</legend>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                <div class="demo-radio-button">
-                                    <div class="radio">
-                                        <input asp-for="Tipo" value="Receita" type="radio" class="with-gap" id="radio_3" />
-                                        <label for="radio_3">Receita</label>
-                                    </div>
-                                    <div class="radio">
-                                        <input asp-for="Tipo" value="Despsa" type="radio" id="radio_4" class="with-gap" />
-                                        <label for="radio_4">Despesa</label>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-@* Fim Modal *@
 
 <script>
     function ExcluirConta(id_conta) {
-        window.location.href = "../PlanoConta/ExcluirConta/" + id_conta;
+        window.location.href = "../PlanoConta/ExcluirPlanoConta/" + id_conta;
+    }
+</script>
+
+<script>
+    function EditarPlanoConta(id_conta) {
+        window.location.href = "../PlanoConta/CriarPlanoConta/" + id_conta;
     }
 </script>
