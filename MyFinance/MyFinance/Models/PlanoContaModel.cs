@@ -71,7 +71,7 @@ namespace MyFinance.Models
         {
 
             int id_Conta = id;
-            string sql = $"update Plano_Contas set isActive = 0 where idPlano_Contas = {id}";
+            string sql = $"delete from Finance_Project.Plano_Contas where idPlano_Contas = {id}";
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
         }
