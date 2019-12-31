@@ -1,0 +1,93 @@
+﻿@model TransacaoModel
+
+@{
+    ViewData["Title"] = "Nova Transação";
+
+    var vDescricao = "";
+    var vTipo = "";
+    var vId = 0;
+
+    try
+    {
+        vDescricao = ViewBag.Registro.Descricao.ToString();
+        vTipo = @ViewBag.Registro.Tipo.ToString();
+        vId = int.Parse(@ViewBag.Registro.idPlano_Contas.ToString());
+    }
+    catch { }
+}
+
+
+
+
+
+@using (Html.BeginForm("Registrar", "Transacao", FormMethod.Post))
+{
+    <input type="hidden" asp-for="idTransacao" value="@vId" />
+    <fieldset>
+        <legend>Nova Transação</legend>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" asp-for="Descricao_Transacao" value="@vDescricao" />
+                @Html.ValidationMessageFor(model => model.Descricao_Transacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contaModel.NomeConta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList(@Model.contaModel.NomeConta)
+                @Html.ValidationMessageFor(model => model.contaModel.NomeConta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="demo-radio-button">
+
+                    @{if (vTipo == "R")
+                        {
+                            <div class="radio">
+                                <input asp-for="Tipo_Transacao" value="Receita" type="radio" class="with-gap" id="radio_3" checked />
+                                <label for="radio_3">Receita</label>
+                            </div>
+
+                            <div class="radio">
+                                <input asp-for="Tipo_Transacao" value="Despsa" type="radio" id="radio_4" class="with-gap" unchecked />
+                                <label for="radio_4">Despesa</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="radio">
+                                <input asp-for="Tipo_Transacao" value="Receita" type="radio" class="with-gap" id="radio_3" unchecked />
+                                <label for="radio_3">Receita</label>
+                            </div>
+
+                            <div class="radio">
+                                <input asp-for="Tipo_Transacao" value="Despsa" type="radio" id="radio_4" class="with-gap" checked />
+                                <label for="radio_4">Despesa</label>
+                            </div>
+                        }
+
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+        @{
+            if (@vId == 0)
+            {
+                <button type="submit" class="btn btn-success">Criar</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-success">Editar</button>
+            }
+        }
+
+    </fieldset>
+}

@@ -29,12 +29,23 @@ namespace MyFinance.Models
         public double Valor_Transacao { get; set; }
 
         [Required(ErrorMessage = "Informe a descrição")]
-        [Display(Name = "Descrição")]
+        [Display(Name = "Transação")]
         public string Descricao_Transacao { get; set; }
         public int Conta_idConta { get; set; }
+
+        public string NomeConta { get; set; }
         public int UsuarioId { get; set; }
 
         public int Plano_Contas_idPlano_Contas { get; set; }
+
+        [Required(ErrorMessage = "Informe a descrição")]
+        [Display(Name = "Descrição")]
+        public string DescricaoPlanoConta { get; set; }
+
+        public ContaModel contaModel { get; set; }
+
+        public PlanoContaModel plano { get; set; }
+
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
         public TransacaoModel()
@@ -83,6 +94,8 @@ namespace MyFinance.Models
             item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[0]["Plano_Contas_idPlano_Contas"].ToString());
             item.Descricao_Transacao = dt.Rows[0]["Descricao_Transacao"].ToString();
             item.Tipo_Transacao = dt.Rows[0]["Tipo_Transacao"].ToString();
+            item.NomeConta = dt.Rows[0]["conta"].ToString();
+            item.DescricaoPlanoConta = dt.Rows[0]["conta"].ToString();
             item.UsuarioId = int.Parse(dt.Rows[0]["UsuarioId"].ToString());
 
             return item;
@@ -97,23 +110,36 @@ namespace MyFinance.Models
             objDAL.ExecutaComandoSql(sql);
         }
 
-        public List<TransacaoModel> ListaPlanoContas()
+        public List<TransacaoModel> ListaTransacao()
         {
             List<TransacaoModel> lista = new List<TransacaoModel>();
-            TransacaoModel item = new TransacaoModel();
+            TransacaoModel item;
             string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {id_usuario_logado} and isActive = 1";
+            string sql = "SELECT t.idTransacao, t.Data_Transacao, t.Tipo_Transacao, t.Valor_Transacao, t.Descricao_Transacao AS historico, "+
+                         " t.Conta_idConta, c.NomeConta AS conta ,t.Plano_Contas_idPlano_Contas, "+
+                         " p.Descricao AS plano_conta "+
+                         " FROM Transacao AS t INNER JOIN Conta AS c " +
+                         " ON t.Conta_idConta = c.idConta " +
+                         " INNER JOIN Plano_Contas AS p ON t.Plano_Contas_idPlano_Contas = p.idPlano_Contas " +
+                         $" where c.Usuario_idUsuario = { id_usuario_logado} order by t.Data_Transacao  desc;";
+            
             DAL objDAL = new DAL();
 
             DataTable dt = objDAL.RetDataTable(sql);
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                item.Conta_idConta = int.Parse(dt.Rows[0]["Conta_idConta"].ToString());
-                item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[0]["Plano_Contas_idPlano_Contas"].ToString());
-                item.Descricao_Transacao = dt.Rows[0]["Descricao_Transacao"].ToString();
-                item.Tipo_Transacao = dt.Rows[0]["Tipo_Transacao"].ToString();
-                item.UsuarioId = int.Parse(dt.Rows[0]["UsuarioId"].ToString()); ;
+                item = new TransacaoModel();
+                item.idTransacao = int.Parse(dt.Rows[i]["idTransacao"].ToString());
+                item.Data_Transacao = DateTime.Parse(dt.Rows[i]["Data_Transacao"].ToString()).ToString("dd/MM/yyyy");
+                item.Descricao_Transacao = dt.Rows[i]["historico"].ToString();
+                item.Conta_idConta = int.Parse(dt.Rows[i]["Conta_idConta"].ToString());
+                item.NomeConta = dt.Rows[i]["conta"].ToString();
+                item.Tipo_Transacao = dt.Rows[i]["Tipo_Transacao"].ToString();
+                item.Valor_Transacao = double.Parse(dt.Rows[i]["Valor_Transacao"].ToString());
+                item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[i]["Plano_Contas_idPlano_Contas"].ToString());
+                item.DescricaoPlanoConta = dt.Rows[i]["plano_conta"].ToString();
+                //item.UsuarioId = int.Parse(dt.Rows[i]["UsuarioId"].ToString());
                 lista.Add(item);
             }
             return lista;

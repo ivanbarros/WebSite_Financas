@@ -39,9 +39,6 @@ namespace MyFinance.Controllers
             {
                 PlanoContaModel objPlanoContas = new PlanoContaModel(HttpContextAccessor);
                  ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
-                var vDescricao = @ViewBag.Registro.Descricao.ToString();
-                var vTipo = @ViewBag.Registro.Tipo.ToString();
-                Console.WriteLine(vDescricao, vTipo);
                
             }
 

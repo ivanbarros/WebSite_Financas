@@ -1,7 +1,88 @@
-﻿
+﻿@model TransacaoModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Minhas Transações";
 }
 
-<h2>Index</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
 
+                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+
+                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+                </tr>
+            </tfoot>
+            @{
+                foreach (var item in (List<TransacaoModel>)ViewBag.ListaTransacao)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.idTransacao)">
+                                    Editar
+                                    <i class="material-icons" style="color:#fff;"> create</i>
+                                </button>
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn bg-red waves-effect" data-toggle="modal" data-target="#ExcluirPlanoConta" onclick="ExcluirConta(@item.idTransacao)">
+                                    Excluir
+                                    <i class="material-icons" style="color:#fff;">delete_forever</i>
+                                </button>
+                            </td>
+                            <td>@item.Data_Transacao.ToString()</td>
+                            <td>@item.Valor_Transacao.ToString()</td>
+                            <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                            <td>@item.Descricao_Transacao.ToString()</td>
+                            <td>@item.DescricaoPlanoConta.ToString()</td>
+                        </tr>
+
+                    </tbody>
+                }
+            }
+
+        </table>
+        <button type="button" class="btn btn-success btn-circle-lg waves-effect waves-circle waves-float" title="Nova transação" onclick="RegistrarTransacao()">
+            <i class="material-icons">add</i>
+        </button>
+    </div>
+
+<br />
+
+
+<script>
+    function ExcluirConta(idTransacao) {
+        window.location.href = "../Transacao/ExcluirTransacao/" + idTransacao;
+    }
+</script>
+
+<script>
+    function EditarPlanoConta(idTransacao) {
+        window.location.href = "../Transacao/Registrar/" + idTransacao;
+    }
+</script>
+
+<script>
+    function RegistrarTransacao() {
+        window.location.href = "../Transacao/Registrar/";
+    }
+</script>
