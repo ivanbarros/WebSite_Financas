@@ -25,8 +25,18 @@
     <!-- Morris Chart Css-->
     <link href="~/plugins/morrisjs/morris.css" rel="stylesheet" />
 
+    <!-- Bootstrap Material Datetime Picker Css -->
+
+    <link href="~/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+
+    <link href="~/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <!-- Wait Me Css -->
+    <link href="~/plugins/waitme/waitMe.css" rel="stylesheet" />
     <!-- Custom Css -->
     <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="~/css/themes/all-themes.css" rel="stylesheet" />
@@ -319,8 +329,11 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../Conta/NovaConta"><i class="material-icons" style="color:#32CD32;">add
-                                     </i><span>Cadastrar Nova Conta</span></a>
+                                <a href="../Conta/NovaConta">
+                                    <i class="material-icons" style="color:#32CD32;">
+                                        add
+                                    </i><span>Cadastrar Nova Conta</span>
+                                </a>
                             </li>
                             <li>
                                 <a href="../Conta/_PartialConta">
@@ -419,7 +432,7 @@
     </section>
 
     <!-- Jquery Core Js -->
-    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/jquery/jquery.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="~/plugins/bootstrap/js/bootstrap.js"></script>
@@ -455,7 +468,15 @@
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="~/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <!-- Moment Plugin Js -->
+    @*<script src="~/plugins/momentjs/moment.js"></script>*@
 
+    <script src="~/plugins/momentjs/moment-with-locale.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="~/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Bootstrap Datepicker Plugin Js -->
+
+    <script src="~/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
     <!-- Custom Js -->
     <script src="~/js/admin.js"></script>
@@ -482,5 +503,7 @@
         }
     }
     </script>
+    <script src="~/js/Transacao/registrar.js"></script>
+    <script src="~/js/Layout/Layout.js"></script>
 </body>
 </html>

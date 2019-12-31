@@ -6,12 +6,16 @@
     var vDescricao = "";
     var vTipo = "";
     var vId = 0;
+    var vData = "";
+    var vValor = 0;
 
     try
     {
-        vDescricao = ViewBag.Registro.Descricao.ToString();
-        vTipo = @ViewBag.Registro.Tipo.ToString();
-        vId = int.Parse(@ViewBag.Registro.idPlano_Contas.ToString());
+        vDescricao = ViewBag.Registro.Descricao_Transacao.ToString();
+        vTipo = @ViewBag.Registro.Tipo_Transacao.ToString();
+        vId = int.Parse(@ViewBag.Registro.idTransacao.ToString());
+        vData = DateTime.Parse(@ViewBag.Registro.Data_Transacao.ToString()).ToString("dd/MM/yyyy");
+        vValor = double.Parse(@ViewBag.Registro.Valor_Transacao.ToString());
     }
     catch { }
 }
@@ -19,30 +23,20 @@
 
 
 
-
+<legend>Nova Transação</legend>
 @using (Html.BeginForm("Registrar", "Transacao", FormMethod.Post))
 {
     <input type="hidden" asp-for="idTransacao" value="@vId" />
     <fieldset>
-        <legend>Nova Transação</legend>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descricao_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" class="form-control" asp-for="Descricao_Transacao" value="@vDescricao" />
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.Data_Transacao, htmlAttributes: new { @class = "col-md-1" })
+            <div class="col-md-5">
+                @*<i class="material-icons">date_range</i>*@<input type="text" placeholder="dd/mm/aaaa" class="datepicker" value="@vData">
                 @Html.ValidationMessageFor(model => model.Descricao_Transacao, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.contaModel.NomeConta, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList(@Model.contaModel.NomeConta)
-                @Html.ValidationMessageFor(model => model.contaModel.NomeConta, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "col-md-1" })
             <div class="col-md-10">
                 <div class="demo-radio-button">
 
@@ -78,6 +72,49 @@
                 </div>
             </div>
         </div>
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.Valor_Transacao, htmlAttributes: new { @class = "col-md-1" })
+            <div class="col-md-10">
+                <input type="number" class="col-sm-2" asp-for="Valor_Transacao" value="@vValor" />
+                @Html.ValidationMessageFor(model => model.Valor_Transacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.Descricao_Transacao, htmlAttributes: new { @class = "col-md-1" })
+            <div class="col-md-10">
+                <input type="text" class="col-sm-5" asp-for="Descricao_Transacao" value="@vDescricao" />
+                @Html.ValidationMessageFor(model => model.Descricao_Transacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.contaModel.NomeConta, htmlAttributes: new { @class = "col-md-1" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DescricaoPlanoConta, new { htmlAttributes = new { @class = "col-sm-5" } })
+                @Html.ValidationMessageFor(model => model.DescricaoPlanoConta, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model =>  model.contaModel.NomeConta);
+            <select asp-for="Conta_idConta">
+                <option value="1">Volvo</option>
+                <option value="2">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+
+        <div class="form-group col-sm-6">
+            @Html.LabelFor(model => model.plano.Descricao);
+            <select id="select" asp-for="Plano_Contas_idPlano_Contas">
+                <option value="1">Mustard</option>
+                <option value="2">Ketchup</option>
+                <option value="3">Barbecue</option>
+            </select>
+
+        </div>
         @{
             if (@vId == 0)
             {
@@ -91,3 +128,4 @@
 
     </fieldset>
 }
+
