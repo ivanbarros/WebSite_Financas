@@ -28,33 +28,66 @@
                 <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
                 <th>@Html.LabelFor(model => model.NomeConta)</th>
                 <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+
             </tr>
         </tfoot>
         @{
             foreach (var item in (List<TransacaoModel>)ViewBag.ListaTransacao)
             {
-            <tbody>
-                <tr>
-                    <td>
+                <tbody>
+                    <tr>
+                        <td>
 
-                        <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" onclick="EditarPlanoConta(@item.idTransacao)">Editar</button>
-                    </td>
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" onclick="EditarPlanoConta(@item.idTransacao)">Editar</button>
+                        </td>
 
-                    <td>
-                        <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.idTransacao)">
-                            Excluir
-                            <i class="material-icons" style="color:#fff;">delete_forever</i>
-                        </button>
-                    </td>
-                    <td>@item.Data_Transacao.ToString()</td>
-                    <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
-                    <td>R$ @item.Valor_Transacao.ToString()</td>
-                    <td>@item.Descricao_Transacao.ToString()</td>
-                    <td>@item.NomeConta.ToString()</td>
-                    <td>@item.DescricaoPlanoConta.ToString()</td>
-                </tr>
+                        <td>
+                            <button type="button" data-color="red" class="btn bg-red waves-effect ConfirmarDelete">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            </button>
+                        </td>
+                        <td>@item.Data_Transacao.ToString()</td>
+                        <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                        <td>R$ @item.Valor_Transacao.ToString()</td>
+                        <td>@item.Descricao_Transacao.ToString()</td>
+                        <td>@item.NomeConta.ToString()</td>
+                        <td>@item.DescricaoPlanoConta.ToString()</td>
+                        <td class="modalShow">
+                            <div class="modal fade" data-theme="pink" id="defaultModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content modal-col-red">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="defaultModalLabel">Deletar Transação</h4>
+                                            <div class="alert alert-danger">
+                                                <strong>Cuidado!</strong> Se deletar essa transação, esta ação não poderá ser desfeita.
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
 
-            </tbody>
+                                            <center>Voce realmente deseja deletar este item?</center>
+                                            <ul>
+                                                <li><strong>@Html.LabelFor(model => model.Data_Transacao) : </strong>@item.Data_Transacao.ToString()</li>
+                                                <li><strong>@Html.LabelFor(model => model.Tipo_Transacao) : </strong>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</li>
+                                                <li>@Html.LabelFor(model => model.Valor_Transacao) : R$ @item.Valor_Transacao.ToString()</li>
+                                                <li>@Html.LabelFor(model => model.Descricao_Transacao) : @item.Descricao_Transacao.ToString()</li>
+                                                <li>@Html.LabelFor(model => model.NomeConta) : @item.NomeConta.ToString()</li>
+                                                <li>@Html.LabelFor(model => model.DescricaoPlanoConta) : @item.DescricaoPlanoConta.ToString()</li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-link waves-effect ExcluirConta" data-value="" onclick="ExcluirConta(@item.idTransacao)">Deletar</button>
+                                            <button type="button" class="btn btn-link waves-effect ExcluirConta" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+
             }
         }
 
@@ -65,6 +98,7 @@
 <button type="button" class="btn btn-success btn-circle-lg waves-effect waves-circle waves-float">
     <i class="material-icons" onclick="RegistrarConta()">add</i>
 </button>
+
 
 <script>
     function RegistrarConta() {
@@ -84,3 +118,5 @@
         window.location.href = "../Transacao/Registrar/" + id_conta;
     }
 </script>
+
+

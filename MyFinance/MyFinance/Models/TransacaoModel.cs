@@ -55,6 +55,14 @@ namespace MyFinance.Models
             HttpContextAccessor = httpContextAccessor;
         }
 
+        internal void ExcluirConta(int id)
+        {
+            int idTransacao = id;
+            string sql = $"delete from Finance_Project.Transacao where idTransacao = {idTransacao}";
+            DAL objDAL = new DAL();
+            objDAL.ExecutaComandoSql(sql);
+        }
+
         public List<TransacaoModel> ListaTransacao()
         {
             List<TransacaoModel> lista = new List<TransacaoModel>();
