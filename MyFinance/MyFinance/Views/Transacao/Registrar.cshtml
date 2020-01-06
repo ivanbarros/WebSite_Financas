@@ -1,42 +1,51 @@
 ﻿@model TransacaoModel
 
 @{
-    ViewData["Title"] = "Nova Transação";
+    ViewData["Title"] = "Registrar transação";
 
-    var vDescricao = "";
-    var vTipo = "";
     var vId = 0;
     var vData = "";
-    var vValor = 0;
+    var vTipo = "";
+    var vDescricao = "";
+    var vValor = 0.0;
+    var vIdConta = 0;
+    var vPlanoContaId = 0;
+
 
     try
     {
-        vDescricao = ViewBag.Registro.Descricao_Transacao.ToString();
-        vTipo = @ViewBag.Registro.Tipo_Transacao.ToString();
         vId = int.Parse(@ViewBag.Registro.idTransacao.ToString());
-        vData = DateTime.Parse(@ViewBag.Registro.Data_Transacao.ToString()).ToString("dd/MM/yyyy");
+        vData = DateTime.Parse(@ViewBag.Registro.Data_Transacao.ToString()).ToString("dd-MM-yyyy");
+        vTipo = @ViewBag.Registro.Tipo_Transacao.ToString();
+        vDescricao = @ViewBag.Registro.Descricao_Transacao.ToString();
         vValor = double.Parse(@ViewBag.Registro.Valor_Transacao.ToString());
+        vIdConta = int.Parse(@ViewBag.Registro.Conta_idConta.ToString());
+        vPlanoContaId = int.Parse(@ViewBag.Registro.Plano_Contas_idPlano_Contas.ToString());
+        
     }
-    catch { }
+    catch{}
 }
 
 
 
 
-<legend>Nova Transação</legend>
+
 @using (Html.BeginForm("Registrar", "Transacao", FormMethod.Post))
 {
     <input type="hidden" asp-for="idTransacao" value="@vId" />
     <fieldset>
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.Data_Transacao, htmlAttributes: new { @class = "col-md-1" })
-            <div class="col-md-5">
-                @*<i class="material-icons">date_range</i>*@<input type="text" placeholder="dd/mm/aaaa" class="datepicker" value="@vData">
-                @Html.ValidationMessageFor(model => model.Descricao_Transacao, "", new { @class = "text-danger" })
+        <legend>Transacao</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="col-sm-3 datepicker" asp-for="Data_Transacao" value="@vData" />
+                @Html.ValidationMessageFor(model => model.Data_Transacao, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "col-md-1" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="demo-radio-button">
 
@@ -67,54 +76,75 @@
 
                     }
 
-
-
                 </div>
             </div>
         </div>
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.Valor_Transacao, htmlAttributes: new { @class = "col-md-1" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="number" class="col-sm-2" asp-for="Valor_Transacao" value="@vValor" />
+                <input type="number" class="col-sm-4" asp-for="Valor_Transacao" value="@vValor" />
                 @Html.ValidationMessageFor(model => model.Valor_Transacao, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.Descricao_Transacao, htmlAttributes: new { @class = "col-md-1" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" class="col-sm-5" asp-for="Descricao_Transacao" value="@vDescricao" />
+                @*<textarea rows="5" class="col-sm-6" asp-for="Descricao_Transacao">@vDescricao</textarea>*@
+                @Html.TextArea("Descricao_Transacao",vDescricao, new { @class = "col=sm-12"})
                 @Html.ValidationMessageFor(model => model.Descricao_Transacao, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @*<div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.contaModel.NomeConta, htmlAttributes: new { @class = "col-md-1" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DescricaoPlanoConta, new { htmlAttributes = new { @class = "col-sm-5" } })
-                @Html.ValidationMessageFor(model => model.DescricaoPlanoConta, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Conta_idConta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                <select class="selectpicker" data-live-search="true" asp-for="Conta_idConta">
+                    @{
+                        foreach (var item in (List<ContaModel>)ViewBag.ListaContas)
+                        {
+                            if (item.idConta.ToString() == @vIdConta.ToString())
+                            {
+                                <option selected value="@item.idConta.ToString()">@item.NomeConta.ToString()</option>
+                            }
+                            else
+                            {
+                                <option value="@item.idConta.ToString()">@item.NomeConta.ToString()</option>
+                            }
+                        }
+                    }
+
+                </select>
+
             </div>
-        </div>*@
-
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model =>  model.contaModel.NomeConta);
-            <select asp-for="Conta_idConta">
-                <option value="1">Volvo</option>
-                <option value="2">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-            </select>
         </div>
 
-        <div class="form-group col-sm-6">
-            @Html.LabelFor(model => model.plano.Descricao);
-            <select id="select" asp-for="Plano_Contas_idPlano_Contas">
-                <option value="1">Mustard</option>
-                <option value="2">Ketchup</option>
-                <option value="3">Barbecue</option>
-            </select>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Plano_Contas_idPlano_Contas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                <select class="selectpicker" data-live-search="true" asp-for="Plano_Contas_idPlano_Contas">
+                    @{
+                        foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoContas)
+                        {
+                            if (item.idPlano_Contas == @vPlanoContaId)
+                            {
+                                <option selected value="@item.idPlano_Contas.ToString()">@item.Descricao.ToString()</option>
 
+                            }
+                            else
+                            {
+                                <option value="@item.idPlano_Contas.ToString()">@item.Descricao.ToString()</option>
+
+                            }
+                        }
+                    }
+
+                </select>
+
+            </div>
         </div>
+
         @{
             if (@vId == 0)
             {
@@ -128,4 +158,3 @@
 
     </fieldset>
 }
-

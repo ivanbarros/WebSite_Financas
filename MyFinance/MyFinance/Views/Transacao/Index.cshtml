@@ -1,88 +1,86 @@
 ﻿@model TransacaoModel
 @{
-    ViewData["Title"] = "Minhas Transações";
+    ViewData["Title"] = "Transação";
 }
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-            <thead>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                <th>@Html.LabelFor(model => model.NomeConta)</th>
+                <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                <th>@Html.LabelFor(model => model.NomeConta)</th>
+                <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+            </tr>
+        </tfoot>
+        @{
+            foreach (var item in (List<TransacaoModel>)ViewBag.ListaTransacao)
+            {
+            <tbody>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <td>
 
-                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+                        <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" onclick="EditarPlanoConta(@item.idTransacao)">Editar</button>
+                    </td>
 
+                    <td>
+                        <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.idTransacao)">
+                            Excluir
+                            <i class="material-icons" style="color:#fff;">delete_forever</i>
+                        </button>
+                    </td>
+                    <td>@item.Data_Transacao.ToString()</td>
+                    <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                    <td>R$ @item.Valor_Transacao.ToString()</td>
+                    <td>@item.Descricao_Transacao.ToString()</td>
+                    <td>@item.NomeConta.ToString()</td>
+                    <td>@item.DescricaoPlanoConta.ToString()</td>
                 </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th></th>
-                    <th></th>
 
-                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
-                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
-                </tr>
-            </tfoot>
-            @{
-                foreach (var item in (List<TransacaoModel>)ViewBag.ListaTransacao)
-                {
-                    <tbody>
-                        <tr>
-                            <td>
-
-                                <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.idTransacao)">
-                                    Editar
-                                    <i class="material-icons" style="color:#fff;"> create</i>
-                                </button>
-                            </td>
-
-                            <td>
-                                <button type="button" class="btn bg-red waves-effect" data-toggle="modal" data-target="#ExcluirPlanoConta" onclick="ExcluirConta(@item.idTransacao)">
-                                    Excluir
-                                    <i class="material-icons" style="color:#fff;">delete_forever</i>
-                                </button>
-                            </td>
-                            <td>@item.Data_Transacao.ToString()</td>
-                            <td>@item.Valor_Transacao.ToString()</td>
-                            <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
-                            <td>@item.Descricao_Transacao.ToString()</td>
-                            <td>@item.DescricaoPlanoConta.ToString()</td>
-                        </tr>
-
-                    </tbody>
-                }
+            </tbody>
             }
+        }
 
-        </table>
-        <button type="button" class="btn btn-success btn-circle-lg waves-effect waves-circle waves-float" title="Nova transação" onclick="RegistrarTransacao()">
-            <i class="material-icons">add</i>
-        </button>
-    </div>
+    </table>
+</div>
 
 <br />
-
-
-<script>
-    function ExcluirConta(idTransacao) {
-        window.location.href = "../Transacao/ExcluirTransacao/" + idTransacao;
-    }
-</script>
+<button type="button" class="btn btn-success btn-circle-lg waves-effect waves-circle waves-float">
+    <i class="material-icons" onclick="RegistrarConta()">add</i>
+</button>
 
 <script>
-    function EditarPlanoConta(idTransacao) {
-        window.location.href = "../Transacao/Registrar/" + idTransacao;
-    }
-</script>
-
-<script>
-    function RegistrarTransacao() {
+    function RegistrarConta() {
         window.location.href = "../Transacao/Registrar/";
+    }
+</script>
+
+
+<script>
+    function ExcluirConta(id_conta) {
+        window.location.href = "../Transacao/ExcluirTransacao/" + id_conta;
+    }
+</script>
+
+<script>
+    function EditarPlanoConta(id_conta) {
+        window.location.href = "../Transacao/Registrar/" + id_conta;
     }
 </script>
