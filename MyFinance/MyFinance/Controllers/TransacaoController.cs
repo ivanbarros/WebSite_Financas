@@ -54,11 +54,16 @@ namespace MyFinance.Controllers
             TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
             objTransacao.ExcluirConta(id);
             return RedirectToAction("Index");
-            //return View();
+            
         }
 
-        public IActionResult Extrato()
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Extrato(TransacaoModel formulario)
         {
+            formulario.HttpContextAccessor = HttpContextAccessor;
+            ViewBag.ListaTransacao = formulario.ListaTransacao();
+            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
             return View();
         }
 

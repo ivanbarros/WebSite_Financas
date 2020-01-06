@@ -1,7 +1,148 @@
-﻿
+﻿@model TransacaoModel
 @{
     ViewData["Title"] = "Extrato";
 }
 
-<h2>Extrato</h2>
+@using (Html.BeginForm("Extrato", "Transacao", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Extrato</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="col-sm-3 datepicker" asp-for="Data_Transacao" />
+                @Html.ValidationMessageFor(model => model.Data_Transacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="col-sm-3 datepicker" asp-for="DataFinal" />
+                @Html.ValidationMessageFor(model => model.DataFinal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_Transacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="demo-radio-button">
+
+
+                    <div class="radio">
+                        <input asp-for="Tipo_Transacao" value="Receita" type="radio" class="with-gap" id="radio_3" />
+                        <label for="radio_3">Receita</label>
+                    </div>
+
+                    <div class="radio">
+                        <input asp-for="Tipo_Transacao" value="Despsa" type="radio" id="radio_4" class="with-gap" />
+                        <label for="radio_4">Despesa</label>
+                    </div>
+
+                    <div class="radio">
+                        <input asp-for="Tipo_Transacao" value="A" type="radio" class="with-gap" id="radio_5" />
+                        <label for="radio_5">Receitas e Despesas</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Conta_idConta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                <select class="selectpicker" asp-for="Conta_idConta">
+                    @{
+                        foreach (var item in (List<ContaModel>)ViewBag.ListaContas)
+                        {
+
+                            <option value="@item.idConta.ToString()">@item.NomeConta.ToString()</option>
+
+                        }
+                    }
+
+                </select>
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">
+            <i class="material-icons">
+                search
+            </i>Pesquisar
+        </button>
+    </fieldset>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <thead>
+                <tr>
+                    <th></th>
+
+                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.NomeConta)</th>
+                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>@Html.LabelFor(model => model.Data_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Tipo_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Valor_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.Descricao_Transacao)</th>
+                    <th>@Html.LabelFor(model => model.NomeConta)</th>
+                    <th>@Html.LabelFor(model => model.DescricaoPlanoConta)</th>
+
+                </tr>
+            </tfoot>
+            @{
+                var totalReceita = 0.0;
+                var totalDespesa = 0.0;
+                var vSaldo = 0.0;
+                foreach (var item in (List<TransacaoModel>)ViewBag.ListaTransacao)
+                {
+                    <tbody>
+                        <tr>
+                            <td>
+
+                                <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" onclick="EditarPlanoConta(@item.idTransacao)">Editar</button>
+                            </td>
+
+
+                            <td>@item.Data_Transacao.ToString()</td>
+                            <td>@item.Tipo_Transacao.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                            <td>R$ @item.Valor_Transacao.ToString()</td>
+                            <td>@item.Descricao_Transacao.ToString()</td>
+                            <td>@item.NomeConta.ToString()</td>
+                            <td>@item.DescricaoPlanoConta.ToString()</td>
+                        </tr>
+                        @if (item.Tipo_Transacao == "D")
+                        {
+                            totalDespesa += double.Parse(item.Valor_Transacao.ToString());
+
+                        }
+                        else
+                        {
+                            totalReceita += double.Parse(item.Valor_Transacao.ToString());
+                        }
+                    </tbody>
+                }
+                vSaldo = totalReceita - totalDespesa;
+            }
+
+        </table>
+        <h3><strong>Saldo:</strong>R$: @vSaldo</h3>
+    </div>
+}
+<script>
+    function Editar(id) {
+        window.location.href = "~/Transacao/Registrar" + id;
+    }
+</script>
+
 

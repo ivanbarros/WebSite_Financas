@@ -15,6 +15,9 @@ namespace MyFinance.Models
         [Display(Name = "Data da transação")]
         public string Data_Transacao { get; set; }
 
+        [Display(Name = "Data Final")]
+        public string DataFinal { get; set; } //utilizada somente no filtro de extrato
+
         [Required(ErrorMessage = "Informe o Tipo de conta")]
         [Display(Name = "Tipo de conta")]
         public string Tipo_Transacao { get; set; }
@@ -67,12 +70,34 @@ namespace MyFinance.Models
         {
             List<TransacaoModel> lista = new List<TransacaoModel>();
             TransacaoModel item;
+            #region Filtro
+            string filtro = "";
+            if ((Data_Transacao != null) && (DataFinal != null))
+            {
+                filtro += $" and t.Data_Transacao  >='{DateTime.Parse(Data_Transacao).ToString("yyyy/MM/dd")}' and t.Data_Transacao <= '{DateTime.Parse(DataFinal).ToString("yyyy/MM/dd")}'";
+            }
+
+            if (Tipo_Transacao!=null)
+            {
+                if (Tipo_Transacao != "A")
+                {
+                    filtro += $" and t.Tipo_Transacao = '{Tipo_Transacao}'";
+                }
+            }
+           
+            
+
+            if (Conta_idConta != 0)
+            {
+                filtro += $" and t.Conta_idConta = {Conta_idConta}";
+            }
+            #endregion Filtro
             string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             string sql = "SELECT t.idTransacao, t.Data_Transacao, t.Tipo_Transacao, t.Valor_Transacao, " +
                 " t.Descricao_Transacao AS historico,t.Conta_idConta, c.NomeConta AS conta ,t.Plano_Contas_idPlano_Contas," +
                 " p.Descricao AS plano_conta FROM Transacao AS t INNER JOIN Conta AS c ON t.Conta_idConta = c.idConta" +
                 " INNER JOIN Plano_Contas AS p ON t.Plano_Contas_idPlano_Contas = p.idPlano_Contas" +
-                $" where c.Usuario_idUsuario = {id_usuario_logado} order by t.Data_Transacao desc; ";
+                $" where c.Usuario_idUsuario = {id_usuario_logado} {filtro} order by t.Data_Transacao desc; ";
             DAL objDAL = new DAL();
 
             DataTable dt = objDAL.RetDataTable(sql);
