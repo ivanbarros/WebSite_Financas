@@ -34,18 +34,21 @@ namespace MyFinance.Models
         {
             HttpContextAccessor = httpContextAccessor;
         }
-
+        private string idUsuarioLogado() 
+        {
+            return HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+        }
         internal void Insert()
         {
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+          
             string sql = "";
             if (idPlano_Contas == 0)
             {
-                sql = $"insert into Plano_Contas (Descricao, Tipo, Usuario_id, isActive) values ('{Descricao}','{Tipo}',{id_usuario_logado}, 1)";
+                sql = $"insert into Plano_Contas (Descricao, Tipo, Usuario_id, isActive) values ('{Descricao}','{Tipo}',{idUsuarioLogado()}, 1)";
             }
             else
             {
-                sql = $"Update  Plano_Contas  set Descricao = '{Descricao}', Tipo = '{Tipo}' WHERE Usuario_id = {id_usuario_logado} AND idPlano_Contas = {idPlano_Contas}";
+                sql = $"Update  Plano_Contas  set Descricao = '{Descricao}', Tipo = '{Tipo}' WHERE Usuario_id = {idUsuarioLogado()} AND idPlano_Contas = {idPlano_Contas}";
             }
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
@@ -54,8 +57,8 @@ namespace MyFinance.Models
         public PlanoContaModel CarregarRegistro(int? id)
         {
             PlanoContaModel item = new PlanoContaModel();
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {id_usuario_logado} and isActive = 1 and idPlano_Contas = {id}";
+            
+            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {idUsuarioLogado()} and isActive = 1 and idPlano_Contas = {id}";
             DAL objDAL = new DAL();
             DataTable dt = objDAL.RetDataTable(sql);
 
@@ -80,8 +83,8 @@ namespace MyFinance.Models
         {
             List<PlanoContaModel> lista = new List<PlanoContaModel>();
             PlanoContaModel item;
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {id_usuario_logado} and isActive = 1";
+            
+            string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {idUsuarioLogado()} and isActive = 1";
             DAL objDAL = new DAL();
 
             DataTable dt = objDAL.RetDataTable(sql);
@@ -100,9 +103,9 @@ namespace MyFinance.Models
 
         internal void EditarPlanoConta(PlanoContaModel formulario)
         {
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            
             int id_Conta = formulario.idPlano_Contas;
-            string sql = $"update Plano_Contas set Descrição = {formulario.Descricao}, Tipo = {formulario.Tipo}  where idPlano_Contas = {id_Conta} and Usuario = {id_usuario_logado}";
+            string sql = $"update Plano_Contas set Descrição = {formulario.Descricao}, Tipo = {formulario.Tipo}  where idPlano_Contas = {id_Conta} and Usuario = {idUsuarioLogado()}";
             DAL objDAL = new DAL();
             objDAL.ExecutaComandoSql(sql);
         }

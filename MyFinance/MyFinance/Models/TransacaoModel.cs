@@ -77,15 +77,15 @@ namespace MyFinance.Models
                 filtro += $" and t.Data_Transacao  >='{DateTime.Parse(Data_Transacao).ToString("yyyy/MM/dd")}' and t.Data_Transacao <= '{DateTime.Parse(DataFinal).ToString("yyyy/MM/dd")}'";
             }
 
-            if (Tipo_Transacao!=null)
+            if (Tipo_Transacao != null)
             {
                 if (Tipo_Transacao != "A")
                 {
                     filtro += $" and t.Tipo_Transacao = '{Tipo_Transacao}'";
                 }
             }
-           
-            
+
+
 
             if (Conta_idConta != 0)
             {
@@ -175,4 +175,68 @@ namespace MyFinance.Models
         }
 
     }
+
+    public class Dashboard
+    {
+        public double Total { get; set; }
+        public string PlanoConta { get; set; }
+        public IHttpContextAccessor HttpContextAccessor { get; set; }
+        
+        public Dashboard()
+        {
+
+        }
+        public Dashboard(IHttpContextAccessor httpContextAccessor)
+        {
+            HttpContextAccessor = httpContextAccessor;
+        }
+
+        public List<Dashboard> RetornaGrafico()
+        {
+            
+            List<Dashboard> lista = new List<Dashboard>();
+            Dashboard item;
+            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string sql = " select SUM(t.Valor_Transacao) AS total, p.Descricao  from Transacao AS t" +
+            " INNER JOIN Plano_Contas AS p ON" +
+            $" t.Plano_Contas_idPlano_Contas = p.idPlano_Contas where t.UsuarioId = {id_usuario_logado} " +
+            " GROUP BY p.Descricao; ";
+            DAL objDAL = new DAL();
+            DataTable dt = new DataTable();
+            dt = objDAL.RetDataTable(sql);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                item = new Dashboard();
+                item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
+                item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
+                lista.Add(item);
+            }
+            return lista;
+        }
+
+        public List<Dashboard> RetornaGraficoReceita()
+        {
+            List<Dashboard> lista = new List<Dashboard>();
+            Dashboard item;
+            string sql = " select SUM(t.Valor_Transacao) AS total, p.Descricao  from Transacao AS t" +
+            " INNER JOIN Plano_Contas AS p ON" +
+            " t.Plano_Contas_idPlano_Contas = p.idPlano_Contas " +
+            " GROUP BY p.Descricao; ";
+            DAL objDAL = new DAL();
+            DataTable dt = new DataTable();
+            dt = objDAL.RetDataTable(sql);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                item = new Dashboard();
+                item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
+                item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
+                lista.Add(item);
+            }
+            return lista;
+        }
+
+    }
+   
+
+    
 }

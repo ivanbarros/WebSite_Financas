@@ -18,11 +18,14 @@ namespace MyFinance.Models
         public string NomeUsuario { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Campo E-mail obrigatório")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Campo E-mail está num formato inválido")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         
         [Required(AllowEmptyStrings = false, ErrorMessage = "Campo Senha obrigatório")]
+        [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
 
