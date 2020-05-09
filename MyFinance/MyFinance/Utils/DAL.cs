@@ -9,7 +9,9 @@ namespace MyFinance.Utils
         private static string database = "Finance_Project";
         private static string user = "finance";
         private static string password = "Pophets3003@";
-        private string connectionString = $"Server={server};Database={database};Uid={user};Pwd={password}";
+        private static string charset = "utf8;convert zero datetime=True";
+        private static string provider = "MySql.Data.MySqlClient";
+        private string connectionString = $"Datasource={server};Database={database};Uid={user};Pwd={password};CHARSET={charset}";
         private MySqlConnection connection;
 
         public DAL()
