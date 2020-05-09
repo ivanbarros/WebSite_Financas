@@ -5,12 +5,12 @@ namespace MyFinance.Utils
 {
     public class DAL
     {
-        private static string server = "50.62.209.87";
-        private static string database = "Finance_Project";
-        private static string user = "finance";
-        private static string password = "Pophets3003@";
+        private static string server = "mysql5013.site4now.net";
+        private static string database = "db_a5617e_finance";
+        private static string user = "a5617e_finance";
+        private static string password = "pophets3003";
         private static string charset = "utf8;convert zero datetime=True";
-        private static string provider = "MySql.Data.MySqlClient";
+        //private static string provider = "MySql.Data.MySqlClient";
         private string connectionString = $"Datasource={server};Database={database};Uid={user};Pwd={password};CHARSET={charset}";
         private MySqlConnection connection;
 
