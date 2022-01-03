@@ -7,5 +7,6 @@ namespace MyFinance.Domain.Entities.BaseEntities
     public class BaseEntity
     {
         public int Id { get; set; }
+        public DateTime DataRegistro { get; set; }
     }
 }

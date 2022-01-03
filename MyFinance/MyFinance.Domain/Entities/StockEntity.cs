@@ -6,6 +6,7 @@ namespace MyFinance.Domain.Entities
 {
     public class StockEntity
     {
-
+        public ProductEntity Product { get; set; }
+        public int Qtd { get; set; }
     }
 }

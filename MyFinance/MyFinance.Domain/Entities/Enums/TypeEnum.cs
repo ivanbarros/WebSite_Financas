@@ -12,4 +12,10 @@ namespace MyFinance.Domain.Entities.Enums
         neckeless,
         food
     }
+
+    public enum BranchType
+    {
+        ownBranch,
+        otherBranch
+    }
 }
