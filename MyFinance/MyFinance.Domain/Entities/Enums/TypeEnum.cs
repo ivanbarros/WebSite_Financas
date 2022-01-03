@@ -13,9 +13,4 @@ namespace MyFinance.Domain.Entities.Enums
         food
     }
 
-    public enum BranchType
-    {
-        ownBranch,
-        otherBranch
-    }
 }
