@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flunt" Version="2.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MyFinance.Domain\MyFinance.Domain.csproj" />
+    <Folder Include="DataBaseConfigs\" />
   </ItemGroup>
 
 </Project>
