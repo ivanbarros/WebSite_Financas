@@ -8,7 +8,7 @@ namespace MyFinance.Domain.Entities
         public string Name { get; set; }
         public TypeEnum TypeProduct { get; set; }
         public decimal UnitValue { get; set; }
-        public BranchType Branch { get; set; }
+        public BrandTypeEnum Brand { get; set; }
         
     }
 }
