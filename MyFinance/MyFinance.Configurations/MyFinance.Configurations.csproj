@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataBaseConfigs\" />
+    <PackageReference Include="FluentMigrator" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Abstractions" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Runner" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Runner.MySql" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Runner.SqlAnywhere" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Runner.SqlServer" Version="3.3.1" />
   </ItemGroup>
 
 </Project>
