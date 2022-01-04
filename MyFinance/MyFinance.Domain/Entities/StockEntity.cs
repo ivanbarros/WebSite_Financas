@@ -8,5 +8,6 @@ namespace MyFinance.Domain.Entities
     {
         public ProductEntity Product { get; set; }
         public int Qtd { get; set; }
+        //public Fornecedor Fornecedor {get; set;}
     }
 }

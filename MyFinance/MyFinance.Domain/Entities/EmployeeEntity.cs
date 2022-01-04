@@ -1,6 +1,7 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
 using MyFinance.Domain.Entities.Enums;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
@@ -8,6 +9,7 @@ namespace MyFinance.Domain.Entities
     {
         private string nome;
 
+        [Column("Name")]
         public string Nome
         {
             get { return nome; }
@@ -16,6 +18,7 @@ namespace MyFinance.Domain.Entities
 
         private string sobrenome;
 
+        [Column("LastName")]
         public string Sobrenome
         {
             get { return sobrenome; }
@@ -24,6 +27,7 @@ namespace MyFinance.Domain.Entities
 
         private DateTime datanasc;
 
+        [Column("DataNascimento")]
         public DateTime DataNascimento
         {
             get { return datanasc; }
@@ -32,6 +36,7 @@ namespace MyFinance.Domain.Entities
 
         private string cpf;
 
+        [Column("Cpf")]
         public string Cpf
         {
             get { return cpf; }
@@ -40,6 +45,7 @@ namespace MyFinance.Domain.Entities
 
         private string tel;
 
+        [Column("Tel")]
         public string Tel
         {
             get { return tel; }
@@ -54,12 +60,12 @@ namespace MyFinance.Domain.Entities
             set { email = value; }
         }
 
-        private DateTime dataSdmissao;
+        private DateTime dataAdmissao;
 
         public DateTime DataAdmissao
         {
-            get { return dataSdmissao; }
-            set { dataSdmissao = value; }
+            get { return dataAdmissao; }
+            set { dataAdmissao = value; }
         }
 
         private DateTime dataDemissao;
@@ -70,7 +76,7 @@ namespace MyFinance.Domain.Entities
             set { dataDemissao = value; }
         }
 
-        public ContractTypeEnum TipoContrato { get; set; }
+        public ContractTypeEnum TipoContratacao { get; set; }
 
         private int cargaHoraDia;
 
@@ -80,6 +86,22 @@ namespace MyFinance.Domain.Entities
             set { cargaHoraDia = value; }
         }
 
+        private decimal payment;
+
+        [Column("Salario")]
+        public decimal Payment
+        {
+            get { return payment; }
+            set { payment = value; }
+        }
+
+        private bool isActive;
+
+        public bool IsActive
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
 
         public EnderecoEntity Endereco { get; set; }
 
