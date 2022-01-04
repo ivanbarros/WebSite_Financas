@@ -11,5 +11,6 @@ namespace MyFinance.Domain.Entities
         public string Password { get; set; }
         public bool IsActive { get; set; }
 
+
     }
 }
