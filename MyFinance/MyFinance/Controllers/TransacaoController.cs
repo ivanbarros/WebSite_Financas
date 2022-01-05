@@ -42,7 +42,7 @@ namespace MyFinance.Controllers
                 TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
                 ViewBag.Registro = objTransacao.CarregarRegistro(id);
             }
-            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
+            //ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
             ViewBag.ListaPlanoContas = new PlanoContaModel(HttpContextAccessor).ListaPlanoContas();
 
             return View();
@@ -65,7 +65,7 @@ namespace MyFinance.Controllers
         {
             formulario.HttpContextAccessor = HttpContextAccessor;
             ViewBag.ListaTransacao = formulario.ListaTransacao();
-            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
+            //ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
             return View();
         }
         public IActionResult Dashboard()

@@ -5,6 +5,7 @@ namespace MyFinance.Data.Context
 {
     public class SqlContextt : DbContext
     {
+        
         public DbSet<ContaEntity> Conta { get; set; }
         public DbSet<EnderecoEntity> Endereco { get; set; }
         public DbSet<EmployeeEntity> Empregado { get; set; }

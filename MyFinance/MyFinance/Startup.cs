@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyFinance.Configurations.DataBaseConfigs;
 
 namespace MyFinance
 {
@@ -31,7 +32,10 @@ namespace MyFinance
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            MigratorServices.CreateService(Configuration["sqlDb:connectionString"]);
+            //MigratorServices.CreateMysqlService(Configuration["MysqlDb:connectionString"]);
+            //ConfigureService.ConfigureDependenciesService(services);
+            //ConfigureRepository.ConfigureDependenciesRepositories(services);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();

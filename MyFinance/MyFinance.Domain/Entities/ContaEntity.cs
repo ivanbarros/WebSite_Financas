@@ -8,17 +8,23 @@ namespace MyFinance.Domain.Entities
 {
     public class ContaEntity
     {
+        public IHttpContextAccessor _httpContextAccessor { get; set; }
         public ContaEntity()
         {
 
         }
-        public ContaEntity(int idConta, string nomeConta, double saldo, int usuario_idUsuario, IHttpContextAccessor httpContextAccessor)
+        public ContaEntity(int idConta, string nomeConta, double saldo, int usuario_idUsuario)
         {
             this.idConta = idConta;
             NomeConta = nomeConta;
             Saldo = saldo;
             Usuario_idUsuario = usuario_idUsuario;
-            HttpContextAccessor = httpContextAccessor;
+        }
+
+        public ContaEntity(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+            
         }
 
         [Key]
@@ -36,6 +42,7 @@ namespace MyFinance.Domain.Entities
 
         [Display(Name = "Usuario")]
         public int Usuario_idUsuario { get; set; }
-        public IHttpContextAccessor HttpContextAccessor { get; set; }
+        
+        //public IHttpContextAccessor HttpContextAccessor { get; set; }
     }
 }
