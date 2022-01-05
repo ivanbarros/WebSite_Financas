@@ -16,10 +16,7 @@ namespace MyFinance.Repository
             HttpContextAccessor = httpContextAccessor;
         }
 
-        public void Excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<ContaEntity> GetAll(ContaEntity conta)
         {
@@ -27,6 +24,11 @@ namespace MyFinance.Repository
         }
 
         public void Insert(ContaEntity conta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
         {
             throw new NotImplementedException();
         }

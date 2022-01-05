@@ -7,8 +7,8 @@ namespace MyFinance.Repository.Interfaces.Repositories
 {
     public interface IRepositoryBase<T> where T : class
     {
-        List<T> GetAll(ContaEntity conta);
-        void Insert(ContaEntity conta);
+        List<T> GetAll(T conta);
+        void Insert(T conta);
         void Excluir(int id);
     }
 }
