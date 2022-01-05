@@ -1,21 +1,26 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Models;
+using MyFinance.Service.Interfaces.Services;
 
 namespace MyFinance.Controllers
 {
     public class ContaController : Controller
     {
+        private readonly IContaService _service;
         IHttpContextAccessor HttpContextAccessor;
-        public ContaController(IHttpContextAccessor httpContextAccessor)
+        public ContaController(IContaService service,IHttpContextAccessor httpContextAccessor)
         {
+            _service = service;
             HttpContextAccessor = httpContextAccessor;
         }
 
-        public IActionResult _PartialConta()
+        public IActionResult _PartialConta(string login, string password)
         {
-            ContaModel objConta = new ContaModel(HttpContextAccessor);
-            ViewBag.ListaConta = objConta.ListaConta();
+            //ContaModel objConta = new ContaModel(HttpContextAccessor);
+            
+            //ViewBag.ListaConta = objConta.ListaConta();
+            ViewBag.ListaConta = _service.ListaConta(login, password);
             return View();
         }
 
