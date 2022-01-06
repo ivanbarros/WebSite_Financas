@@ -1,13 +1,15 @@
-﻿using System;
+﻿using MyFinance.Domain.Entities.BaseEntities;
+using System;
 
 namespace MyFinance.Domain.Entities
 {
-    public class UserEntity
+    public class UserEntity : BaseEntity
     {
-        public DateTime CreateDate { get; set; }
+        public string Email { get; set; }
         public string Login { get; set; }
-        public string Password { get; set; }
+        public string Senha { get; set; }
         public bool IsActive { get; set; }
+        public string NomeUsuario { get; set; }
 
 
     }
