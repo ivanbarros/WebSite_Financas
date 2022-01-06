@@ -1,10 +1,8 @@
-﻿using MyFinance.Service.Interfaces;
+﻿using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
-namespace MyFinance.Service
+namespace MyFinance.Domain.UnitOfWorkConfig
 {
     public sealed class UnitOfWork : IUnitOfWork
     {

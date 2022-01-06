@@ -33,7 +33,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<ContaEntity>> GetAll()
+        public Task<IEnumerable<ContaEntity>> GetAll()
         {
             throw new NotImplementedException();
         }

@@ -20,7 +20,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<List<ContaEntity>> GetAll()
+        public Task<IEnumerable<ContaEntity>> GetAll()
         {
            var result =  _service.GetAll();
             return result;

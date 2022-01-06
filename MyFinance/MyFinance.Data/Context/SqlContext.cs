@@ -5,7 +5,7 @@ namespace MyFinance.Data.Context
 {
     public class SqlContext : DbContext
     {
-        
+
         public DbSet<ContaEntity> Conta { get; set; }
         public DbSet<EnderecoEntity> Endereco { get; set; }
         public DbSet<EmployeeEntity> Empregado { get; set; }
@@ -15,8 +15,9 @@ namespace MyFinance.Data.Context
         public DbSet<UserEntity> Usuario { get; set; }
 
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
-{
-}
+        {
+            
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

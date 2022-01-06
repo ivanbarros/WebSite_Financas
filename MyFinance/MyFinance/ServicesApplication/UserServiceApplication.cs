@@ -21,7 +21,7 @@ namespace MyFinance.ServicesApplication
             throw new NotImplementedException();
         }
 
-        public Task<List<UserEntity>> GetAll()
+        public Task<IEnumerable<UserEntity>> GetAll()
         {
             throw new NotImplementedException();
         }

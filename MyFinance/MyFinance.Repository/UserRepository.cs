@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
+using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,20 +11,19 @@ namespace MyFinance.Repository
 {
     public class UserRepository : IUserRepository
     {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly SqlContext _context;
+        
 
-        private readonly IRepositoryBase<UserEntity> _repos;
-
-        public UserRepository(IRepositoryBase<UserEntity> repos)
-        {
-            _repos = repos;
-        }
-
-        public Task<UserEntity> Add(UserEntity user)
+        public async Task<UserEntity> Add(UserEntity user)
         {
             try
             {
-                var result =_repos.Add(user);
-                return result;
+
+                var result = await _context.Usuario.AddAsync(user);
+                await _context.SaveChangesAsync();
+               
+                return user;
             }
             catch (Exception)
             {
@@ -42,11 +42,14 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserEntity>> GetAll()
+        public async Task<IEnumerable<UserEntity>> GetAll()
         {
             try
             {
-                return await _repos.GetAll();
+                var user = new UserEntity();
+                var result = await _context.Usuario.ToListAsync();
+                return result;
+                
             }
 
             catch (Exception ex)
