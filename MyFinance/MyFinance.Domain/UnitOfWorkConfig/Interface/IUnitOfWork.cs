@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace MyFinance.Service.Interfaces
+namespace MyFinance.Domain.UnitOfWorkConfig.Interface
 {
     public interface IUnitOfWork : IDisposable
     {

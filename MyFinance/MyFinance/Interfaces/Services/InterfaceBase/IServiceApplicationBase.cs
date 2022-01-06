@@ -7,7 +7,7 @@ namespace MyFinance.Interfaces.Services.InterfaceBase
 {
     public interface IServiceApplicationBase <T> where T: class
     {
-        Task<List<T>> GetAll();
+        Task<IEnumerable<T>> GetAll();
         void Insert(T item);
         void Excluir(int id);
     }

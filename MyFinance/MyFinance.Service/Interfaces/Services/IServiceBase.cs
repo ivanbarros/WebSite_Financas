@@ -5,7 +5,7 @@ namespace MyFinance.Service.Interfaces.Services
 {
     public interface IServiceBase<T> where T : class
     {
-        Task<List<T>> GetAll();
+        Task<IEnumerable<T>> GetAll();
         void Insert( T item);
         void Excluir(int id);
     }

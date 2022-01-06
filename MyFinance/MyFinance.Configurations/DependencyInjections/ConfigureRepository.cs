@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MyFinance.Domain.UnitOfWorkConfig;
+using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Repository;
 using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service;

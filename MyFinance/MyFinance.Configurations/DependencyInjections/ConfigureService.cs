@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyFinance.Domain.UnitOfWorkConfig;
+using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Service;
 using MyFinance.Service.Interfaces;
 using MyFinance.Service.Interfaces.Services;

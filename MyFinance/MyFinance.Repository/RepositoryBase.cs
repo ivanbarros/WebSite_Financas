@@ -13,6 +13,11 @@ namespace MyFinance.Repository
     {
         protected readonly SqlContext _context;
         private DbSet<T> _dataset;
+        public RepositoryBase(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<T>();
+        }
 
         public async Task<T> Add(T entity)
         {
@@ -39,7 +44,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> GetAll()
+        public Task<IEnumerable<T>> GetAll()
         {
             throw new NotImplementedException();
         }

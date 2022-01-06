@@ -22,13 +22,16 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public Task<List<UserEntity>> GetAll()
+        public Task<IEnumerable<UserEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public void Insert(UserEntity item)
         {
+            item.DataRegistro = DateTime.UtcNow;
+            item.IsActive = true;
+            item.Login = item.Email;
             _repository.Add(item);
         }
     }

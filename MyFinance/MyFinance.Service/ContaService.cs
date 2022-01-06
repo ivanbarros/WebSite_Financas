@@ -24,7 +24,7 @@ namespace MyFinance.Service
             _repository.Delete(id);
         }
 
-        public Task<List<ContaEntity>> GetAll()
+        public Task<IEnumerable<ContaEntity>> GetAll()
         {
 
             var result = _repository.GetAll();
@@ -37,9 +37,9 @@ namespace MyFinance.Service
             
         }
 
-        public Task<List<ContaEntity>> ListaConta(string login, string senha)
+        public async Task<IEnumerable<ContaEntity>> ListaConta(string login, string senha)
         {
-            var result = _repository.ListaConta(login, senha);
+            var result = await _repository.ListaConta(login, senha);
             return result;
         }
 
