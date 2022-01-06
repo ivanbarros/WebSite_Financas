@@ -4,12 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyFinance.Domain.Entities;
+using MyFinance.Interfaces;
 using MyFinance.Models;
 
 namespace MyFinance.Controllers
 {
     public class UsuarioController : Controller
     {
+        private readonly IUserServiceApplication _serviceApplication;
+
+        public UsuarioController(IUserServiceApplication servuceApplication)
+        {
+            _serviceApplication = servuceApplication;
+        }
+
         [HttpGet]
         public IActionResult Login( int? id)
         {
@@ -45,12 +54,13 @@ namespace MyFinance.Controllers
 
         [HttpPost]
         
-        public IActionResult Registrar(UsuarioModel usuario)
+        public IActionResult Registrar(UserEntity usuario)
         {
             
             if (ModelState.IsValid)
             {
-                usuario.RegistrarUsuario();
+                _serviceApplication.Insert(usuario);
+                //usuario.RegistrarUsuario();
                 return RedirectToAction("Sucesso");
                 
             }

@@ -12,6 +12,7 @@ namespace MyFinance.Data.Context
         public DbSet<ProductEntity> Produto { get; set; }
         public DbSet<StockEntity> Estoque { get; set; }
         public DbSet<SalesEntity> Vendas { get; set; }
+        public DbSet<UserEntity> Usuario { get; set; }
 
 
 

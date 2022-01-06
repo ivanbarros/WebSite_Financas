@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyFinance.Configurations.DataBaseConfigs;
+using MyFinance.Configurations.DependencyInjections;
 
 namespace MyFinance
 {
@@ -34,10 +30,11 @@ namespace MyFinance
             });
             MigratorServices.CreateService(Configuration["sqlDb:connectionString"]);
             //MigratorServices.CreateMysqlService(Configuration["MysqlDb:connectionString"]);
-            //ConfigureService.ConfigureDependenciesService(services);
-            //ConfigureRepository.ConfigureDependenciesRepositories(services);
+            ConfigureService.ConfigureDependenciesService(services);
+            ConfigureRepository.ConfigureDependenciesRepositories(services);
+            services.AddSqlDatabase(Configuration);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();
         }
 

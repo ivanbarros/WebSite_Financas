@@ -62,8 +62,8 @@ namespace MyFinance.Models
         {
             int idTransacao = id;
             string sql = $"delete from Finance_Project.Transacao where idTransacao = {idTransacao}";
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSql(sql);
+            //DAL objDAL = new DAL();
+            //objDAL.ExecutaComandoSql(sql);
         }
 
         public List<TransacaoModel> ListaTransacao()
@@ -98,24 +98,24 @@ namespace MyFinance.Models
                 " p.Descricao AS plano_conta FROM Transacao AS t INNER JOIN Conta AS c ON t.Conta_idConta = c.idConta" +
                 " INNER JOIN Plano_Contas AS p ON t.Plano_Contas_idPlano_Contas = p.idPlano_Contas" +
                 $" where c.Usuario_idUsuario = {id_usuario_logado} {filtro} order by t.Data_Transacao desc; ";
-            DAL objDAL = new DAL();
+            //DAL objDAL = new DAL();
 
-            DataTable dt = objDAL.RetDataTable(sql);
+            //DataTable dt = objDAL.RetDataTable(sql);
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                item = new TransacaoModel();
-                item.idTransacao = int.Parse(dt.Rows[i]["idTransacao"].ToString());
-                item.Data_Transacao = DateTime.Parse(dt.Rows[i]["Data_Transacao"].ToString()).ToString("dd/MM/yyyy");
-                item.Tipo_Transacao = dt.Rows[i]["Tipo_Transacao"].ToString();
-                item.Valor_Transacao = double.Parse(dt.Rows[i]["Valor_Transacao"].ToString());
-                item.Descricao_Transacao = dt.Rows[i]["historico"].ToString();
-                item.Conta_idConta = int.Parse(dt.Rows[i]["Conta_idConta"].ToString());
-                item.NomeConta = dt.Rows[i]["conta"].ToString();
-                item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[i]["Plano_Contas_idPlano_Contas"].ToString());
-                item.DescricaoPlanoConta = dt.Rows[i]["plano_conta"].ToString();
-                lista.Add(item);
-            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    item = new TransacaoModel();
+            //    item.idTransacao = int.Parse(dt.Rows[i]["idTransacao"].ToString());
+            //    item.Data_Transacao = DateTime.Parse(dt.Rows[i]["Data_Transacao"].ToString()).ToString("dd/MM/yyyy");
+            //    item.Tipo_Transacao = dt.Rows[i]["Tipo_Transacao"].ToString();
+            //    item.Valor_Transacao = double.Parse(dt.Rows[i]["Valor_Transacao"].ToString());
+            //    item.Descricao_Transacao = dt.Rows[i]["historico"].ToString();
+            //    item.Conta_idConta = int.Parse(dt.Rows[i]["Conta_idConta"].ToString());
+            //    item.NomeConta = dt.Rows[i]["conta"].ToString();
+            //    item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[i]["Plano_Contas_idPlano_Contas"].ToString());
+            //    item.DescricaoPlanoConta = dt.Rows[i]["plano_conta"].ToString();
+            //    lista.Add(item);
+            //}
             return lista;
         }
 
@@ -143,8 +143,8 @@ namespace MyFinance.Models
 
 
             }
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSql(sql);
+            //DAL objDAL = new DAL();
+            //objDAL.ExecutaComandoSql(sql);
         }
 
         public TransacaoModel CarregarRegistro(int? id)
@@ -156,20 +156,20 @@ namespace MyFinance.Models
                 " p.Descricao AS plano_conta FROM Transacao AS t INNER JOIN Conta AS c ON t.Conta_idConta = c.idConta" +
                 " INNER JOIN Plano_Contas AS p ON t.Plano_Contas_idPlano_Contas = p.idPlano_Contas" +
                 $" where c.Usuario_idUsuario = {id_usuario_logado} and t.idTransacao = '{id}';";
-            DAL objDAL = new DAL();
+            //DAL objDAL = new DAL();
 
-            DataTable dt = objDAL.RetDataTable(sql);
+            //DataTable dt = objDAL.RetDataTable(sql);
 
             item = new TransacaoModel();
-            item.idTransacao = int.Parse(dt.Rows[0]["idTransacao"].ToString());
-            item.Data_Transacao = DateTime.Parse(dt.Rows[0]["Data_Transacao"].ToString()).ToString("dd/MM/yyyy");
-            item.Tipo_Transacao = dt.Rows[0]["Tipo_Transacao"].ToString();
-            item.Valor_Transacao = double.Parse(dt.Rows[0]["Valor_Transacao"].ToString());
-            item.Descricao_Transacao = dt.Rows[0]["historico"].ToString();
-            item.Conta_idConta = int.Parse(dt.Rows[0]["Conta_idConta"].ToString());
-            item.NomeConta = dt.Rows[0]["conta"].ToString();
-            item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[0]["Plano_Contas_idPlano_Contas"].ToString());
-            item.DescricaoPlanoConta = dt.Rows[0]["plano_conta"].ToString();
+            //item.idTransacao = int.Parse(dt.Rows[0]["idTransacao"].ToString());
+            //item.Data_Transacao = DateTime.Parse(dt.Rows[0]["Data_Transacao"].ToString()).ToString("dd/MM/yyyy");
+            //item.Tipo_Transacao = dt.Rows[0]["Tipo_Transacao"].ToString();
+            //item.Valor_Transacao = double.Parse(dt.Rows[0]["Valor_Transacao"].ToString());
+            //item.Descricao_Transacao = dt.Rows[0]["historico"].ToString();
+            //item.Conta_idConta = int.Parse(dt.Rows[0]["Conta_idConta"].ToString());
+            //item.NomeConta = dt.Rows[0]["conta"].ToString();
+            //item.Plano_Contas_idPlano_Contas = int.Parse(dt.Rows[0]["Plano_Contas_idPlano_Contas"].ToString());
+            //item.DescricaoPlanoConta = dt.Rows[0]["plano_conta"].ToString();
 
             return item;
         }
@@ -201,16 +201,16 @@ namespace MyFinance.Models
             " INNER JOIN Plano_Contas AS p ON" +
             $" t.Plano_Contas_idPlano_Contas = p.idPlano_Contas where t.UsuarioId = {id_usuario_logado} " +
             " GROUP BY p.Descricao; ";
-            DAL objDAL = new DAL();
-            DataTable dt = new DataTable();
-            dt = objDAL.RetDataTable(sql);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                item = new Dashboard();
-                item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
-                item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
-                lista.Add(item);
-            }
+            //DAL objDAL = new DAL();
+            //DataTable dt = new DataTable();
+            //dt = objDAL.RetDataTable(sql);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    item = new Dashboard();
+            //    item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
+            //    item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
+            //    lista.Add(item);
+            //}
             return lista;
         }
 
@@ -222,16 +222,16 @@ namespace MyFinance.Models
             " INNER JOIN Plano_Contas AS p ON" +
             " t.Plano_Contas_idPlano_Contas = p.idPlano_Contas " +
             " GROUP BY p.Descricao; ";
-            DAL objDAL = new DAL();
-            DataTable dt = new DataTable();
-            dt = objDAL.RetDataTable(sql);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                item = new Dashboard();
-                item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
-                item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
-                lista.Add(item);
-            }
+            //DAL objDAL = new DAL();
+            //DataTable dt = new DataTable();
+            //dt = objDAL.RetDataTable(sql);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    item = new Dashboard();
+            //    item.Total = double.Parse(dt.Rows[i]["Total"].ToString());
+            //    item.PlanoConta = dt.Rows[i]["Descricao"].ToString();
+            //    lista.Add(item);
+            //}
             return lista;
         }
 

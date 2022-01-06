@@ -42,7 +42,9 @@ namespace MyFinance.Domain.Entities
 
         [Display(Name = "Usuario")]
         public int Usuario_idUsuario { get; set; }
-        
+
+        public UserEntity Usuario { get; set; }
+
         //public IHttpContextAccessor HttpContextAccessor { get; set; }
     }
 }

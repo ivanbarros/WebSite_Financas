@@ -50,8 +50,8 @@ namespace MyFinance.Models
             {
                 sql = $"Update  Plano_Contas  set Descricao = '{Descricao}', Tipo = '{Tipo}' WHERE Usuario_id = {idUsuarioLogado()} AND idPlano_Contas = {idPlano_Contas}";
             }
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSql(sql);
+            //DAL objDAL = new DAL();
+            //objDAL.ExecutaComandoSql(sql);
         }
 
         public PlanoContaModel CarregarRegistro(int? id)
@@ -59,13 +59,13 @@ namespace MyFinance.Models
             PlanoContaModel item = new PlanoContaModel();
             
             string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {idUsuarioLogado()} and isActive = 1 and idPlano_Contas = {id}";
-            DAL objDAL = new DAL();
-            DataTable dt = objDAL.RetDataTable(sql);
+            //DAL objDAL = new DAL();
+            //DataTable dt = objDAL.RetDataTable(sql);
 
-            item.idPlano_Contas = int.Parse(dt.Rows[0]["idPlano_Contas"].ToString());
-            item.Descricao = dt.Rows[0]["Descricao"].ToString();
-            item.Tipo = dt.Rows[0]["Tipo"].ToString();
-            item.Usuario_id = int.Parse(dt.Rows[0]["Usuario_id"].ToString());
+            //item.idPlano_Contas = int.Parse(dt.Rows[0]["idPlano_Contas"].ToString());
+            //item.Descricao = dt.Rows[0]["Descricao"].ToString();
+            //item.Tipo = dt.Rows[0]["Tipo"].ToString();
+            //item.Usuario_id = int.Parse(dt.Rows[0]["Usuario_id"].ToString());
 
             return item;
         }
@@ -75,8 +75,8 @@ namespace MyFinance.Models
 
             int id_Conta = id;
             string sql = $"delete from Finance_Project.Plano_Contas where idPlano_Contas = {id}";
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSql(sql);
+            //DAL objDAL = new DAL();
+            //objDAL.ExecutaComandoSql(sql);
         }
 
         public List<PlanoContaModel> ListaPlanoContas()
@@ -85,19 +85,19 @@ namespace MyFinance.Models
             PlanoContaModel item;
             
             string sql = $"select idPlano_Contas, Descricao, Tipo, Usuario_id from Plano_Contas Where Usuario_id = {idUsuarioLogado()} and isActive = 1";
-            DAL objDAL = new DAL();
+            //DAL objDAL = new DAL();
 
-            DataTable dt = objDAL.RetDataTable(sql);
+            //DataTable dt = objDAL.RetDataTable(sql);
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                item = new PlanoContaModel();
-                item.idPlano_Contas = int.Parse(dt.Rows[i]["idPlano_Contas"].ToString());
-                item.Descricao = dt.Rows[i]["Descricao"].ToString();
-                item.Tipo = dt.Rows[i]["Tipo"].ToString();
-                item.Usuario_id = int.Parse(dt.Rows[i]["Usuario_id"].ToString());
-                lista.Add(item);
-            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    item = new PlanoContaModel();
+            //    item.idPlano_Contas = int.Parse(dt.Rows[i]["idPlano_Contas"].ToString());
+            //    item.Descricao = dt.Rows[i]["Descricao"].ToString();
+            //    item.Tipo = dt.Rows[i]["Tipo"].ToString();
+            //    item.Usuario_id = int.Parse(dt.Rows[i]["Usuario_id"].ToString());
+            //    lista.Add(item);
+            //}
             return lista;
         }
 
@@ -106,8 +106,8 @@ namespace MyFinance.Models
             
             int id_Conta = formulario.idPlano_Contas;
             string sql = $"update Plano_Contas set Descrição = {formulario.Descricao}, Tipo = {formulario.Tipo}  where idPlano_Contas = {id_Conta} and Usuario = {idUsuarioLogado()}";
-            DAL objDAL = new DAL();
-            objDAL.ExecutaComandoSql(sql);
+            //DAL objDAL = new DAL();
+            //objDAL.ExecutaComandoSql(sql);
         }
     }
 }

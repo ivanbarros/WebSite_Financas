@@ -41,7 +41,7 @@ namespace MyFinance.Repository
 
         public List<ContaEntity> ListaConta(string login, string senha)
         {  
-            var result = _context.Set<ContaEntity>().ToList().Where(c => c.NomeConta == login);
+            var result = _context.Set<ContaEntity>().ToList().Where(c => c.Usuario.Login == login && c.Usuario.Password==senha);
             return result.ToList();
         }
     }
