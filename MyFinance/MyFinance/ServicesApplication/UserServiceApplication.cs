@@ -3,7 +3,6 @@ using MyFinance.Interfaces;
 using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyFinance.ServicesApplication
@@ -22,7 +21,7 @@ namespace MyFinance.ServicesApplication
             throw new NotImplementedException();
         }
 
-        public List<UserEntity> GetAll(UserEntity item)
+        public Task<List<UserEntity>> GetAll()
         {
             throw new NotImplementedException();
         }

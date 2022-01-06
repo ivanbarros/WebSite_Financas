@@ -1,14 +1,17 @@
-﻿using MyFinance.Domain.Entities;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IRepositoryBase<T> where T : class
+    public interface IRepositoryBase<T> 
+        where T : class 
+        //where TContext : DbContext
     {
-        List<T> GetAll(T item);
-        void Insert(T item);
-        void Excluir(int id);
+        Task<List<T>> GetAll();
+        Task<T> Get(int id);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
+        Task<T> Delete(int id);
     }
 }

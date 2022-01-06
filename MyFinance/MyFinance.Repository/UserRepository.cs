@@ -1,34 +1,64 @@
-﻿using MyFinance.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly SqlContextt _context;
 
-        public UserRepository(SqlContextt context)
+        private readonly IRepositoryBase<UserEntity> _repos;
+
+        public UserRepository(IRepositoryBase<UserEntity> repos)
         {
-            _context = context;
+            _repos = repos;
         }
 
-        public void Excluir(int id)
+        public Task<UserEntity> Add(UserEntity user)
+        {
+            try
+            {
+                var result =_repos.Add(user);
+                return result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public Task<UserEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<UserEntity> GetAll(UserEntity conta)
+        public Task<UserEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(UserEntity conta)
+        public async Task<List<UserEntity>> GetAll()
         {
-            _context.Usuario.Add(conta);
-            _context.SaveChanges();
+            try
+            {
+                return await _repos.GetAll();
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public Task<UserEntity> Update(UserEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

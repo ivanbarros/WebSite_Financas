@@ -4,6 +4,7 @@ using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
@@ -21,14 +22,14 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public List<UserEntity> GetAll(UserEntity item)
+        public Task<List<UserEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public void Insert(UserEntity item)
         {
-            _repository.Insert(item);
+            _repository.Add(item);
         }
     }
 }

@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
     public interface IContaRepository : IRepositoryBase<ContaEntity>
     {
-        List<ContaEntity> ListaConta(string login, string senha);
+        Task<List<ContaEntity>> ListaConta(string login, string senha);
     }
 }

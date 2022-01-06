@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MyFinance.Service;
+using MyFinance.Service.Interfaces;
 using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace MyFinance.Configurations.DependencyInjections
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IContaService, ContaService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IFoodService, FoodService>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IWaiterService, WaiterService>();

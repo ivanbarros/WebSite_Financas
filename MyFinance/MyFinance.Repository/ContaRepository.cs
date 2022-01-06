@@ -5,44 +5,47 @@ using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
     public class ContaRepository : IContaRepository
     {
-        private readonly SqlContextt _context;
+        private readonly SqlContext _context;
 
-        public ContaRepository(SqlContextt context)
+        public ContaRepository(SqlContext context)
         {
             _context = context;
         }
 
-        //public IHttpContextAccessor HttpContextAccessor { get; set; }
-
-        //public ContaRepository(IHttpContextAccessor httpContextAccessor)
-        //{
-        //    HttpContextAccessor = httpContextAccessor;
-        //}
-
-        public void Excluir(int id)
+        public Task<ContaEntity> Add(ContaEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<ContaEntity> GetAll(ContaEntity conta)
+        public Task<ContaEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(ContaEntity conta)
+        public Task<ContaEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<ContaEntity> ListaConta(string login, string senha)
-        {  
-            var result = _context.Set<ContaEntity>().ToList().Where(c => c.Usuario.Login == login && c.Usuario.Password==senha);
-            return result.ToList();
+        public Task<List<ContaEntity>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<ContaEntity>> ListaConta(string login, string senha)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ContaEntity> Update(ContaEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

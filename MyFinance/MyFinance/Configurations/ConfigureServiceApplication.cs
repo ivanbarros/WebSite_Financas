@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyFinance.Interfaces;
+using MyFinance.Interfaces.Services;
+using MyFinance.ServicesApplication;
 
-namespace MyFinance.Configurations.DependencyInjections
+namespace MyFinance.Configurations
 {
     public static class ConfigureServiceApplication
     {

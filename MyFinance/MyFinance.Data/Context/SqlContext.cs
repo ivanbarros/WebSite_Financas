@@ -3,7 +3,7 @@ using MyFinance.Domain.Entities;
 
 namespace MyFinance.Data.Context
 {
-    public class SqlContextt : DbContext
+    public class SqlContext : DbContext
     {
         
         public DbSet<ContaEntity> Conta { get; set; }
@@ -18,7 +18,7 @@ namespace MyFinance.Data.Context
 
 
         
-        public SqlContextt(DbContextOptions<SqlContextt> options) : base(options)
+        public SqlContext(DbContextOptions<SqlContext> options) : base(options)
 {
 }
 
