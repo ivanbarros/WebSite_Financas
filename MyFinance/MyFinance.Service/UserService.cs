@@ -29,7 +29,7 @@ namespace MyFinance.Service
 
         public void Insert(UserEntity item)
         {
-            item.DataRegistro = DateTime.UtcNow;
+            item.CreateDate = DateTime.UtcNow;
             item.IsActive = true;
             item.Login = item.Email;
             _repository.Add(item);

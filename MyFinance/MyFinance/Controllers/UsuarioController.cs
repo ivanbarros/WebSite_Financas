@@ -55,8 +55,7 @@ namespace MyFinance.Controllers
             
             if (ModelState.IsValid)
             {
-                _serviceApplication.Insert(usuario);
-                //usuario.RegistrarUsuario();
+                _serviceApplication.Insert(usuario);                
                 return RedirectToAction("Sucesso");
                 
             }

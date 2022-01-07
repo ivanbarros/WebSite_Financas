@@ -1,15 +1,26 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
+    [Table("User")]
     public class UserEntity : BaseEntity
     {
-        public string Email { get; set; }
+        [Column("UserName")]
+        public string UserName { get; set; }
+
+        [Column("Login")]
         public string Login { get; set; }
-        public string Senha { get; set; }
+
+        [Column("Email")]
+        public string Email { get; set; }
+
+        [Column("PassWord")]
+        public string PassWord { get; set; }
+
+        [Column("IsActive")]
         public bool IsActive { get; set; }
-        public string NomeUsuario { get; set; }
 
 
     }

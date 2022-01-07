@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MyFinance.Domain.Entities.BaseEntities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyFinance.Domain.Entities
 {
-    public class EnderecoEntity
+    public class EnderecoEntity : BaseEntity
     {
         public string Cep { get; set; }
         public string Logradouro { get; set; }

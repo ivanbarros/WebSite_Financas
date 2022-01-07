@@ -31,15 +31,14 @@ namespace MyFinance
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            MigratorServices.CreateService(Configuration["sqlDb:connectionString"]);
-            //MigratorServices.CreateMysqlService(Configuration["MysqlDb:connectionString"]);
+            MigratorServices.CreateService(Configuration["sqlDb:connectionString"]);            
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureServiceApplication.ConfigureDependenciesServiceAppication(services);
             ConfigureRepository.ConfigureDependenciesRepositories(services);
-            var connection = Configuration.GetConnectionString("sqlDb:connectionString");
+            var connection = Configuration["sqlDb:connectionString"];
+            
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
             services.AddSqlDatabase(Configuration);
-            //services.AddSingleton<IHttp, Http>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();
         }

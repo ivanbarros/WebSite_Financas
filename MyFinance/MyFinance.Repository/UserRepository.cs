@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
-using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,19 +19,19 @@ namespace MyFinance.Repository
             _dataset = context.Set<UserEntity>();
         }
 
-        public async Task<UserEntity> Add(UserEntity entity)
+        public Task<UserEntity> Add(UserEntity entity)
         {
             try
             {
                 _dataset.Add(entity);
-                await _context.SaveChangesAsync();
+                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            return entity;
+            return Task.FromResult(entity) ;
         }
 
         public Task<UserEntity> Delete(int id)
