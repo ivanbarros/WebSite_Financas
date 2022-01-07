@@ -38,7 +38,7 @@ namespace MyFinance.Models
             //string id_usuario_logado = Http.HttpContext.Session.GetString("IdUsuarioLogado");
             //string sql = $"select idConta, NomeConta, Saldo, Usuario_idUsuario from Conta Where Usuario_idUsuario = {id_usuario_logado} and isActive = 1";
 
-           // DAL objDAL = new DAL();
+            //DAL objDAL = new DAL();
 
             //DataTable dt = objDAL.RetDataTable(sql);
 
@@ -47,7 +47,7 @@ namespace MyFinance.Models
             //    item = new ContaModel();
             //    item.idConta = int.Parse(dt.Rows[i]["idConta"].ToString());
             //    item.NomeConta = dt.Rows[i]["NomeConta"].ToString();
-            //    item.Saldo =  double.Parse(dt.Rows[i]["Saldo"].ToString());
+            //    item.Saldo = double.Parse(dt.Rows[i]["Saldo"].ToString());
             //    item.Usuario_idUsuario = int.Parse(dt.Rows[i]["Usuario_idUsuario"].ToString());
             //    lista.Add(item);
             //}

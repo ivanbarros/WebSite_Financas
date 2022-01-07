@@ -30,13 +30,13 @@ namespace MyFinance.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ValidarLogin(UsuarioModel usuario)
+        public IActionResult ValidarLogin(UserEntity usuario)
         {
-            bool login = usuario.ValidarLogin();
-            if (login)
+            var login = _serviceApplication.ValidarLogin(usuario);
+            if (login.UserName!=null)
             {
-                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.NomeUsuario);
-                HttpContext.Session.SetString("IdUsuarioLogado", usuario.idUsuario.ToString());
+                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
                 return RedirectToAction("_PartialMenu", "Menu");
             }

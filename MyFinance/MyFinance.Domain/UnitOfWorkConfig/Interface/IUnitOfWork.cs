@@ -7,7 +7,9 @@ namespace MyFinance.Domain.UnitOfWorkConfig.Interface
 {
     public interface IUnitOfWork : IDisposable
     {
+        IDbTransaction _dbTransaction { get; }
 
+        
         IDbConnection Connection { get; }
         IDbTransaction Transaction { get; }
         void BeginTransaction();

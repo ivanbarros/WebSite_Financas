@@ -34,5 +34,13 @@ namespace MyFinance.Service
             item.Login = item.Email;
             _repository.Add(item);
         }
+
+
+        public UserEntity ValidarLogin(UserEntity usuario)
+        {
+           var result =  _repository.ValidarLogin(usuario);
+            
+            return result;
+        }
     }
 }

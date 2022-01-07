@@ -18,7 +18,10 @@ namespace MyFinance.Data.Context
         {
             
         }
+        public SqlContext()
+        {
 
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

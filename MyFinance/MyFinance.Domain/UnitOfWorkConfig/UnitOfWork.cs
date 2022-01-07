@@ -17,6 +17,8 @@ namespace MyFinance.Domain.UnitOfWorkConfig
 
         public IDbTransaction Transaction { get; private set; }
 
+        public IDbTransaction _dbTransaction => throw new NotImplementedException();
+
         public void BeginTransaction()
         {
             Connection.Open();

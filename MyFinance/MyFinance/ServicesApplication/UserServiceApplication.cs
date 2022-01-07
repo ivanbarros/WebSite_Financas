@@ -30,5 +30,13 @@ namespace MyFinance.ServicesApplication
         {
             _service.Insert(item);
         }
+
+       
+        public UserEntity ValidarLogin(UserEntity usuario)
+        {
+            var result = _service.ValidarLogin(usuario);
+            
+            return result;
+        }
     }
 }

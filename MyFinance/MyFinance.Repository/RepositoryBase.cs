@@ -51,6 +51,11 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
+        public IEnumerable<T> GetByEmail(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<T> Update(T entity)
         {
             throw new NotImplementedException();

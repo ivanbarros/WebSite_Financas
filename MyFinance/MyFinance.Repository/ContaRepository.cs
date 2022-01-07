@@ -38,6 +38,11 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
+        public IEnumerable<ContaEntity> GetByEmail(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<ContaEntity>> ListaConta(string login, string senha)
         {
             throw new NotImplementedException();
@@ -47,5 +52,6 @@ namespace MyFinance.Repository
         {
             throw new NotImplementedException();
         }
+
     }
 }

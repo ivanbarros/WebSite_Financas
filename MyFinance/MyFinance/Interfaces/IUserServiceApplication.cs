@@ -9,5 +9,7 @@ namespace MyFinance.Interfaces
 {
     public interface IUserServiceApplication : IServiceApplicationBase <UserEntity>
     {
+
+        UserEntity ValidarLogin(UserEntity usuario);
     }
 }
