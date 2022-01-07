@@ -23,23 +23,20 @@ namespace MyFinance.Models
        
         [Display(Name = "Usuario")]
         public int Usuario_idUsuario { get; set; }
-        public IHttpContextAccessor HttpContextAccessor { get; set; }
+        //public IHttp Http { get; set; }
 
         public ContaModel()
         {
 
         }
         //Recebe o context para acesso as variaveis de sessão
-        public ContaModel(IHttpContextAccessor httpContextAccessor)
-        {
-            HttpContextAccessor = httpContextAccessor;
-        }
+     
         public List<ContaModel> ListaConta()
         {
             List<ContaModel> lista = new List<ContaModel>();
             ContaModel item;
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"select idConta, NomeConta, Saldo, Usuario_idUsuario from Conta Where Usuario_idUsuario = {id_usuario_logado} and isActive = 1";
+            //string id_usuario_logado = Http.HttpContext.Session.GetString("IdUsuarioLogado");
+            //string sql = $"select idConta, NomeConta, Saldo, Usuario_idUsuario from Conta Where Usuario_idUsuario = {id_usuario_logado} and isActive = 1";
 
            // DAL objDAL = new DAL();
 
@@ -57,13 +54,13 @@ namespace MyFinance.Models
             return lista;
         }
 
-        public void Insert()
-        {
-            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            string sql = $"insert into Conta (NomeConta,Saldo,Usuario_idUsuario, isActive) values ('{NomeConta}','{Saldo}','{id_usuario_logado}', 1)";
-            //DAL objDAL = new DAL();
-            //objDAL.ExecutaComandoSql(sql);
-        }
+        //public void Insert()
+        //{
+        //    string id_usuario_logado = Http.HttpContext.Session.GetString("IdUsuarioLogado");
+        //    string sql = $"insert into Conta (NomeConta,Saldo,Usuario_idUsuario, isActive) values ('{NomeConta}','{Saldo}','{id_usuario_logado}', 1)";
+        //    //DAL objDAL = new DAL();
+        //    //objDAL.ExecutaComandoSql(sql);
+        //}
 
         public void ExcluirConta(int id)
         {

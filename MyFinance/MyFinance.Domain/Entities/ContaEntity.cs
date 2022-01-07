@@ -8,7 +8,7 @@ namespace MyFinance.Domain.Entities
 {
     public class ContaEntity
     {
-        public IHttpContextAccessor _httpContextAccessor { get; set; }
+       // public IHttp _http { get; set; }
         public ContaEntity()
         {
 
@@ -21,11 +21,11 @@ namespace MyFinance.Domain.Entities
             Usuario_idUsuario = usuario_idUsuario;
         }
 
-        public ContaEntity(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
+        //public ContaEntity(IHttp http)
+        //{
+        //    _http = http;
             
-        }
+        //}
 
         [Key]
         [Display(Name = "ID")]
@@ -45,6 +45,6 @@ namespace MyFinance.Domain.Entities
 
         public UserEntity Usuario { get; set; }
 
-        //public IHttpContextAccessor HttpContextAccessor { get; set; }
+        //public IHttp Http { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace MyFinance.Service
 
     public class ContaService : IContaService
     {
-        public IHttpContextAccessor HttpContextAccessor { get; set; }
+        //public IHttp Http { get; set; }
         private readonly IContaRepository _repository;
 
-        public ContaService(IHttpContextAccessor httpContextAccessor, IContaRepository repository)
+        public ContaService(IContaRepository repository)
         {
-            HttpContextAccessor = httpContextAccessor;
+            
             _repository = repository;
         }
 

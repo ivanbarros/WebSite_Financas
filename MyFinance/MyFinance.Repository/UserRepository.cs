@@ -11,25 +11,28 @@ namespace MyFinance.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly SqlContext _context;
-        
+        protected readonly SqlContext _context;
+        private DbSet<UserEntity> _dataset;
 
-        public async Task<UserEntity> Add(UserEntity user)
+        public UserRepository(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<UserEntity>();
+        }
+
+        public async Task<UserEntity> Add(UserEntity entity)
         {
             try
             {
-
-                var result = await _context.Usuario.AddAsync(user);
+                _dataset.Add(entity);
                 await _context.SaveChangesAsync();
-               
-                return user;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
+            return entity;
         }
 
         public Task<UserEntity> Delete(int id)
@@ -42,21 +45,9 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<UserEntity>> GetAll()
+        public Task<IEnumerable<UserEntity>> GetAll()
         {
-            try
-            {
-                var user = new UserEntity();
-                var result = await _context.Usuario.ToListAsync();
-                return result;
-                
-            }
-
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            throw new NotImplementedException();
         }
 
         public Task<UserEntity> Update(UserEntity entity)

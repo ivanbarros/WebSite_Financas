@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IRepositoryBase<T> 
+    public interface IRepositoryBase<T,TContext> 
         where T : class 
-        //where TContext : DbContext
+        where TContext : DbContext
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> Get(int id);

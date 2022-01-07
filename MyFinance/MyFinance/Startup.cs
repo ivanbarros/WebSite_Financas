@@ -36,9 +36,10 @@ namespace MyFinance
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureServiceApplication.ConfigureDependenciesServiceAppication(services);
             ConfigureRepository.ConfigureDependenciesRepositories(services);
-            services.AddDbContext<SqlContext>(options => options.UseSqlServer(Configuration.GetConnectionString("sqlDb:connectionString")));
+            var connection = Configuration.GetConnectionString("sqlDb:connectionString");
+            services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
             services.AddSqlDatabase(Configuration);
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
+            //services.AddSingleton<IHttp, Http>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();
         }

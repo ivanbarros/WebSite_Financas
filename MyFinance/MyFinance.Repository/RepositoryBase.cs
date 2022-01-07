@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T,TContext> : IRepositoryBase<T,TContext>
+        where T : class
+        where TContext : DbContext
     {
         protected readonly SqlContext _context;
         private DbSet<T> _dataset;

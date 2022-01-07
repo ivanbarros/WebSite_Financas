@@ -8,16 +8,12 @@ namespace MyFinance.Controllers
 {
     public class TransacaoController : Controller
     {
-        IHttpContextAccessor HttpContextAccessor;
-        public TransacaoController(IHttpContextAccessor httpContextAccessor)
-        {
-            HttpContextAccessor = httpContextAccessor;
-        }
-
+       
+      
         public IActionResult Index()
         {
-            TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
-            ViewBag.ListaTransacao = objTransacao.ListaTransacao();
+            //TransacaoModel objTransacao = new TransacaoModel(Http);
+            //ViewBag.ListaTransacao = objTransacao.ListaTransacao();
             return View();
         }
 
@@ -27,7 +23,7 @@ namespace MyFinance.Controllers
         {
             if (ModelState.IsValid)
             {
-                formulario.HttpContextAccessor = HttpContextAccessor;
+               // formulario.Http = Http;
                 formulario.Insert();
                 return RedirectToAction("Index");
             }
@@ -39,11 +35,11 @@ namespace MyFinance.Controllers
         {
             if (id != null)
             {
-                TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
-                ViewBag.Registro = objTransacao.CarregarRegistro(id);
+              //  TransacaoModel objTransacao = new TransacaoModel(Http);
+                //ViewBag.Registro = objTransacao.CarregarRegistro(id);
             }
-            //ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
-            ViewBag.ListaPlanoContas = new PlanoContaModel(HttpContextAccessor).ListaPlanoContas();
+            //ViewBag.ListaContas = new ContaModel(Http).ListaConta();
+            //ViewBag.ListaPlanoContas = new PlanoContaModel(Http).ListaPlanoContas();
 
             return View();
         }
@@ -53,8 +49,8 @@ namespace MyFinance.Controllers
         public IActionResult ExcluirTransacao(int id)
         {
 
-            TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
-            objTransacao.ExcluirConta(id);
+            //TransacaoModel objTransacao = new TransacaoModel(Http);
+            //objTransacao.ExcluirConta(id);
             return RedirectToAction("Index");
             
         }
@@ -63,9 +59,9 @@ namespace MyFinance.Controllers
         [HttpPost]
         public IActionResult Extrato(TransacaoModel formulario)
         {
-            formulario.HttpContextAccessor = HttpContextAccessor;
+            //formulario.Http = Http;
             ViewBag.ListaTransacao = formulario.ListaTransacao();
-            //ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
+            //ViewBag.ListaContas = new ContaModel(Http).ListaConta();
             return View();
         }
         public IActionResult Dashboard()
@@ -76,22 +72,22 @@ namespace MyFinance.Controllers
         public IActionResult Dashboard(int? id)
         {
             
-            List<Dashboard> lista = new Dashboard(HttpContextAccessor).RetornaGrafico();
-            List<Dashboard> listaReceita = new Dashboard(HttpContextAccessor).RetornaGraficoReceita();
-            string valores = "";
-            string labels = "";
-            string cores = "";
-            var random = new Random();
-            for (int i = 0; i < lista.Count; i++)
-            {
-                valores +=  lista[i].Total.ToString() + ",";
-                labels += "'"+ lista[i].PlanoConta.ToString()+"',";
-                cores += "'" + String.Format("#{0:X6}", random.Next(0x1000000)) + "',";
-            }
+            ////List<Dashboard> lista = new Dashboard(Http).RetornaGrafico();
+            ////List<Dashboard> listaReceita = new Dashboard(Http).RetornaGraficoReceita();
+            //string valores = "";
+            //string labels = "";
+            //string cores = "";
+            //var random = new Random();
+            //for (int i = 0; i < lista.Count; i++)
+            //{
+            //    valores +=  lista[i].Total.ToString() + ",";
+            //    labels += "'"+ lista[i].PlanoConta.ToString()+"',";
+            //    cores += "'" + String.Format("#{0:X6}", random.Next(0x1000000)) + "',";
+            //}
 
-            ViewBag.Labels = labels;
-            ViewBag.Valores = valores;
-            ViewBag.cores = cores;
+            //ViewBag.Labels = labels;
+            //ViewBag.Valores = valores;
+            //ViewBag.cores = cores;
 
             return View();
         }
