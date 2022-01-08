@@ -17,6 +17,11 @@ namespace MyFinance.Repository
             _context = context;
         }
 
+
+       
+
+        public List<ContaEntity> GetAll(ContaEntity conta)
+
         //public IHttpContextAccessor HttpContextAccessor { get; set; }
 
         //public ContaRepository(IHttpContextAccessor httpContextAccessor)
@@ -25,16 +30,17 @@ namespace MyFinance.Repository
         //}
 
         public void Excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public List<ContaEntity> GetAll(ContaEntity conta)
         {
             throw new NotImplementedException();
         }
 
         public void Insert(ContaEntity conta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir(int id)
         {
             throw new NotImplementedException();
         }
