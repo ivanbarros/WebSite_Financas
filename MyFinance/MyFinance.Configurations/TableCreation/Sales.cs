@@ -29,7 +29,7 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
 
                 .WithColumn("DataCompra").AsDecimal()
-                .NotNullable()
+                .NotNullable();
         }
     }
 }
