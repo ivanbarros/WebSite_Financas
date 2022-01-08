@@ -8,16 +8,16 @@ namespace MyFinance.Controllers
     public class ContaController : Controller
     {
         private readonly IContaService _service;
-        IHttpContextAccessor HttpContextAccessor;
-        public ContaController(IContaService service,IHttpContextAccessor httpContextAccessor)
+        //IHttp Http;
+        public ContaController(IContaService service)
         {
             _service = service;
-            HttpContextAccessor = httpContextAccessor;
+            //Http = http;
         }
 
         public IActionResult _PartialConta(string login, string password)
         {
-            //ContaModel objConta = new ContaModel(HttpContextAccessor);
+            //ContaModel objConta = new ContaModel(Http);
             
             //ViewBag.ListaConta = objConta.ListaConta();
             ViewBag.ListaConta = _service.ListaConta(login, password);
@@ -29,8 +29,8 @@ namespace MyFinance.Controllers
         {
             if (ModelState.IsValid)
             {
-                formulario.HttpContextAccessor = HttpContextAccessor;
-                formulario.Insert();
+                //formulario.Http = Http;
+                //formulario.Insert();
               return  RedirectToAction("_PartialConta");
             }
             return View();
@@ -47,8 +47,8 @@ namespace MyFinance.Controllers
         public IActionResult ExcluirConta(int id)
         {
 
-            ContaModel objConta = new ContaModel(HttpContextAccessor);
-            objConta.ExcluirConta(id);
+            //ContaModel objConta = new ContaModel(Http);
+            //objConta.ExcluirConta(id);
             return RedirectToAction("_PartialConta");
         }
     }

@@ -17,16 +17,22 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("User")
                 .CreateBase(false)
 
-                .WithColumn("CreateDate").AsDateTime()
+                .WithColumn("UserName").AsString()
                 .NotNullable()
 
                 .WithColumn("Login").AsString()
                 .NotNullable()
 
-                .WithColumn("password").AsString()
+                .WithColumn("Email").AsString()
                 .NotNullable()
-                
+
+                .WithColumn("PassWord").AsString()
+                .NotNullable()
+
                 .WithColumn("IsActive").AsBinary()
+                .NotNullable()
+
+                .WithColumn("CreateDate").AsDateTime()
                 .NotNullable();
         }
     }

@@ -1,11 +1,15 @@
 ﻿using MyFinance.Domain.Entities;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Service.Interfaces.Services
 {
-    public interface IContaService : IServiceBase<ContaEntity>
+    public interface IUserService : IServiceBase<UserEntity>
     {
-       Task< IEnumerable<ContaEntity>> ListaConta(string login, string senha);
+
+        UserEntity ValidarLogin(UserEntity usuario);
+
     }
 }

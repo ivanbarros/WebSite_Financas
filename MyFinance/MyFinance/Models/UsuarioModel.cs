@@ -37,28 +37,28 @@ namespace MyFinance.Models
 
         public bool ValidarLogin()
         {
-            DAL objDal = new DAL();
-            string sql = $"select idUsuario, NomeUsuario, Email, Senha, DT_Nasc from Usuario where Email = '{Email}' and Senha = '{Senha}'";
-            DataTable dt = objDal.RetDataTable(sql);
-            if (dt != null)
-            {
-                if (dt.Rows.Count == 1)
-                {
-                    idUsuario = int.Parse(dt.Rows[0]["idUsuario"].ToString());
-                    NomeUsuario = dt.Rows[0]["NomeUsuario"].ToString();
-                    Email = dt.Rows[0]["Email"].ToString();
-                    Dt_nasc = dt.Rows[0]["Dt_nasc"].ToString();
-                    return true;
-                }
-            }
+            //DAL objDal = new DAL();
+            //string sql = $"select idUsuario, NomeUsuario, Email, Senha, DT_Nasc from Usuario where Email = '{Email}' and Senha = '{Senha}'";
+            //DataTable dt = objDal.RetDataTable(sql);
+            //if (dt != null)
+            //{
+            //    if (dt.Rows.Count == 1)
+            //    {
+            //        idUsuario = int.Parse(dt.Rows[0]["idUsuario"].ToString());
+            //        NomeUsuario = dt.Rows[0]["NomeUsuario"].ToString();
+            //        Email = dt.Rows[0]["Email"].ToString();
+            //        Dt_nasc = dt.Rows[0]["Dt_nasc"].ToString();
+            //        return true;
+            //    }
+            //}
             return false;
         }
         public void RegistrarUsuario()
         {
             //string datanasc = DateTime.Parse(Dt_nasc).ToString("yyyy/MM/dd");
             string sql = $"Insert into Usuario(NomeUsuario,Email,Senha, Dt_Nasc) VALUES ('{NomeUsuario}', '{Email}','{Senha}', '{Dt_nasc}')";
-            DAL obj = new DAL();
-            obj.ExecutaComandoSql(sql);
+            //DAL obj = new DAL();
+            //obj.ExecutaComandoSql(sql);
         }
     }
    

@@ -3,42 +3,43 @@ using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service.Interfaces.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
 
     public class ContaService : IContaService
     {
-        public IHttpContextAccessor HttpContextAccessor { get; set; }
+        //public IHttp Http { get; set; }
         private readonly IContaRepository _repository;
 
-        public ContaService(IHttpContextAccessor httpContextAccessor, IContaRepository repository)
+        public ContaService(IContaRepository repository)
         {
-            HttpContextAccessor = httpContextAccessor;
+            
             _repository = repository;
         }
 
         public void Excluir(int id)
         {
-            _repository.Excluir(id);
+            _repository.Delete(id);
         }
 
-        public List<ContaEntity> GetAll(ContaEntity conta)
+        public Task<IEnumerable<ContaEntity>> GetAll()
         {
 
-            var result = _repository.GetAll(conta);
+            var result = _repository.GetAll();
             return result;
         }
 
         public void Insert(ContaEntity conta)
         {
-            _repository.Insert(conta);
+            _repository.Add(conta);
             
         }
 
-        public List<ContaEntity> ListaConta(string login, string senha)
+        public async Task<IEnumerable<ContaEntity>> ListaConta(string login, string senha)
         {
-            var result = _repository.ListaConta(login, senha);
+            var result = await _repository.ListaConta(login, senha);
             return result;
         }
 

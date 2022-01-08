@@ -8,12 +8,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.27" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyFinance.Configurations\MyFinance.Configurations.csproj" />
+    <ProjectReference Include="..\MyFinance.Data\MyFinance.Data.csproj" />
+    <ProjectReference Include="..\MyFinance.Domain\MyFinance.Domain.csproj" />
+    <ProjectReference Include="..\MyFinance.Repository\MyFinance.Repository.csproj" />
+    <ProjectReference Include="..\MyFinance.Service\MyFinance.Service.csproj" />
     <ProjectReference Include="..\MyFinance\MyFinance.csproj" />
   </ItemGroup>
 

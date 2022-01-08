@@ -1,14 +1,18 @@
-﻿using MyFinance.Domain.Entities;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IRepositoryBase<T> where T : class
+    public interface IRepositoryBase<T,TContext> 
+        where T : class 
+        where TContext : DbContext
     {
-        List<T> GetAll(T conta);
-        void Insert(T conta);
-        void Excluir(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> Get(int id);
+        IEnumerable<T> GetByEmail(string username, string password);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
+        Task<T> Delete(int id);
     }
 }

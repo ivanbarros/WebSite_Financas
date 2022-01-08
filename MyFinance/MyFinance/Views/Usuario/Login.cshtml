@@ -1,17 +1,17 @@
-﻿@model UsuarioModel
+﻿@model MyFinance.Domain.Entities.UserEntity
 
 @{
     Layout = "../Shared/_LayoutLogin.cshtml";
-    try
-    {
-        if (TempData["LoginIvalido"].ToString() != "")
+    @*try
         {
-            <div class="alert alert-danger" role="alert">
-                <strong>ATENÇÃO!!!</strong> @TempData["LoginIvalido"]
-            </div>
+            if (TempData["LoginIvalido"].ToString() != "")
+            {
+                <div class="alert alert-danger" role="alert">
+                    <strong>ATENÇÃO!!!</strong> @TempData["LoginIvalido"]
+                </div>
+            }
         }
-    }
-    catch { }
+        catch { }*@
 
 }
 <div class="d-flex justify-content-center h-100">
@@ -29,14 +29,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" asp-for="Email" class="form-control" placeholder="username">
+                    <input type="text" asp-for="UserName" class="form-control" placeholder="username">
 
                 </div>
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                    <input type="password" asp-for="Senha" class="form-control" placeholder="password">
+                    <input type="password" asp-for="PassWord" class="form-control" placeholder="password">
                 </div>
                 <div class="row align-items-center remember">
                     <input type="checkbox">Remember Me

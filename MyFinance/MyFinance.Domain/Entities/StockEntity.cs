@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MyFinance.Domain.Entities.BaseEntities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyFinance.Domain.Entities
 {
-    public class StockEntity
+    public class StockEntity : BaseEntity
     {
         public ProductEntity Product { get; set; }
         public int Qtd { get; set; }

@@ -16,10 +16,10 @@ namespace MyFinance.Configurations.DataBaseConfigs
 
             if (userFK)
                 create
-                    .WithColumn("IdUsuario")
+                    .WithColumn("IdUser")
                     .AsInt32()
                     .NotNullable()
-                    .ForeignKey("Usuario", "Id");
+                    .ForeignKey("User", "Id");
 
             return create;
         }
@@ -38,10 +38,10 @@ namespace MyFinance.Configurations.DataBaseConfigs
 
             if (userFK)
                 create
-                    .WithColumn("IdUsuario")
+                    .WithColumn("IdUser")
                     .AsInt32()
                     .NotNullable()
-                    .ForeignKey("Usuario", "Id");
+                    .ForeignKey("User", "Id");
 
             return create;
         }

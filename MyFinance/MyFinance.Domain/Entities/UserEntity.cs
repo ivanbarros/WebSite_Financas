@@ -1,14 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MyFinance.Domain.Entities.BaseEntities;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
-    public class UserEntity
+    [Table("User")]
+    public class UserEntity : BaseEntity
     {
-        public DateTime CreateDate { get; set; }
+        [Column("UserName")]
+        public string UserName { get; set; }
+
+        [Column("Login")]
         public string Login { get; set; }
-        public string Password { get; set; }
+
+        [Column("Email")]
+        public string Email { get; set; }
+
+        [Column("PassWord")]
+        public string PassWord { get; set; }
+
+        [Column("IsActive")]
         public bool IsActive { get; set; }
 
 

@@ -7,16 +7,16 @@ namespace MyFinance.Controllers
 {
     public class PlanoContaController : Controller
     {
-        IHttpContextAccessor HttpContextAccessor;
-        public PlanoContaController(IHttpContextAccessor httpContextAccessor)
-        {
-            HttpContextAccessor = httpContextAccessor;
-        }
+        //IHttp Http;
+        //public PlanoContaController(IHttp http)
+        //{
+        //    Http = http;
+        //}
 
         public IActionResult Index()
         {
-            PlanoContaModel objConta = new PlanoContaModel(HttpContextAccessor);
-            ViewBag.ListaPlanoConta = objConta.ListaPlanoContas();
+            //PlanoContaModel objConta = new PlanoContaModel(Http);
+            //ViewBag.ListaPlanoConta = objConta.ListaPlanoContas();
             return View();
         }
 
@@ -25,7 +25,7 @@ namespace MyFinance.Controllers
         {
             if (ModelState.IsValid)
             {
-                formulario.HttpContextAccessor = HttpContextAccessor;
+                //formulario.Http = Http;
                 formulario.Insert();
                 return RedirectToAction("Index");
             }
@@ -37,8 +37,8 @@ namespace MyFinance.Controllers
         {
             if (id != null)
             {
-                PlanoContaModel objPlanoContas = new PlanoContaModel(HttpContextAccessor);
-                 ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
+                //PlanoContaModel objPlanoContas = new PlanoContaModel(Http);
+                // ViewBag.Registro = objPlanoContas.CarregarRegistro(id);
                
             }
 
@@ -49,8 +49,8 @@ namespace MyFinance.Controllers
         public IActionResult ExcluirPlanoConta(int id)
         {
 
-            PlanoContaModel objConta = new PlanoContaModel(HttpContextAccessor);
-            objConta.ExcluirConta(id);
+            //PlanoContaModel objConta = new PlanoContaModel(Http);
+            //objConta.ExcluirConta(id);
             return RedirectToAction("Index");
         }
 

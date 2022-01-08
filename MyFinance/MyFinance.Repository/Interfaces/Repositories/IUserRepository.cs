@@ -1,14 +1,14 @@
 ﻿using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IContaRepository : IRepositoryBase<ContaEntity,SqlContext>
+    public interface IUserRepository : IRepositoryBase<UserEntity,SqlContext>
     {
-        Task<List<ContaEntity>> ListaConta(string login, string senha);
+
+        UserEntity ValidarLogin(UserEntity usuario);
+        
     }
 }
