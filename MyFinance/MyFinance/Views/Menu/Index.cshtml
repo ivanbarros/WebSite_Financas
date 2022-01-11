@@ -1108,8 +1108,8 @@
             </footer>
         </div>
     </section>
-    @*@using Microsoft.AspNetCore.Http;*@
-    @*@inject IHttp HttpContextAcessor*@
+    @*@using Microsoft.AspNetCore.Http;
+    @inject IHttpContextAccessor HttpContextAcessor*@
 
     <div style="color:#fff;"><div id="NomeUsuarioLogado"></div></div>
 
@@ -1146,9 +1146,9 @@
 
     @RenderSection("Scripts", required: false)
     <script src="~/js/all.js"></script>
-    @*<script>
-    function CarregarUsuarioLogado() {
-        var nome = '@HttpContextAcessor.HttpContext.Session.GetString("NomeUsuarioLogado")'
+    <script>
+        function CarregarUsuarioLogado() {
+            var nome = "@*@HttpContextAcessor.HttpContext.Session.GetString("NomeUsuarioLogado")*@ @ViewBag.UserName"
         if (nome != "") {
 
             var divNome = document.getElementById("NomeUsuarioLogado");
@@ -1156,7 +1156,7 @@
             divNome.style = "color:#fff; text-align:right; height:50px; padding-top:13px;"
         }
     }
-    </script>*@
+    </script>
 
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>

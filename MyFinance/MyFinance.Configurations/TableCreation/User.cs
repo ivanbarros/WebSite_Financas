@@ -29,7 +29,7 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("PassWord").AsString()
                 .NotNullable()
 
-                .WithColumn("IsActive").AsBinary()
+                .WithColumn("IsActive").AsBoolean()
                 .NotNullable()
 
                 .WithColumn("CreateDate").AsDateTime()

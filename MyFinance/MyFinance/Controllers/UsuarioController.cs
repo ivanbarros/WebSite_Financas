@@ -38,6 +38,8 @@ namespace MyFinance.Controllers
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
                 HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
+                TempData["UserName"]  = usuario.UserName;
+                ViewBag.UserName = TempData["UserName"];
                 return RedirectToAction("_PartialMenu", "Menu");
             }
             else

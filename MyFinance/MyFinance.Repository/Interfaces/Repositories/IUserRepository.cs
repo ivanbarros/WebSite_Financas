@@ -8,7 +8,7 @@ namespace MyFinance.Repository.Interfaces.Repositories
     public interface IUserRepository : IRepositoryBase<UserEntity,SqlContext>
     {
 
-        UserEntity ValidarLogin(UserEntity usuario);
+        Task<UserEntity> ValidarLogin(UserEntity usuario);
         
     }
 }

@@ -3,11 +3,9 @@ using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
 using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Repository.Interfaces.Repositories;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MyFinance.Repository
@@ -64,13 +62,32 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public UserEntity ValidarLogin(UserEntity usuario)
+        public async Task<UserEntity> ValidarLogin(UserEntity usuario)
         {
             try
             {
-                var users = _dataset.SingleOrDefault(c=>c.UserName.Equals(usuario.UserName));
-                //UserEntity listUser = new UserEntity();
-                usuario.Login = users.Login;
+
+                //var users = _context.Usuario.Select(p => new { p.UserName, p.PassWord , p.Login,p.CreateDate,p.Email,p.Id, p.IsActive});
+                var users = _context.Usuario.Where(c => c.UserName.Equals(usuario.UserName) && c.PassWord.Equals(usuario.PassWord)).AsAsyncEnumerable();
+                await foreach (var item in users)
+                {
+                    usuario.UserName = item.UserName;
+                    usuario.Id = item.Id;
+                    usuario.IsActive = item.IsActive;
+                    usuario.Login = item.Login;
+                    usuario.Email = item.Email;
+                    usuario.PassWord = item.PassWord;
+                }
+
+                //var users = _context.Usuario.Where(c => c.UserName.Equals(usuario.UserName) && c.PassWord.Equals(usuario.PassWord)).AsAsyncEnumerable();
+
+
+                //foreach (var item in users.ToString())
+                //{
+
+
+                //}
+                
 
                 return usuario;
             }
