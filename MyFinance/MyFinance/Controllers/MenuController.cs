@@ -10,6 +10,7 @@ namespace MyFinance.Controllers
     {
         public IActionResult _PartialMenu()
         {
+
             return PartialView("_PartialMenu");
         }
     }

@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyFinance.Domain.Entities;
+using MyFinance.Interfaces;
 using MyFinance.Models;
+using Newtonsoft.Json;
 
 namespace MyFinance.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUserServiceApplication _userService;
+
+        public HomeController(IUserServiceApplication userService)
+        {
+            _userService = userService;
+        }
+
         public IActionResult Index()
         {
-            ViewData["NomeUsuario"] = new HomeModel().LerNomeUsuario();
+           
             return View();
         }
 
