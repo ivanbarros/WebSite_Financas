@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Interfaces.Services
 {
-    public interface IContaServiceApplication: IServiceApplicationBase<ContaEntity>
+    public interface IContaServiceApplication: IServiceApplicationBase<AccountEntity>
     {
-        Task<IEnumerable<ContaEntity>> ListaConta();
+        Task<IEnumerable<AccountEntity>> ListaConta();
 
     }
 }

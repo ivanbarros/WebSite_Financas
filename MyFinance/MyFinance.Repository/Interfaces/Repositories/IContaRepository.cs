@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IContaRepository : IRepositoryBase<ContaEntity,SqlContext>
+    public interface IContaRepository : IRepositoryBase<AccountEntity,SqlContext>
     {
-        List<ContaEntity> ListaConta(int id);
+        List<AccountEntity> ListaConta(int id);
     }
 }

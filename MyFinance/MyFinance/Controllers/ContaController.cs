@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
-using MyFinance.Models;
 using MyFinance.Service.Interfaces.Services;
 using System;
 
@@ -32,7 +31,7 @@ namespace MyFinance.Controllers
         }
 
        [HttpPost]
-        public IActionResult NovaConta(ContaEntity NovaContaFormulario)
+        public IActionResult NovaConta(AccountEntity NovaContaFormulario)
         {
          
             NovaContaFormulario.HttpContextAccessor = _httpContextAccessor;

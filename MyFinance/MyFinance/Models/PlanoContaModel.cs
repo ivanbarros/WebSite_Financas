@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyFinance.Utils;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -22,7 +20,7 @@ namespace MyFinance.Models
         public string Tipo { get; set; }
 
         public int Usuario_id { get; set; }
-        //public IHttp Http { get; set; }
+        public IHttpContextAccessor HttpContextAccessor { get; set; }
 
         public PlanoContaModel()
         {
@@ -30,14 +28,14 @@ namespace MyFinance.Models
         }
 
         //Recebe o context para acesso as variaveis de sessão
-        //public PlanoContaModel(IHttp http)
-        //{
-        //    Http = http;
-        //}
-        //private string idUsuarioLogado() 
-        //{
-        //    return Http.HttpContext.Session.GetString("IdUsuarioLogado");
-        //}
+        public PlanoContaModel(IHttpContextAccessor httpContextAccessor)
+        {
+            HttpContextAccessor = httpContextAccessor;
+        }
+        private string idUsuarioLogado()
+        {
+            return HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+        }
         internal void Insert()
         {
           
