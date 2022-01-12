@@ -10,12 +10,12 @@ namespace MyFinance.Service
 
     public class ContaService : IContaService
     {
-        //public IHttp Http { get; set; }
+        public IHttpContextAccessor _HttpContextAccessor { get; set; }
         private readonly IContaRepository _repository;
 
-        public ContaService(IContaRepository repository)
+        public ContaService(IHttpContextAccessor httpContextAccessor, IContaRepository repository)
         {
-            
+            _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
         }
 
@@ -37,9 +37,9 @@ namespace MyFinance.Service
             
         }
 
-        public async Task<IEnumerable<ContaEntity>> ListaConta(string login, string senha)
+        public List<ContaEntity> ListaConta(int id)
         {
-            var result = await _repository.ListaConta(login, senha);
+            var result =  _repository.ListaConta(id);
             return result;
         }
 

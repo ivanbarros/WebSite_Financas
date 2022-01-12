@@ -9,6 +9,7 @@ using MyFinance.Configurations;
 using MyFinance.Configurations.DataBaseConfigs;
 using MyFinance.Configurations.DependencyInjections;
 using MyFinance.Data.Context;
+using System;
 
 namespace MyFinance
 {
@@ -39,6 +40,14 @@ namespace MyFinance
             
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
             services.AddSqlDatabase(Configuration);
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+            });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();
         }

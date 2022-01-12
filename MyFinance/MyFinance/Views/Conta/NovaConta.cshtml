@@ -1,5 +1,5 @@
 ﻿
-@model  ContaModel
+@model MyFinance.Domain.Entities.ContaEntity
 
 @{
     ViewData["Title"] = "NovaConta";
@@ -7,6 +7,8 @@
 
 
 
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @using (Html.BeginForm("NovaConta", "Conta", FormMethod.Post))
 {

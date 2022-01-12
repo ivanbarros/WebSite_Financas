@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces;
-using MyFinance.Models;
+using Newtonsoft.Json;
 
 namespace MyFinance.Controllers
 {
@@ -25,6 +25,7 @@ namespace MyFinance.Controllers
                     HttpContext.Session.SetString("IdUsuarioLogado",string.Empty);
                     HttpContext.Session.SetString("NomeUsuarioLogado", string.Empty);
                     HttpContext.Session.SetString("EmailUsuarioLogado", string.Empty);
+                    
                 }
             }
             return View();
@@ -38,6 +39,17 @@ namespace MyFinance.Controllers
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
                 HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
+                var userInfo = new UserEntity()
+                {
+                    UserName = usuario.UserName,
+                    Email = usuario.Email,
+                    Id = usuario.Id,
+                    IsActive = usuario.IsActive,
+                    Login = usuario.Login,
+                    PassWord = usuario.PassWord,
+                    CreateDate = usuario.CreateDate
+                };
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
                 return RedirectToAction("_PartialMenu", "Menu");
             }
             else

@@ -1,5 +1,4 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities

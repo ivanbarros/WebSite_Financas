@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
@@ -11,16 +12,32 @@ namespace MyFinance.Repository
 {
     public class ContaRepository : IContaRepository
     {
-        private readonly SqlContext _context;
+        SqlContext _context = new SqlContext();
+        private DbSet<ContaEntity> _dataset;
 
         public ContaRepository(SqlContext context)
         {
             _context = context;
+            _dataset = context.Set<ContaEntity>();
         }
 
         public Task<ContaEntity> Add(ContaEntity entity)
         {
-            throw new NotImplementedException();
+            
+            try
+            {
+                //Convert.ToDouble(entity.Saldo);
+                entity.CreateDate = DateTime.UtcNow;
+                
+                _dataset.Add(entity);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return Task.FromResult(entity);
         }
 
 
@@ -45,9 +62,16 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<ContaEntity>> ListaConta(string login, string senha)
+        public List<ContaEntity> ListaConta(int id)
         {
-            throw new NotImplementedException();
+            
+            List<ContaEntity> conta = new List<ContaEntity>();
+            var result =  _context.Conta.Where(c=>c.Usuario_idUsuario.Equals(id)).ToList();
+            foreach (var item in result)
+            {
+                conta.Add(item);
+            }
+                return conta;
         }
 
         public Task<ContaEntity> Update(ContaEntity entity)

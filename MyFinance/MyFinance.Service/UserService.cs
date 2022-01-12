@@ -40,7 +40,7 @@ namespace MyFinance.Service
         {
            var result =  _repository.ValidarLogin(usuario);
             
-            return result;
+            return result.Result;
         }
     }
 }

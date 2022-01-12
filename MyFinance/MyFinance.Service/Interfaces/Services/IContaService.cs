@@ -6,6 +6,6 @@ namespace MyFinance.Service.Interfaces.Services
 {
     public interface IContaService : IServiceBase<ContaEntity>
     {
-       Task< IEnumerable<ContaEntity>> ListaConta(string login, string senha);
+       List<ContaEntity> ListaConta(int id);
     }
 }
