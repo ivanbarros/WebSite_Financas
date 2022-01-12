@@ -9,6 +9,6 @@ namespace MyFinance.Repository.Interfaces.Repositories
 {
     public interface IContaRepository : IRepositoryBase<ContaEntity,SqlContext>
     {
-        Task<List<ContaEntity>> ListaConta(string login, string senha);
+        List<ContaEntity> ListaConta(int id);
     }
 }

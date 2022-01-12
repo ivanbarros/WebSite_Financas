@@ -14,12 +14,12 @@ namespace MyFinance.Repository
     {
         SqlContext _context = new SqlContext();
         private DbSet<UserEntity> _dataset;
-        private readonly IUnitOfWork _unitOfWork;
-        public UserRepository(SqlContext context, IUnitOfWork unitOfWork)
+        
+        public UserRepository(SqlContext context)
         {
             _context = context;
             _dataset = context.Set<UserEntity>();
-            _unitOfWork = unitOfWork;
+            
         }
 
         public Task<UserEntity> Add(UserEntity entity)
