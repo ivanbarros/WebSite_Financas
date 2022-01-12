@@ -40,12 +40,16 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
+ DataBaseConnection
         public Task<AccountEntity> Delete(int id)
+
         {
             throw new NotImplementedException();
         }
 
+ DataBaseConnection
         public Task<AccountEntity> Get(int id)
+
         {
             throw new NotImplementedException();
         }
