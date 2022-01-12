@@ -10,22 +10,23 @@ namespace MyFinance.Controllers
     public class ContaController : Controller
     {
         private readonly IContaService _service;
+        private readonly IUserService _userService;
         IHttpContextAccessor _httpContextAccessor;
 
-        public ContaController(IContaService service, IHttpContextAccessor httpContextAccessor)
+        public ContaController(IContaService service, IUserService userService, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
+            _userService = userService;
             _httpContextAccessor = httpContextAccessor;
         }
+
 
         public IActionResult _PartialConta()
         {
          string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var result = _service.ListaConta(idUsuario);
-            //ContaModel objConta = new ContaModel(Http);
 
-            //ViewBag.ListaConta = objConta.ListaConta();
             ViewBag.ListaConta = result;
             return View();
         }
@@ -33,13 +34,18 @@ namespace MyFinance.Controllers
        [HttpPost]
         public IActionResult NovaConta(ContaEntity NovaContaFormulario)
         {
+         
+            NovaContaFormulario.HttpContextAccessor = _httpContextAccessor;
+            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            NovaContaFormulario.Usuario_idUsuario = idUsuario;
+            
             if (ModelState.IsValid)
             {
-         string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-                NovaContaFormulario.HttpContextAccessor = _httpContextAccessor;
-                //formulario.Insert();
-                NovaContaFormulario.Usuario_idUsuario = Convert.ToInt32(id_usuario_logado);
+                
+                
                 _service.Insert(NovaContaFormulario);
+
               return  RedirectToAction("_PartialConta");
             }
             return View();
@@ -49,6 +55,7 @@ namespace MyFinance.Controllers
         public IActionResult NovaConta()
         {
             string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
             return View();
         }
 
