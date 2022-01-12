@@ -13,20 +13,20 @@ namespace MyFinance.Repository
     public class ContaRepository : IContaRepository
     {
         SqlContext _context = new SqlContext();
-        private DbSet<ContaEntity> _dataset;
+        private DbSet<AccountEntity> _dataset;
 
         public ContaRepository(SqlContext context)
         {
             _context = context;
-            _dataset = context.Set<ContaEntity>();
+            _dataset = context.Set<AccountEntity>();
         }
 
-        public Task<ContaEntity> Add(ContaEntity entity)
+        public Task<AccountEntity> Add(AccountEntity entity)
         {
             
             try
             {
-                //Convert.ToDouble(entity.Saldo);
+               
                 entity.CreateDate = DateTime.UtcNow;
                 
                 _dataset.Add(entity);
@@ -40,32 +40,34 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
-
-        public Task<ContaEntity> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ContaEntity> Get(int id)
+ DataBaseConnection
+        public Task<AccountEntity> Delete(int id)
 
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ContaEntity>> GetAll()
+ DataBaseConnection
+        public Task<AccountEntity> Get(int id)
+
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ContaEntity> GetByEmail(string username, string password)
+        public Task<IEnumerable<AccountEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public List<ContaEntity> ListaConta(int id)
+        public IEnumerable<AccountEntity> GetByEmail(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AccountEntity> ListaConta(int id)
         {
             
-            List<ContaEntity> conta = new List<ContaEntity>();
+            List<AccountEntity> conta = new List<AccountEntity>();
             var result =  _context.Conta.Where(c=>c.Usuario_idUsuario.Equals(id)).ToList();
             foreach (var item in result)
             {
@@ -74,7 +76,7 @@ namespace MyFinance.Repository
                 return conta;
         }
 
-        public Task<ContaEntity> Update(ContaEntity entity)
+        public Task<AccountEntity> Update(AccountEntity entity)
         {
             throw new NotImplementedException();
         }

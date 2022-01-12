@@ -20,18 +20,18 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<IEnumerable<ContaEntity>> GetAll()
+        public Task<IEnumerable<AccountEntity>> GetAll()
         {
            var result =  _service.GetAll();
             return result;
         }
 
-        public void Insert(ContaEntity item)
+        public void Insert(AccountEntity item)
         {
             _service.Insert(item);
         }
 
-        public Task<IEnumerable<ContaEntity>> ListaConta()
+        public Task<IEnumerable<AccountEntity>> ListaConta()
         {
             throw new System.NotImplementedException();
         }

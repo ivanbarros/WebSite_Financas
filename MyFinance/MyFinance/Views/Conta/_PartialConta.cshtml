@@ -1,4 +1,4 @@
-﻿@model MyFinance.Domain.Entities.ContaEntity
+﻿@model MyFinance.Domain.Entities.AccountEntity
 @{
     ViewData["Title"] = "Index";
 }
@@ -24,7 +24,7 @@
             </tr>
         </tfoot>
         @{
-            foreach (var item in (List<MyFinance.Domain.Entities.ContaEntity>)ViewBag.ListaConta)
+            foreach (var item in (List<MyFinance.Domain.Entities.AccountEntity>)ViewBag.ListaConta)
             {
                 <tbody>
                     <tr>

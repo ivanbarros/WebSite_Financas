@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Service.Interfaces.Services
 {
-    public interface IContaService : IServiceBase<ContaEntity>
+    public interface IContaService : IServiceBase<AccountEntity>
     {
-       List<ContaEntity> ListaConta(int id);
+       List<AccountEntity> ListaConta(int id);
     }
 }

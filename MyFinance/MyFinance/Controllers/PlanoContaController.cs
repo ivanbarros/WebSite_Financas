@@ -7,11 +7,11 @@ namespace MyFinance.Controllers
 {
     public class PlanoContaController : Controller
     {
-        //IHttp Http;
-        //public PlanoContaController(IHttp http)
-        //{
-        //    Http = http;
-        //}
+        IHttpContextAccessor HttpContextAccessor;
+        public PlanoContaController(IHttpContextAccessor httpContextAccessor)
+        {
+            HttpContextAccessor = httpContextAccessor;
+        }
 
         public IActionResult Index()
         {

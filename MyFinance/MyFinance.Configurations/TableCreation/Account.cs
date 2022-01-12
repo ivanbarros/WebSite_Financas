@@ -20,7 +20,16 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
 
                 .WithColumn("Balance").AsDecimal()
-                .Nullable();
+                .Nullable()
+                
+                .WithColumn("AccountType").AsString()
+                .NotNullable()
+                
+                .WithColumn("DescriptionAccount").AsString()
+                .Nullable()
+                
+                .WithColumn("CreateDate").AsDateTime()
+                .NotNullable();
         }
        
     }

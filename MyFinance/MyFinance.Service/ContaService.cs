@@ -24,20 +24,20 @@ namespace MyFinance.Service
             _repository.Delete(id);
         }
 
-        public Task<IEnumerable<ContaEntity>> GetAll()
+        public Task<IEnumerable<AccountEntity>> GetAll()
         {
 
             var result = _repository.GetAll();
             return result;
         }
 
-        public void Insert(ContaEntity conta)
+        public void Insert(AccountEntity conta)
         {
             _repository.Add(conta);
             
         }
 
-        public List<ContaEntity> ListaConta(int id)
+        public List<AccountEntity> ListaConta(int id)
         {
             var result =  _repository.ListaConta(id);
             return result;
