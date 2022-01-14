@@ -24,11 +24,15 @@ namespace MyFinance.Domain.Entities
         [Column("AccountType")]
         [Required(ErrorMessage = "Informe o tipo de conta")]
         [Display(Name = "Tipo de Conta")]
-        public AccountTypeEnum AccountType { get; set; }
+        public string AccountType { get; set; }
+      
+        [NotMapped]
+        [Display(Name = "Tipo de Conta")]
+        public AccountTypeEnum TypeAccountEnum { get; set; }
 
         [Column("DescriptionAccount")]
         [Display(Name = "Descrição de conta")]
-        public string Description { get; set; }
+        public string DescriptionAccount { get; set; }
 
         [Column("IdUser")]
         [Display(Name = "Usuario")]

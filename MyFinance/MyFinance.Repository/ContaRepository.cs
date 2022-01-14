@@ -39,14 +39,12 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
- 
         public Task<AccountEntity> Delete(int id)
 
         {
             throw new NotImplementedException();
         }
 
- 
         public Task<AccountEntity> Get(int id)
 
         {
@@ -70,6 +68,7 @@ namespace MyFinance.Repository
             var result =  _context.Conta.Where(c=>c.Usuario_idUsuario.Equals(id)).ToList();
             foreach (var item in result)
             {
+                
                 conta.Add(item);
             }
                 return conta;

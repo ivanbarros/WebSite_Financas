@@ -4,7 +4,7 @@ using MyFinance.Configurations.DataBaseConfigs;
 namespace MyFinance.Configurations.TableCreation
 {
     [Migration(030120222159)]
-    public class Endereco : Migration
+    public class Adreesses : Migration
     {
         public override void Down()
         {

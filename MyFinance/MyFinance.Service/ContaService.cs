@@ -2,6 +2,7 @@
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -33,6 +34,8 @@ namespace MyFinance.Service
 
         public void Insert(AccountEntity conta)
         {
+            
+            
             _repository.Add(conta);
             
         }
