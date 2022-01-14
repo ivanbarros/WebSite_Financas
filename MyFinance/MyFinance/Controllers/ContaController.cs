@@ -37,17 +37,18 @@ namespace MyFinance.Controllers
             NovaContaFormulario.HttpContextAccessor = _httpContextAccessor;
             string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
+            var tipoconta = Convert.ToString(NovaContaFormulario.TypeAccountEnum);
+            NovaContaFormulario.AccountType = tipoconta;
             NovaContaFormulario.Usuario_idUsuario = idUsuario;
+            NovaContaFormulario.CreateDate = DateTime.UtcNow;
             
-            if (ModelState.IsValid)
-            {
+           
                 
                 
                 _service.Insert(NovaContaFormulario);
 
               return  RedirectToAction("_PartialConta");
-            }
-            return View();
+            
         }
 
         [HttpGet]

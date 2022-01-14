@@ -31,18 +31,18 @@
         </div>
         <br />
         <div class="form-group">
-            @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TypeAccountEnum, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AccountType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AccountType, "", new { @class = "text-danger" })
+                <select asp-for="TypeAccountEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.AccountTypeEnum>()"></select>
+
             </div>
         </div>
         <br />
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DescriptionAccount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AccountType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DescriptionAccount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DescriptionAccount, "", new { @class = "text-danger" })
             </div>
         </div>
 
