@@ -6,21 +6,19 @@ using System.Text;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(140120221755)]
-    public class Supplier : Migration
+    [Migration(050120221707)]
+    public class Stock : Migration
     {
         public override void Down()
-        {
-            Delete.Table("Supplier");
+        { 
+            Delete.Table("Stock");
         }
+
         public override void Up()
         {
-            Create.Table("Supplier")
-            .CreateBase(false);
-
-
+            Create.Table("Stock")
+               .CreateBase(false);
         }
-
-
     }
+    
 }
