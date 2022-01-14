@@ -19,14 +19,16 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("Sales")
                 .CreateBase(false)
 
-                .WithColumn("Produto").AsString()
+                .WithColumn("IdProduto").AsInt32()
                 .NotNullable()
+                .ForeignKey("Product", "Id")
 
                 .WithColumn("Qtd").AsDecimal()
                 .NotNullable()
 
-                .WithColumn("Vendedor").AsDecimal()
+                .WithColumn("IdVendedor").AsInt32()
                 .NotNullable()
+                .ForeignKey("User","Id")
 
                 .WithColumn("DataCompra").AsDecimal()
                 .NotNullable();

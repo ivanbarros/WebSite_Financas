@@ -39,13 +39,11 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
-
         public Task<AccountEntity> Delete(int id)
 
         {
             throw new NotImplementedException();
         }
-
 
         public Task<AccountEntity> Get(int id)
 
