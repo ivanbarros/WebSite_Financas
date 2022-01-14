@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
@@ -40,14 +39,14 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
- DataBaseConnection
+ 
         public Task<AccountEntity> Delete(int id)
 
         {
             throw new NotImplementedException();
         }
 
- DataBaseConnection
+ 
         public Task<AccountEntity> Get(int id)
 
         {
