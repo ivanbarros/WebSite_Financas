@@ -37,8 +37,6 @@ namespace MyFinance.Configurations.TableCreation
             
             .WithColumn("Tel").AsString()
             .NotNullable();
-
-
         }
 
 
