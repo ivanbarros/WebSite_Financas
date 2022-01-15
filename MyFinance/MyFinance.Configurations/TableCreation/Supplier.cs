@@ -16,7 +16,27 @@ namespace MyFinance.Configurations.TableCreation
         public override void Up()
         {
             Create.Table("Supplier")
-            .CreateBase(false);
+            .CreateBase(false)
+            
+            .WithColumn("IdProduct").AsInt32()
+            .NotNullable()
+            .ForeignKey("Product","Id")
+            
+            .WithColumn("Name").AsString()
+            .NotNullable()
+            
+            .WithColumn("Doc").AsString()
+            .NotNullable()
+            
+            .WithColumn("IdAddress").AsString()
+            .NotNullable()
+            .ForeignKey("Address","Id")
+            
+            .WithColumn("Email").AsString()
+            .NotNullable()
+            
+            .WithColumn("Tel").AsString()
+            .NotNullable();
 
 
         }

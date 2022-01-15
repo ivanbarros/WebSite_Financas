@@ -17,7 +17,17 @@ namespace MyFinance.Configurations.TableCreation
         public override void Up()
         {
             Create.Table("Stock")
-               .CreateBase(false);
+               .CreateBase(true)
+               
+               .WithColumn("IdProduct").AsInt32()
+               .NotNullable()
+               .ForeignKey("Product","Id")
+               
+               .WithColumn("Qnty").AsDouble()
+               .NotNullable()
+               
+               .WithColumn("DateIn").AsDateTime()
+               .NotNullable();
         }
     }
     

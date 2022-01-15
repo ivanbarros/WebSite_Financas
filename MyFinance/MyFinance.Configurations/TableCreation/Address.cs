@@ -4,21 +4,19 @@ using MyFinance.Configurations.DataBaseConfigs;
 namespace MyFinance.Configurations.TableCreation
 {
     [Migration(030120222159)]
-    public class Adreesses : Migration
+    public class Address : Migration
     {
         public override void Down()
         {
-            Delete.Table("Endereco");
+            Delete.Table("Address");
         }
 
         public override void Up()
         {
-            Create.Table("Endereco")
+            Create.Table("Address")
                 .CreateBase(true)
                 
-                .WithColumn("idEmployee").AsInt32()
-                .Nullable()
-                
+                              
                 .WithColumn("Logradouro").AsString()
                 .NotNullable()
                 

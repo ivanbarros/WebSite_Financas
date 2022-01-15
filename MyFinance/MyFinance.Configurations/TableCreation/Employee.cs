@@ -22,30 +22,36 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("LastName").AsString()
                 .NotNullable()
 
-                .WithColumn("Cpf").AsString(11)
+                .WithColumn("Doc").AsString(11)
                 .NotNullable()
                 .Unique()
 
-                .WithColumn("DataNascimento").AsDateTime()
+                .WithColumn("DateBirth").AsDateTime()
                 .NotNullable()
 
                 .WithColumn("Email").AsString()
                 .NotNullable()
                 .Unique()
 
-                .WithColumn("DataAdmissao").AsDateTime()
+                .WithColumn("IdAddress").AsInt32()
                 .NotNullable()
-
-                .WithColumn("DataDemissao").AsDateTime()
-                .Nullable()
-
-                .WithColumn("TipoContratacao").AsString()
-                .NotNullable()
+                .ForeignKey("Address", "Id")
 
                 .WithColumn("Tel").AsString()
                 .NotNullable()
 
-                .WithColumn("Salario").AsDecimal()
+                .WithColumn("Entry").AsDateTime()
+                .NotNullable()
+
+                .WithColumn("Out").AsDateTime()
+                .Nullable()
+
+                .WithColumn("IdTypeContract").AsString()
+                .NotNullable()
+                .ForeignKey("TypeContract", "Id")
+
+
+                .WithColumn("Payment").AsDouble()
                 .NotNullable()
                 
                 .WithColumn("IsActive").AsBinary()
