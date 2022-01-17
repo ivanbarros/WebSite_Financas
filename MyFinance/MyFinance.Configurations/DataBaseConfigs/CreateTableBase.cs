@@ -12,7 +12,10 @@ namespace MyFinance.Configurations.DataBaseConfigs
                     .AsInt32()
                     .NotNullable()
                     .Identity()
-                    .PrimaryKey();
+                    .PrimaryKey()
+
+                .WithColumn("CreateDate").AsDateTime()
+                .NotNullable();
 
             if (userFK)
                 create

@@ -26,10 +26,7 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
                 
                 .WithColumn("DescriptionAccount").AsString()
-                .Nullable()
-                
-                .WithColumn("CreateDate").AsDateTime()
-                .NotNullable();
+                .Nullable();
         }
        
     }
