@@ -51,10 +51,10 @@ namespace MyFinance.Configurations.TableCreation
                 .ForeignKey("TypeContract", "Id")
 
 
-                .WithColumn("Payment").AsDouble()
+                .WithColumn("Payment").AsDecimal()
                 .NotNullable()
                 
-                .WithColumn("IsActive").AsBinary()
+                .WithColumn("IsActive").AsBoolean()
                 .NotNullable();
         }
     }

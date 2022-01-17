@@ -1,8 +1,5 @@
 ﻿using FluentMigrator;
 using MyFinance.Configurations.DataBaseConfigs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyFinance.Configurations.TableCreation
 {
@@ -19,19 +16,25 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("Sales")
                 .CreateBase(false)
 
-                .WithColumn("IdProduto").AsInt32()
+                .WithColumn("IdProduct").AsInt32()
                 .NotNullable()
                 .ForeignKey("Product", "Id")
 
                 .WithColumn("Qtd").AsDecimal()
                 .NotNullable()
 
-                .WithColumn("IdVendedor").AsInt32()
-                .NotNullable()
-                .ForeignKey("User","Id")
+                .WithColumn("Amount").AsDecimal()
 
-                .WithColumn("DataCompra").AsDecimal()
-                .NotNullable();
+                .WithColumn("IdEmployee").AsInt32()
+                .NotNullable()
+                .ForeignKey("Employee","Id")
+
+                .WithColumn("PurchaseDate").AsDateTime()
+                .NotNullable()
+                
+                .WithColumn("IdCustomer").AsInt32()
+                .NotNullable()
+                .ForeignKey("Customer", "Id");
         }
     }
 }

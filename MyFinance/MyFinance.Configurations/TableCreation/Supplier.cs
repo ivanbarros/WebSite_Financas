@@ -27,6 +27,7 @@ namespace MyFinance.Configurations.TableCreation
             
             .WithColumn("Doc").AsString()
             .NotNullable()
+            .Unique()
             
             .WithColumn("IdAddress").AsString()
             .NotNullable()

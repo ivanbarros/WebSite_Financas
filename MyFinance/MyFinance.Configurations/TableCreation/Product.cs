@@ -1,9 +1,9 @@
 ﻿using FluentMigrator;
-using System;
+using MyFinance.Configurations.DataBaseConfigs;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(04012022)]
+    [Migration(040120221025)]
     public class Product : Migration
     {
         public override void Down()
@@ -13,7 +13,27 @@ namespace MyFinance.Configurations.TableCreation
 
         public override void Up()
         {
-            throw new NotImplementedException();
+            Create.Table("Product")
+                .CreateBase(true)
+
+                .WithColumn("Name").AsString()
+                .NotNullable()
+
+                .WithColumn("barcode").AsString()
+                .Nullable()
+
+                .WithColumn("UnitaryValue").AsDecimal()
+                .NotNullable()
+
+                .WithColumn("ExpirationDate").AsDateTime()
+                .Nullable()
+
+                .WithColumn("IdProductType").AsInt32()
+                .NotNullable()
+                .ForeignKey("ProductType", "Id")
+
+                .WithColumn("DateEntry").AsDateTime()
+                .NotNullable();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace MyFinance.Configurations.TableCreation
                .NotNullable()
                .ForeignKey("Product","Id")
                
-               .WithColumn("Qnty").AsDouble()
+               .WithColumn("Qnty").AsDecimal()
                .NotNullable()
                
                .WithColumn("DateIn").AsDateTime()

@@ -24,6 +24,10 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("PassWord").AsString()
                 .NotNullable()
 
+                .WithColumn("Email").AsString()
+                .NotNullable()
+                .Unique()
+
                 .WithColumn("IsActive").AsBoolean()
                 .NotNullable()
                 
