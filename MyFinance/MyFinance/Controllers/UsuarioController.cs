@@ -37,13 +37,13 @@ namespace MyFinance.Controllers
             if (login.UserName!=null)
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
-                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.IdPermission.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
                 var userInfo = new UserEntity()
                 {
                     UserName = usuario.UserName,
                     Email = usuario.Email,
-                    Id = usuario.Id,
+                    IdPermission = usuario.IdPermission,
                     IsActive = usuario.IsActive,
                     Login = usuario.Login,
                     PassWord = usuario.PassWord,

@@ -1,4 +1,5 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
@@ -21,6 +22,9 @@ namespace MyFinance.Domain.Entities
         [Column("IsActive")]
         public bool IsActive { get; set; }
 
+        [Column("IdPermission")]
+        public int IdPermission { get; set; }
+        public virtual PermissionsEntity Permission { get; set; }
 
     }
 }
