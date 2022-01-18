@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
-using MyFinance.Interfaces;
+using MyFinance.Interfaces.Services;
 using Newtonsoft.Json;
 
 namespace MyFinance.Controllers
@@ -39,6 +39,7 @@ namespace MyFinance.Controllers
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
                 HttpContext.Session.SetString("IdUsuarioLogado", usuario.IdPermission.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
+                HttpContext.Session.SetString("IdPermission", usuario.IdPermission.ToString());
                 var userInfo = new UserEntity()
                 {
                     UserName = usuario.UserName,
@@ -47,7 +48,8 @@ namespace MyFinance.Controllers
                     IsActive = usuario.IsActive,
                     Login = usuario.Login,
                     PassWord = usuario.PassWord,
-                    CreateDate = usuario.CreateDate
+                    CreateDate = usuario.CreateDate,
+                    IdPermission = usuario.IdPermission
                 };
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
                 return RedirectToAction("_PartialMenu", "Menu");
@@ -67,6 +69,8 @@ namespace MyFinance.Controllers
             
             if (ModelState.IsValid)
             {
+                usuario.PermissionType.ToString();
+                usuario.TipoPermissao = usuario.PermissionType.ToString();
                 _serviceApplication.Insert(usuario);                
                 return RedirectToAction("Sucesso");
                 

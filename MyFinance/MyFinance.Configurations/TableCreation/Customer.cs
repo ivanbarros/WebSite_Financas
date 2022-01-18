@@ -1,4 +1,5 @@
 ﻿using FluentMigrator;
+using MyFinance.Configurations.DataBaseConfigs;
 
 namespace MyFinance.Configurations.TableCreation
 {
@@ -7,12 +8,31 @@ namespace MyFinance.Configurations.TableCreation
     {
         public override void Down()
         {
-            throw new System.NotImplementedException();
+            Delete.Table("Customer");
         }
 
         public override void Up()
         {
-            throw new System.NotImplementedException();
+            Create.Table("Customer")
+                .CreateBase(false)
+                
+                .WithColumn("Name").AsString()
+                .NotNullable()
+                
+                
+                .WithColumn("email").AsString()
+                .NotNullable()
+                
+                .WithColumn("doc").AsString()
+                .NotNullable()
+                .Unique()
+                
+                .WithColumn("DateBirth").AsDateTime()
+                .NotNullable()
+                
+                .WithColumn("IdAddress").AsInt32()
+                .NotNullable()
+                .ForeignKey("Address", "Id");
         }
     }
 }

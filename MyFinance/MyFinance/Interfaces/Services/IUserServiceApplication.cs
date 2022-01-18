@@ -1,11 +1,7 @@
 ﻿using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services.InterfaceBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace MyFinance.Interfaces
+namespace MyFinance.Interfaces.Services
 {
     public interface IUserServiceApplication : IServiceApplicationBase <UserEntity>
     {

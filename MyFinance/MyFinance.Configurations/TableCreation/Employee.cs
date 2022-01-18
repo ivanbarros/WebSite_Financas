@@ -3,7 +3,7 @@ using MyFinance.Configurations.DataBaseConfigs;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(030120222132)]
+    [Migration(030120222200)]
     public class Employee : Migration
     {
         public override void Down()
@@ -46,15 +46,12 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("Out").AsDateTime()
                 .Nullable()
 
-                .WithColumn("IdTypeContract").AsString()
+                .WithColumn("IdTypeContract").AsInt32()
                 .NotNullable()
                 .ForeignKey("TypeContract", "Id")
 
 
                 .WithColumn("Payment").AsDecimal()
-                .NotNullable()
-                
-                .WithColumn("IsActive").AsBoolean()
                 .NotNullable();
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyFinance.Domain.Entities.Enums
 {
-    public enum TypeEnum
+    public enum TypeClothesEnum
     {
         clothes,
         shoes,

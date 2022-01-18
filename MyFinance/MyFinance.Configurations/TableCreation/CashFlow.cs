@@ -16,10 +16,10 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("CashFlow")
                 .CreateBase(true)
                 
-                .WithColumn("Descricao").AsString()
+                .WithColumn("Description").AsString()
                 .NotNullable()
                 
-                .WithColumn("Tipo").AsString()
+                .WithColumn("TypeCashFlow").AsString()
                 .NotNullable();
         }
     }

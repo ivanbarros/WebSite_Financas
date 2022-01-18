@@ -17,22 +17,22 @@ namespace MyFinance.Configurations.TableCreation
                 .CreateBase(true)
                 
                               
-                .WithColumn("Logradouro").AsString()
+                .WithColumn("PatioArea").AsString()
                 .NotNullable()
                 
-                .WithColumn("Numero").AsString()
+                .WithColumn("Num").AsString()
                 .NotNullable()
                 
-                .WithColumn("Complemento").AsString()
+                .WithColumn("Complement").AsString()
                 .Nullable()
                                 
-                .WithColumn("Bairro").AsString()
+                .WithColumn("NeighborHood").AsString()
                 .NotNullable()
                 
-                .WithColumn("Cidade").AsString()
+                .WithColumn("City").AsString()
                 .NotNullable()
                 
-                .WithColumn("Estado").AsString()
+                .WithColumn("State").AsString()
                 .NotNullable();
         }
     }
