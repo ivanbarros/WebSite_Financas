@@ -1,10 +1,9 @@
 ﻿using FluentMigrator;
 using MyFinance.Configurations.DataBaseConfigs;
-using System;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(030120222129)]
+    [Migration(030120222137)]
     public class User : Migration
     {
         public override void Down()
@@ -17,7 +16,11 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("User")
                 .CreateBase(false)
 
-               
+
+                .WithColumn("UserName").AsString()
+                .NotNullable()
+
+
                 .WithColumn("Login").AsString()
                 .NotNullable()
                
@@ -28,9 +31,7 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
                 .Unique()
 
-                .WithColumn("IsActive").AsBoolean()
-                .NotNullable()
-                
+
                 .WithColumn("IdPermission").AsInt32()
                 .NotNullable()
                 .ForeignKey("Permission","Id");

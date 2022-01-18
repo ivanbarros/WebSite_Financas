@@ -13,6 +13,8 @@
                 <th></th>
                 <th>@Html.LabelFor(model => model.NomeConta)</th>
                 <th>@Html.LabelFor(model => model.Saldo)</th>
+                <th>@Html.LabelFor(model => model.AccountType)</th>
+                <th>@Html.LabelFor(model => model.DescriptionAccount)</th>
 
             </tr>
         </thead>
@@ -21,6 +23,8 @@
                 <th></th>
                 <th>@Html.LabelFor(model => model.NomeConta)</th>
                 <th>@Html.LabelFor(model => model.Saldo)</th>
+                <th>@Html.LabelFor(model => model.AccountType)</th>
+                <th>@Html.LabelFor(model => model.DescriptionAccount)</th>
             </tr>
         </tfoot>
         @{
@@ -37,6 +41,16 @@
 
                         <td>@item.NomeConta.ToString()</td>
                         <td>@item.Saldo.ToString()</td>
+                        <td>@item.AccountType.ToString()</td>
+                        @if (String.IsNullOrEmpty(item.DescriptionAccount))
+                        {
+                        <td>Sem anotações</td>
+
+                        }
+                        else
+                        {
+                            <td>@item.DescriptionAccount.ToString()</td>
+                        }
                     </tr>
 
                 </tbody>

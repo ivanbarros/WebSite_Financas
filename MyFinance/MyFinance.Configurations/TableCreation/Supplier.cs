@@ -1,8 +1,5 @@
 ﻿using FluentMigrator;
 using MyFinance.Configurations.DataBaseConfigs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyFinance.Configurations.TableCreation
 {
@@ -29,7 +26,7 @@ namespace MyFinance.Configurations.TableCreation
             .NotNullable()
             .Unique()
             
-            .WithColumn("IdAddress").AsString()
+            .WithColumn("IdAddress").AsInt32()
             .NotNullable()
             .ForeignKey("Address","Id")
             

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Domain.Entities;
-using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,18 +13,27 @@ namespace MyFinance.Repository
     {
         SqlContext _context = new SqlContext();
         private DbSet<UserEntity> _dataset;
-        
+
         public UserRepository(SqlContext context)
         {
             _context = context;
             _dataset = context.Set<UserEntity>();
-            
+
         }
 
         public Task<UserEntity> Add(UserEntity entity)
         {
             try
             {
+                var permissionUser = _context.Permissions.Where(p =>p.Name.Equals(entity.TipoPermissao));
+                foreach (var item in permissionUser)
+                {
+                    if (entity.TipoPermissao == item.Name)
+                    {
+                        entity.IdPermission = item.Id;
+
+                    }
+                }
                 _dataset.Add(entity);
                 _context.SaveChanges();
             }
@@ -66,8 +74,6 @@ namespace MyFinance.Repository
         {
             try
             {
-
-                //var users = _context.Usuario.Select(p => new { p.UserName, p.PassWord , p.Login,p.CreateDate,p.Email,p.Id, p.IsActive});
                 var users = _context.Usuario.Where(c => c.UserName.Equals(usuario.UserName) && c.PassWord.Equals(usuario.PassWord)).AsAsyncEnumerable();
                 await foreach (var item in users)
                 {
@@ -77,18 +83,10 @@ namespace MyFinance.Repository
                     usuario.Login = item.Login;
                     usuario.Email = item.Email;
                     usuario.PassWord = item.PassWord;
+                    usuario.TipoPermissao = item.TipoPermissao;
+                    usuario.IdPermission = item.IdPermission;
+                    usuario.CreateDate = item.CreateDate;
                 }
-
-                //var users = _context.Usuario.Where(c => c.UserName.Equals(usuario.UserName) && c.PassWord.Equals(usuario.PassWord)).AsAsyncEnumerable();
-
-
-                //foreach (var item in users.ToString())
-                //{
-
-
-                //}
-                
-
                 return usuario;
             }
             catch (Exception ex)

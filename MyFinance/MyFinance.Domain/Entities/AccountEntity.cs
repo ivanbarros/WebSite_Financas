@@ -38,6 +38,8 @@ namespace MyFinance.Domain.Entities
         [Display(Name = "Usuario")]
         public int Usuario_idUsuario { get; set; }
 
+        [Column("IsActive")]
+        public bool IsActive { get; set; }
         [NotMapped]
         public IHttpContextAccessor HttpContextAccessor { get; set; }
     }

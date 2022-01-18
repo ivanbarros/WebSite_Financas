@@ -31,9 +31,10 @@ namespace MyFinance.ServicesApplication
             _service.Insert(item);
         }
 
-        public Task<IEnumerable<AccountEntity>> ListaConta()
+        public List<AccountEntity> ListaConta(int Id)
         {
-            throw new System.NotImplementedException();
+           var result =  _service.ListaConta(Id);
+            return result;
         }
     }
 }

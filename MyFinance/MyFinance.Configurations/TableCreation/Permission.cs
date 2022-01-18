@@ -3,7 +3,7 @@ using MyFinance.Configurations.DataBaseConfigs;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(120120220900)]
+    [Migration(030120222129)]
     public class Permission : Migration
     {
         public override void Down()
@@ -16,8 +16,9 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("Permission")
                 .CreateBase(false)
 
-                .WithColumn("name").AsString()
-                .NotNullable();
+                .WithColumn("Name").AsString()
+                .NotNullable()
+                .Unique();
         }
     }
 }

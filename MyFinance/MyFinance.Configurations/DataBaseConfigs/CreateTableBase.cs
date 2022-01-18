@@ -14,6 +14,9 @@ namespace MyFinance.Configurations.DataBaseConfigs
                     .Identity()
                     .PrimaryKey()
 
+                .WithColumn("IsActive").AsBoolean()
+                .NotNullable()
+
                 .WithColumn("CreateDate").AsDateTime()
                 .NotNullable();
 
@@ -34,6 +37,8 @@ namespace MyFinance.Configurations.DataBaseConfigs
                     .NotNullable()
                     .Identity()
                     .PrimaryKey()
+                     .WithColumn("IsActive").AsBoolean()
+                .NotNullable()
                 .WithColumn("CreateDate")
                     .AsDateTime()
                     .NotNullable()
@@ -57,6 +62,8 @@ namespace MyFinance.Configurations.DataBaseConfigs
                     .NotNullable()
                     .Identity()
                     .PrimaryKey()
+                     .WithColumn("IsActive").AsBoolean()
+                .NotNullable()
                 .WithColumn("CreateDate")
                     .AsDateTime()
                     .NotNullable()

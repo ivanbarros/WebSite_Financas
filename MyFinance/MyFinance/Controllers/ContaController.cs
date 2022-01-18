@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
+using MyFinance.Interfaces.Services;
 using MyFinance.Service.Interfaces.Services;
 using System;
 
@@ -8,11 +9,11 @@ namespace MyFinance.Controllers
 {
     public class ContaController : Controller
     {
-        private readonly IContaService _service;
+        private readonly IContaServiceApplication _service;
         private readonly IUserService _userService;
         IHttpContextAccessor _httpContextAccessor;
 
-        public ContaController(IContaService service, IUserService userService, IHttpContextAccessor httpContextAccessor)
+        public ContaController(IContaServiceApplication service, IUserService userService, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
             _userService = userService;
