@@ -15,6 +15,7 @@ namespace MyFinance.Data.Context
         public DbSet<UserEntity> Usuario { get; set; }
         public DbSet<PermissionEntity> Permissions { get; set; }
 
+
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {
             
