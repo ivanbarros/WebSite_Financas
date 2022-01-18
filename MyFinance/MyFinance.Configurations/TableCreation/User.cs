@@ -1,10 +1,9 @@
 ﻿using FluentMigrator;
 using MyFinance.Configurations.DataBaseConfigs;
-using System;
 
 namespace MyFinance.Configurations.TableCreation
 {
-    [Migration(030120222129)]
+    [Migration(030120222137)]
     public class User : Migration
     {
         public override void Down()

@@ -29,7 +29,7 @@ namespace MyFinance.Configurations.TableCreation
             .NotNullable()
             .Unique()
             
-            .WithColumn("IdAddress").AsString()
+            .WithColumn("IdAddress").AsInt32()
             .NotNullable()
             .ForeignKey("Address","Id")
             
