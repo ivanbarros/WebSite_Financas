@@ -9,12 +9,12 @@ namespace MyFinance.Domain.Entities
 {
     public class CashFlowEntity : BaseEntity
     {
-        [Column("Descricao")]
+        [Column("Description")]
         [Required(ErrorMessage = "Informe a descrição")]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Column("Tipo")]
+        [Column("TypeCashFlow")]
         [BindProperty]
         [Required(ErrorMessage = "Informe o Tipo de conta")]
         [Display(Name = "Tipo de conta")]
@@ -23,8 +23,9 @@ namespace MyFinance.Domain.Entities
         [NotMapped]
         public CashFlowTypeEnum TipoCashEnum { get; set; }
 
+        [Column("IdUser")]
         public int Usuario_id { get; set; }
-
+        public bool IsActive { get; set; }
         [NotMapped]
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 

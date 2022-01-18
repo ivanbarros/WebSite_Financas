@@ -83,16 +83,16 @@ namespace MyFinance.Repository
 
         public List<CashFlowEntity> ListaPlanoContas(int id)
         {
-            //List<CashFlowEntity> lista = new List<CashFlowEntity>();
+            List<CashFlowEntity> lista = new List<CashFlowEntity>();
 
-            //    var result = _context.CashFlow.Where(c => c.Usuario_id.Equals(id)).ToList();
+            var result = _context.CashFlow.Where(c => c.Usuario_id.Equals(id)).ToList();
 
-            //    foreach (var item in result)
-            //    {
-            //        lista.Add(item);
-            //    }
-            //        return lista;
-            throw new NotImplementedException();
+            foreach (var item in result)
+            {
+                lista.Add(item);
+            }
+            return lista;
+            //throw new NotImplementedException();
         }
     }
 }

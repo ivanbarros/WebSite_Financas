@@ -1,0 +1,66 @@
+﻿@model MyFinance.Domain.Entities.CashFlowEntity
+@{
+    ViewData["Title"] = "Fluxo de caixa";
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Descricao)</th>
+                <th>@Html.LabelFor(model => model.TipoCashEnum)</th>
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>@Html.LabelFor(model => model.Descricao)</th>
+                <th>@Html.LabelFor(model => model.TipoCashEnum)</th>
+            </tr>
+        </tfoot>
+        @{
+            foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaFluxo)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            </button>
+                        </td>
+
+                        <td>@item.TipoCashEnum.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                        <td>@item.Descricao.ToString()</td>
+                    </tr>
+
+                </tbody>
+            }
+        }
+
+    </table>
+</div>
+
+<br />
+
+
+<script>
+    function ExcluirConta(id_conta) {
+        window.location.href = "../PlanoConta/ExcluirPlanoConta/" + id_conta;
+    }
+</script>
+
+<script>
+    function EditarPlanoConta(id_conta) {
+        window.location.href = "../PlanoConta/CriarPlanoConta/" + id_conta;
+    }
+</script>
