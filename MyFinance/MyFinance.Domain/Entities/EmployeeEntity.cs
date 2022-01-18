@@ -7,6 +7,8 @@ namespace MyFinance.Domain.Entities
 {
     public class EmployeeEntity : BaseEntity
     {
+        public EnderecoEntity Endereco { get; set; }
+
         private string nome;
 
         [Column("Name")]
@@ -102,8 +104,15 @@ namespace MyFinance.Domain.Entities
             get { return isActive; }
             set { isActive = value; }
         }
+        [Column("IdUserEntity")]
+        public int IdUserEntity { get; set; }
+        public virtual UserEntity User { get; set; }
 
-        public EnderecoEntity Endereco { get; set; }
+        [Column("IdEndereçoEntity")]
+        public int IdEndereçoEntity { get; set; }
+        public virtual EnderecoEntity Endereço { get; set; }
+
+
 
     }
 }

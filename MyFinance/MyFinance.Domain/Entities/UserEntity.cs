@@ -26,5 +26,7 @@ namespace MyFinance.Domain.Entities
         public int IdPermission { get; set; }
         public virtual PermissionsEntity Permission { get; set; }
 
+        public ICollection<EmployeeEntity> Employee { get; set; }
+
     }
 }

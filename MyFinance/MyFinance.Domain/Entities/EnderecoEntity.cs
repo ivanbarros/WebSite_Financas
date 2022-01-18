@@ -7,6 +7,7 @@ namespace MyFinance.Domain.Entities
 {
     public class EnderecoEntity : BaseEntity
     {
+        public ICollection<EmployeeEntity> Employee { get; set; }
         public string Cep { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
@@ -14,5 +15,6 @@ namespace MyFinance.Domain.Entities
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
+
     }
 }
