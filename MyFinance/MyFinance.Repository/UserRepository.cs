@@ -78,7 +78,7 @@ namespace MyFinance.Repository
                 await foreach (var item in users)
                 {
                     usuario.UserName = item.UserName;
-                    usuario.Id = item.Id;
+                    usuario.IdPermission = item.IdPermission;
                     usuario.IsActive = item.IsActive;
                     usuario.Login = item.Login;
                     usuario.Email = item.Email;
