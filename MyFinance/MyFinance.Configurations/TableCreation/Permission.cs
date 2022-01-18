@@ -16,8 +16,9 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("Permission")
                 .CreateBase(false)
 
-                .WithColumn("name").AsString()
-                .NotNullable();
+                .WithColumn("Name").AsString()
+                .NotNullable()
+                .Unique();
         }
     }
 }

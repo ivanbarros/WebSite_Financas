@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyFinance.Domain.Entities;
-using MyFinance.Interfaces;
+using MyFinance.Interfaces.Services;
 using MyFinance.Models;
-using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace MyFinance.Controllers
 {

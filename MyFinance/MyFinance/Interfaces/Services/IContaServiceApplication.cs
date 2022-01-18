@@ -7,7 +7,7 @@ namespace MyFinance.Interfaces.Services
 {
     public interface IContaServiceApplication: IServiceApplicationBase<AccountEntity>
     {
-        Task<IEnumerable<AccountEntity>> ListaConta();
+        List<AccountEntity> ListaConta(int id);
 
     }
 }

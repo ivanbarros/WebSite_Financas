@@ -1,4 +1,6 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
+using MyFinance.Domain.Entities.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
@@ -7,6 +9,7 @@ namespace MyFinance.Domain.Entities
     public class UserEntity : BaseEntity
     {
         [Column("UserName")]
+        [Display(Name ="Nome Completo")]
         public string UserName { get; set; }
 
         [Column("Login")]
@@ -17,6 +20,15 @@ namespace MyFinance.Domain.Entities
 
         [Column("PassWord")]
         public string PassWord { get; set; }
+
+        [Column("IdPermission")]
+        public int IdPermission { get; set; }
+
+        [NotMapped]
+        public string TipoPermissao { get; set; }
+
+        [NotMapped]
+        public PermissionEnum PermissionType { get; set; }
 
         [Column("IsActive")]
         public bool IsActive { get; set; }

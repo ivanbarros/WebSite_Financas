@@ -13,6 +13,7 @@ namespace MyFinance.Data.Context
         public DbSet<StockEntity> Estoque { get; set; }
         public DbSet<SalesEntity> Vendas { get; set; }
         public DbSet<UserEntity> Usuario { get; set; }
+        public DbSet<PermissionEntity> Permissions { get; set; }
 
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {

@@ -1,5 +1,5 @@
 ﻿using MyFinance.Domain.Entities;
-using MyFinance.Interfaces;
+using MyFinance.Interfaces.Services;
 using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;

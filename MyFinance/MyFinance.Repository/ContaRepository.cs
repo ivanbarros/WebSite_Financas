@@ -25,7 +25,7 @@ namespace MyFinance.Repository
             
             try
             {
-               
+                entity.IsActive = true;
                 entity.CreateDate = DateTime.UtcNow;
                 
                 _dataset.Add(entity);
