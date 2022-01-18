@@ -1,8 +1,5 @@
 ﻿using FluentMigrator;
 using MyFinance.Configurations.DataBaseConfigs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyFinance.Configurations.TableCreation
 {

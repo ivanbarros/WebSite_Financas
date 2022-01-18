@@ -52,9 +52,6 @@ namespace MyFinance.Configurations.TableCreation
 
 
                 .WithColumn("Payment").AsDecimal()
-                .NotNullable()
-                
-                .WithColumn("IsActive").AsBoolean()
                 .NotNullable();
         }
     }

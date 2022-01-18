@@ -16,7 +16,11 @@ namespace MyFinance.Configurations.TableCreation
             Create.Table("User")
                 .CreateBase(false)
 
-               
+
+                .WithColumn("UserName").AsString()
+                .NotNullable()
+
+
                 .WithColumn("Login").AsString()
                 .NotNullable()
                
@@ -27,9 +31,7 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
                 .Unique()
 
-                .WithColumn("IsActive").AsBoolean()
-                .NotNullable()
-                
+
                 .WithColumn("IdPermission").AsInt32()
                 .NotNullable()
                 .ForeignKey("Permission","Id");
