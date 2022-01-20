@@ -10,7 +10,9 @@
                 <th></th>
                 <th></th>
                 <th>@Html.LabelFor(model => model.Descricao)</th>
-                <th>@Html.LabelFor(model => model.TipoCashEnum)</th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.ValueCash)</th>
+                <th>@Html.LabelFor(model => model.Category)</th>
 
             </tr>
         </thead>
@@ -19,7 +21,9 @@
                 <th></th>
                 <th></th>
                 <th>@Html.LabelFor(model => model.Descricao)</th>
-                <th>@Html.LabelFor(model => model.TipoCashEnum)</th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.ValueCash)</th>
+                <th>@Html.LabelFor(model => model.Category)</th>
             </tr>
         </tfoot>
         @{
@@ -39,8 +43,10 @@
                             </button>
                         </td>
 
-                        <td>@item.TipoCashEnum.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
                         <td>@item.Descricao.ToString()</td>
+                        <td>@item.Tipo.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                        <td>@item.ValueCash</td>
+                        <td>@item.Category</td>
                     </tr>
 
                 </tbody>

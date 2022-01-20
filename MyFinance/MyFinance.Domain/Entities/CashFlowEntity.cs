@@ -14,42 +14,39 @@ namespace MyFinance.Domain.Entities
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Column("TypeCashFlow")]
-        [BindProperty]
+        [Column("TypeCashFlow")]        
         [Required(ErrorMessage = "Informe o Tipo de conta")]
         [Display(Name = "Tipo de conta")]
         public string Tipo { get; set; }
+
+
         [NotMapped]
         [Display(Name ="Categoria")]
         public CategoryEnum CategoryEnum { get; set; }
+        
+        
+        [Column("Category")]
+        [Display(Name ="Categoria")]
         public string Category { get; set; }
+        
+        
         [NotMapped]
-        [Display(Name ="TiposTeste")]
+        [Display(Name ="Despsa/Receita")]
         public CashFlowTypeEnum TipoCashEnum { get; set; }
 
         [Column("IdUser")]
         public int Usuario_id { get; set; }
+        
+        [Column("IsActive")]
         public bool IsActive { get; set; }
 
         [Column("ValueCash")]
         [Display(Name ="Valor")]
         public decimal ValueCash { get; set; }
+        
+        
         [NotMapped]
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
-        //public CashFlowEntity()
-        //{
-
-        //}
-
-        //Recebe o context para acesso as variaveis de sessão
-        //public CashFlowEntity(IHttpContextAccessor httpContextAccessor)
-        //{
-        //    HttpContextAccessor = httpContextAccessor;
-        //}
-        //private string idUsuarioLogado()
-        //{
-        //    return HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-        //}
     }
 }

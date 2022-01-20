@@ -28,9 +28,9 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.CategoryEnum, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <select asp-for="TipoCashEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()"></select>
+                    <select asp-for="CategoryEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()"></select>
 
                 </div>
             </div>

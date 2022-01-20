@@ -5,14 +5,20 @@ namespace MyFinance.Domain.Entities.Enums
 {
     public enum CategoryEnum
     {
-        [Display(Name = "Mercado")]
+        
         [Description("Mercado")]
-        market,
+        mercado,
+        
         [Description("Lazer")]
-        leisure,
+        lazer,
+        
         [Description("Contas Fixas")]
-        bills,
+        contas,
+        
         [Description("Vestuário")]
-        clothing
+        vestuario,
+
+        [Description("Saúde")]
+        saude
     }
 }

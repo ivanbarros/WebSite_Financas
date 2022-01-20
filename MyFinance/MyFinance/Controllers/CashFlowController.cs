@@ -49,16 +49,5 @@ namespace MyFinance.Controllers
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             return View();
         }
-
-         public IActionResult _PartialConta()
-        {
-         string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
-            var idUsuario = Convert.ToInt32(id_usuario_logado);
-            var result = _service.ListaPlanoContas(idUsuario);
-
-            ViewBag.ListaFluxo = result;
-            return View();
-        }
-
     }
 }
