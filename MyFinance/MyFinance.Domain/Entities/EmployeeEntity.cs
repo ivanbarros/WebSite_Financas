@@ -1,13 +1,13 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
 using MyFinance.Domain.Entities.Enums;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
     public class EmployeeEntity : BaseEntity
     {
-        public EnderecoEntity Endereco { get; set; }
 
         private string nome;
 
@@ -61,6 +61,7 @@ namespace MyFinance.Domain.Entities
             get { return email; }
             set { email = value; }
         }
+        public AddressEntity Endereco { get; set; }
 
         private DateTime dataAdmissao;
 
@@ -108,9 +109,15 @@ namespace MyFinance.Domain.Entities
         public int IdUserEntity { get; set; }
         public virtual UserEntity User { get; set; }
 
-        [Column("IdEndereçoEntity")]
-        public int IdEndereçoEntity { get; set; }
-        public virtual EnderecoEntity Endereço { get; set; }
+        [Column("IdAddressEntity")]
+        public int IdAddressEntity { get; set; }
+        public virtual AddressEntity Address { get; set; }
+
+        [Column("IdTypeContractEntity")]
+        public int IdTypeContractEntity { get; set; }
+        public virtual TypeContractEntity TypeContract { get; set; }
+
+        public ICollection<SalesEntity> Sales { get; set; }
 
 
 

@@ -34,11 +34,8 @@ namespace MyFinance.Domain.Entities
         [Column("IsActive")]
         public bool IsActive { get; set; }
 
-        [Column("IdPermission")]
-        public int IdPermission { get; set; }
-        public virtual PermissionsEntity Permission { get; set; }
-
         public ICollection<EmployeeEntity> Employee { get; set; }
+        public ICollection<StockEntity> Stock { get; set; }
 
     }
 }
