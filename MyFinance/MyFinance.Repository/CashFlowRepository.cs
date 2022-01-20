@@ -26,6 +26,10 @@ namespace MyFinance.Repository
             try
             {
                 entity.Tipo = Convert.ToString(entity.TipoCashEnum);
+                entity.CreateDate = DateTime.Now;
+                entity.Category = Convert.ToString(entity.CategoryEnum);
+                entity.IsActive = true;
+                
                 _dataset.Add(entity);
                 _context.SaveChanges();
                 return Task.FromResult(entity);

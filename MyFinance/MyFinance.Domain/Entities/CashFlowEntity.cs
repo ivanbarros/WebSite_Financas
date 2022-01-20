@@ -19,14 +19,21 @@ namespace MyFinance.Domain.Entities
         [Required(ErrorMessage = "Informe o Tipo de conta")]
         [Display(Name = "Tipo de conta")]
         public string Tipo { get; set; }
-
         [NotMapped]
-        [Display(Name ="Tipo")]
+        [Display(Name ="Categoria")]
+        public CategoryEnum CategoryEnum { get; set; }
+        public string Category { get; set; }
+        [NotMapped]
+        [Display(Name ="TiposTeste")]
         public CashFlowTypeEnum TipoCashEnum { get; set; }
 
         [Column("IdUser")]
         public int Usuario_id { get; set; }
         public bool IsActive { get; set; }
+
+        [Column("ValueCash")]
+        [Display(Name ="Valor")]
+        public decimal ValueCash { get; set; }
         [NotMapped]
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 

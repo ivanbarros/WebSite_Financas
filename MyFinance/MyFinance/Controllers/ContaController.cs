@@ -42,10 +42,7 @@ namespace MyFinance.Controllers
             NovaContaFormulario.AccountType = tipoconta;
             NovaContaFormulario.Usuario_idUsuario = idUsuario;
             NovaContaFormulario.CreateDate = DateTime.UtcNow;
-            
-           
-                
-                
+
                 _service.Insert(NovaContaFormulario);
 
               return  RedirectToAction("_PartialConta");

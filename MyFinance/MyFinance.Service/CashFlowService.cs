@@ -40,7 +40,7 @@ namespace MyFinance.Service
 
         public void Insert(CashFlowEntity item)
         {
-            throw new NotImplementedException();
+            _repository.Add(item);
         }
     }
 }

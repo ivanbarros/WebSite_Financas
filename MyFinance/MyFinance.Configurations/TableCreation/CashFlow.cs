@@ -20,6 +20,13 @@ namespace MyFinance.Configurations.TableCreation
                 .NotNullable()
                 
                 .WithColumn("TypeCashFlow").AsString()
+                .NotNullable()
+                
+                
+                .WithColumn("ValueCash").AsDecimal()
+                .NotNullable()
+                
+                .WithColumn("Category").AsString()
                 .NotNullable();
         }
     }
