@@ -1,0 +1,43 @@
+﻿@model MyFinance.Domain.Entities.CashFlowEntity
+
+@{
+    ViewData["Title"] = "Fluxo de Caixa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<h2>CriarFluxoCaixa</h2>
+
+<h4>CashFlowEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FluxoCaixa">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select asp-for="TipoCashEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()"></select>
+
+                </div>
+            </div>
+            
+            
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -49,7 +49,8 @@ namespace MyFinance.Controllers
                     Login = usuario.Login,
                     PassWord = usuario.PassWord,
                     CreateDate = usuario.CreateDate,
-                    IdPermission = usuario.IdPermission
+                    TipoPermissao = usuario.PermissionType.ToString()
+                    
                 };
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
                 return RedirectToAction("_PartialMenu", "Menu");

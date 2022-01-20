@@ -31,19 +31,23 @@ namespace MyFinance.Controllers
         }
 
         [HttpPost]
-        public IActionResult CriarFluxoCaixa(CashFlowEntity NovaContaFormulario)
+        public IActionResult FluxoCaixa(CashFlowEntity NovaContaFormulario)
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
 
             NovaContaFormulario.Usuario_id = idUsuario;
-
-           
-
+            
             _service.Insert(NovaContaFormulario);
 
-            return RedirectToAction("CriarFluxoCaixa");
-          
+            return View();
+        }
+        [HttpGet]
+        public IActionResult FluxoCaixa() 
+        {
+            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            return View();
         }
 
          public IActionResult _PartialConta()

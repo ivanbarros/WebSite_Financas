@@ -21,6 +21,7 @@ namespace MyFinance.Domain.Entities
         public string Tipo { get; set; }
 
         [NotMapped]
+        [Display(Name ="Tipo")]
         public CashFlowTypeEnum TipoCashEnum { get; set; }
 
         [Column("IdUser")]
