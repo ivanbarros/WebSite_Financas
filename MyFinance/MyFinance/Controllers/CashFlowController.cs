@@ -1,48 +1,53 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
-using MyFinance.Service.Interfaces.Services;
+using MyFinance.Interfaces.Services;
 using System;
 
 namespace MyFinance.Controllers
 {
     public class CashFlowController : Controller
     {
-        private readonly ICashFlowService _service;
-        //private readonly IUserService _userService;
+        private readonly ICashFlowServiceApplication _service;
+        private readonly IUserServiceApplication _userServiceApp;
         IHttpContextAccessor _httpContextAccessor;
 
-        public CashFlowController(ICashFlowService service, IHttpContextAccessor httpContextAccessor)
+        public CashFlowController(ICashFlowServiceApplication service, IUserServiceApplication userServiceApp, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
+            _userServiceApp = userServiceApp;
             _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index()
         {
+            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            var result = _service.ListaPlanoContas(idUsuario);
+
+            ViewBag.ListaFluxo = result;
+            
             return View();
         }
 
         [HttpPost]
-        public IActionResult CriarFluxoCaixa(CashFlowEntity NovaContaFormulario)
+        public IActionResult FluxoCaixa(CashFlowEntity NovaContaFormulario)
         {
-
-            NovaContaFormulario.HttpContextAccessor = _httpContextAccessor;
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
 
             NovaContaFormulario.Usuario_id = idUsuario;
-
-            //if (ModelState.IsValid)
-            //{
-
-
+            
             _service.Insert(NovaContaFormulario);
 
-            return RedirectToAction("Index");
-            //}
-            //return View();
+            return View();
         }
-
+        [HttpGet]
+        public IActionResult FluxoCaixa() 
+        {
+            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            return View();
+        }
     }
 }

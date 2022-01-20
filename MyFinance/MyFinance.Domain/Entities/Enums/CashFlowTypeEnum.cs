@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyFinance.Domain.Entities.Enums
 {
     public enum CashFlowTypeEnum
     {
-        [Description("Receita")]
+        [Display(Name="Receita")]
         receita,
         
-        [Description("Despesa")]
+        [Display(Name ="Despesa")]
         despesa
     }
 }

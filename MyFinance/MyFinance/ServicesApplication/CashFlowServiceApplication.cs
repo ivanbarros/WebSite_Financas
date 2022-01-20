@@ -28,8 +28,8 @@ namespace MyFinance.ServicesApplication
 
         public void Add(CashFlowEntity item)
         {
-            throw new NotImplementedException();
-            //_service.Add(item);
+            
+            _service.Insert(item);
         }
 
         public List<CashFlowEntity> ListaPlanoContas(int id)
@@ -40,7 +40,7 @@ namespace MyFinance.ServicesApplication
 
         public void Insert(CashFlowEntity item)
         {
-            throw new NotImplementedException();
+            _service.Insert(item);
         }
     }
 }

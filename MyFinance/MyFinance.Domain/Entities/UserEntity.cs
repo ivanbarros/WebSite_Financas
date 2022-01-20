@@ -33,9 +33,7 @@ namespace MyFinance.Domain.Entities
 
         [Column("IsActive")]
         public bool IsActive { get; set; }
-
-        [Column("IdPermission")]
-        public int IdPermission { get; set; }
+        [NotMapped]
         public virtual PermissionsEntity Permission { get; set; }
 
     }

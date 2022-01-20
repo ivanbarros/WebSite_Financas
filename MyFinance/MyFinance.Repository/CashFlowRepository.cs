@@ -26,6 +26,10 @@ namespace MyFinance.Repository
             try
             {
                 entity.Tipo = Convert.ToString(entity.TipoCashEnum);
+                entity.CreateDate = DateTime.Now;
+                entity.Category = Convert.ToString(entity.CategoryEnum);
+                entity.IsActive = true;
+                
                 _dataset.Add(entity);
                 _context.SaveChanges();
                 return Task.FromResult(entity);
@@ -45,17 +49,7 @@ namespace MyFinance.Repository
 
         public List<CashFlowEntity> GetById(int id)
         {
-            //List<CashFlowEntity> cashflow = new List<CashFlowEntity>();
-
-            //var result = _context.CashFlow.Where(c =>c.Usuario_id.Equals(id)).ToList();
-
-            //foreach (var item in result)
-            //{
-            //    cashflow.Add(item);
-            //}
-            //return cashflow;
-
-            throw new NotImplementedException();
+           throw new NotImplementedException();
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()
@@ -75,24 +69,21 @@ namespace MyFinance.Repository
 
         public async Task<CashFlowEntity> Get(int id)
         {
-            //var result =  await _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
-
-            //return result;
             throw new NotImplementedException();
         }
 
         public List<CashFlowEntity> ListaPlanoContas(int id)
         {
-            //List<CashFlowEntity> lista = new List<CashFlowEntity>();
+            List<CashFlowEntity> lista = new List<CashFlowEntity>();
 
-            //    var result = _context.CashFlow.Where(c => c.Usuario_id.Equals(id)).ToList();
+            var result = _context.CashFlow.Where(c => c.Usuario_id.Equals(id)).ToList();
 
-            //    foreach (var item in result)
-            //    {
-            //        lista.Add(item);
-            //    }
-            //        return lista;
-            throw new NotImplementedException();
+            foreach (var item in result)
+            {
+                lista.Add(item);
+            }
+            return lista;
+           
         }
     }
 }

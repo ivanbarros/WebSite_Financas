@@ -17,7 +17,7 @@ namespace MyFinance.Configurations.DependencyInjections
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IContaService, ContaService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<ICashFlowService, CashFlowService>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IWaiterService, WaiterService>();
             //services.AddScoped<IOneSignalService, OneSignalService>();
