@@ -4,6 +4,7 @@
     {
         corrente,
         poupanca,
-        investimentos
+        investimentos,
+        salario
     }
 }

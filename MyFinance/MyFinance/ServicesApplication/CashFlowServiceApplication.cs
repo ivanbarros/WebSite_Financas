@@ -28,7 +28,7 @@ namespace MyFinance.ServicesApplication
 
         public void Add(CashFlowEntity item)
         {
-            
+
             _service.Insert(item);
         }
 
@@ -41,6 +41,12 @@ namespace MyFinance.ServicesApplication
         public void Insert(CashFlowEntity item)
         {
             _service.Insert(item);
+        }
+
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision)
+        {
+            var result = _service.GetDespesaReceita(Id,decision);
+            return result;
         }
     }
 }

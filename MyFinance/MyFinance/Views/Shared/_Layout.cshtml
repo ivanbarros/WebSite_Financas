@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyFinance</title>
 
-
+    @using Microsoft.AspNetCore.Http;
+    @inject IHttpContextAccessor HttpContextAcessor
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -184,8 +185,7 @@
                 </div>
                 <div class="info-container">
 
-                    @using Microsoft.AspNetCore.Http;
-                    @inject IHttpContextAccessor HttpContextAcessor
+                    
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="NomeUsuarioLogado"></span></div>
                     <div class="email"><span id="EmailUsuarioLogado"></span></div>
                     <div class="btn-group user-helper-dropdown">
