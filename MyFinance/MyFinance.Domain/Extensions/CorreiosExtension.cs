@@ -5,20 +5,20 @@ namespace MyFinance.Domain.Extensions
     public static class CorreiosExtension
     {
 
-        public static EnderecoEntity GetZipCode(EnderecoEntity end)
+        public static AddressEntity GetZipCode(AddressEntity end)
         {
-            var addresses = new Correios.NET.Services().GetAddresses(end.Cep);
+            var addresses = new Correios.NET.Services().GetAddresses(end.ZipCode);
 
-            EnderecoEntity endereco = new EnderecoEntity();
+            AddressEntity endereco = new AddressEntity();
             foreach (var address in addresses)
             {
-                endereco.Cidade = address.City;
-                endereco.Estado = address.State;
-                endereco.Logradouro = address.Street;
-                endereco.Bairro = address.District;
-                endereco.Cep = address.ZipCode;
-                endereco.Complemento = end.Complemento;
-                endereco.Numero = end.Numero;
+                endereco.City = address.City;
+                endereco.State = address.State;
+                endereco.Street = address.Street;
+                endereco.NeighborHood = address.District;
+                endereco.ZipCode = address.ZipCode;
+                endereco.Complement = end.Complement;
+                endereco.Number = end.Number;
             }
             return endereco;
         }

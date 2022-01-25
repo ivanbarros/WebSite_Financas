@@ -103,7 +103,7 @@ namespace MyFinance.Domain.Entities
             set { isActive = value; }
         }
 
-        public EnderecoEntity Endereco { get; set; }
+        public AddressEntity Endereco { get; set; }
 
     }
 }
