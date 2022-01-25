@@ -13,7 +13,7 @@ namespace MyFinance.Data.Context
         }
 
         public DbSet<AccountEntity> Conta { get; set; }
-        public DbSet<EnderecoEntity> Endereco { get; set; }
+        public DbSet<AddressEntity> Endereco { get; set; }
         public DbSet<EmployeeEntity> Empregado { get; set; }
         public DbSet<ProductEntity> Produto { get; set; }
         public DbSet<StockEntity> Estoque { get; set; }

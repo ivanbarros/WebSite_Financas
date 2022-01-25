@@ -1,4 +1,4 @@
-﻿using MyFinance.Domain.Entities.BaseEntities;
+using MyFinance.Domain.Entities.BaseEntities;
 using MyFinance.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
@@ -119,7 +119,7 @@ namespace MyFinance.Domain.Entities
 
         public ICollection<SalesEntity> Sales { get; set; }
 
-
+        public AddressEntity Endereco { get; set; }
 
     }
 }
