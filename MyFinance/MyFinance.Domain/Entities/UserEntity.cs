@@ -33,8 +33,13 @@ namespace MyFinance.Domain.Entities
 
         [Column("IsActive")]
         public bool IsActive { get; set; }
+
+        public ICollection<EmployeeEntity> Employee { get; set; }
+        public ICollection<StockEntity> Stock { get; set; }
+
         [NotMapped]
         public virtual PermissionsEntity Permission { get; set; }
+
 
     }
 }

@@ -1,11 +1,13 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace MyFinance.Domain.Entities
 {
-    [Table("Supplier")]
-    public class SupplierEntity : BaseEntity
+    [Table("Customer")]
+    public class CustomerEntity : BaseEntity
     {
         private string nome;
 
@@ -15,17 +17,6 @@ namespace MyFinance.Domain.Entities
             get { return nome; }
             set { nome = value; }
         }
-        private string cnpj;
-
-        [Column("Cnpj")]
-        public string Cnpj
-        {
-            get { return cnpj; }
-            set { cnpj = value; }
-
-        }
-        public AddressEntity Endereco { get; set; }
-
         private string email;
 
         public string Email
@@ -33,31 +24,34 @@ namespace MyFinance.Domain.Entities
             get { return email; }
             set { email = value; }
         }
+        private string cpf;
 
-        private int tel;
-        public int Tel
+        [Column("Cpf")]
+        public string Cpf
         {
-            get { return tel; }
-            set { tel = value; }
-        }
+            get { return cpf; }
+            set { cpf = value; }
 
-        private bool isActive;
-        public bool IsActive
+        }
+        private DateTime datebirth;
+        public DateTime DateBirth
+        {
+            get { return datebirth; }
+            set { datebirth = value; }
+        }
+        public bool IsActive;
+        private bool isActive
         {
             get { return isActive; }
             set { isActive = value; }
         }
         public AddressEntity Endereco { get; set; }
-
-        public ICollection<ProductEntity> Product { get; set; }
+        public ICollection<SalesEntity> Sales { get; set; }
+        public ICollection<DevolutionEntity> Devolution { get; set; }
     }
+
 }
-
-    
         
-      
 
 
 
-
-    
