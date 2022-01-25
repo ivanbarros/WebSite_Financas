@@ -42,5 +42,11 @@ namespace MyFinance.Service
         {
             _repository.Add(item);
         }
+
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision)
+        {
+            var result = _repository.GetDespesaReceita(Id,decision);
+            return result;
+        }
     }
 }

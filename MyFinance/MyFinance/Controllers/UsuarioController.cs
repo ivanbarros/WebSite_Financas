@@ -25,6 +25,7 @@ namespace MyFinance.Controllers
                     HttpContext.Session.SetString("IdUsuarioLogado",string.Empty);
                     HttpContext.Session.SetString("NomeUsuarioLogado", string.Empty);
                     HttpContext.Session.SetString("EmailUsuarioLogado", string.Empty);
+                    HttpContext.Session.SetString("IdPermissao", string.Empty);
                     
                 }
             }
@@ -49,16 +50,13 @@ namespace MyFinance.Controllers
                     IsActive = usuario.IsActive,
                     Login = usuario.Login,
                     PassWord = usuario.PassWord,
-                    CreateDate = usuario.CreateDate,
-                    TipoPermissao = usuario.PermissionType.ToString()
-                    
+                    CreateDate = usuario.CreateDate
                 };
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
                 return RedirectToAction("_PartialMenu", "Menu");
             }
             else
             {
-             
                 TempData["LoginIvalido"] = "Usuario ou senha não estão corretos!";                
                 return RedirectToAction("Login");
             }

@@ -29,7 +29,7 @@ namespace MyFinance.Repository
                 entity.CreateDate = DateTime.Now;
                 entity.Category = Convert.ToString(entity.CategoryEnum);
                 entity.IsActive = true;
-                
+
                 _dataset.Add(entity);
                 _context.SaveChanges();
                 return Task.FromResult(entity);
@@ -49,7 +49,7 @@ namespace MyFinance.Repository
 
         public List<CashFlowEntity> GetById(int id)
         {
-           throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()
@@ -83,7 +83,13 @@ namespace MyFinance.Repository
                 lista.Add(item);
             }
             return lista;
-           
+
+        }
+
+        public List<CashFlowEntity> GetDespesaReceita(int Id,string decision)
+        {
+            var lista = _context.CashFlow.Where(c=>c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision)).ToList();
+            return lista;
         }
     }
 }
