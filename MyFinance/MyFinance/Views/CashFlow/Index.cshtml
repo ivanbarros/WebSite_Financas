@@ -1,5 +1,7 @@
 ﻿@model MyFinance.Domain.Entities.CashFlowEntity
-
+@{
+    ViewData["Title"] = "Fluxo de caixa";
+}
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -7,8 +9,10 @@
             <tr>
                 <th></th>
                 <th></th>
-                <th>@Html.LabelFor(model => model.Tipo)</th>
                 <th>@Html.LabelFor(model => model.Descricao)</th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.ValueCash)</th>
+                <th>@Html.LabelFor(model => model.Category)</th>
 
             </tr>
         </thead>
@@ -16,29 +20,33 @@
             <tr>
                 <th></th>
                 <th></th>
-                <th>@Html.LabelFor(model => model.Tipo)</th>
                 <th>@Html.LabelFor(model => model.Descricao)</th>
+                <th>@Html.LabelFor(model => model.Tipo)</th>
+                <th>@Html.LabelFor(model => model.ValueCash)</th>
+                <th>@Html.LabelFor(model => model.Category)</th>
             </tr>
         </tfoot>
         @{
-            foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoConta)
+            foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaFluxo)
             {
                 <tbody>
                     <tr>
                         <td>
 
-                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.idPlano_Contas)">Editar</button>
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
                         </td>
 
                         <td>
-                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.idPlano_Contas)">
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
                                 Excluir
                                 <i class="material-icons" style="color:#fff;">delete_forever</i>
                             </button>
                         </td>
 
-                        <td>@item.Tipo.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
                         <td>@item.Descricao.ToString()</td>
+                        <td>@item.Tipo.ToString().Replace("D", "Despesa").Replace("R", "Receita")</td>
+                        <td>@item.ValueCash</td>
+                        <td>@item.Category</td>
                     </tr>
 
                 </tbody>
@@ -62,4 +70,3 @@
         window.location.href = "../PlanoConta/CriarPlanoConta/" + id_conta;
     }
 </script>
-

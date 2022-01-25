@@ -37,11 +37,12 @@ namespace MyFinance.Controllers
             if (login.UserName!=null)
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
-                HttpContext.Session.SetString("IdUsuarioLogado", usuario.IdPermission.ToString());
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 HttpContext.Session.SetString("EmailUsuarioLogado", usuario.Email.ToString());
                 HttpContext.Session.SetString("IdPermission", usuario.IdPermission.ToString());
                 var userInfo = new UserEntity()
                 {
+                    Id = usuario.Id,
                     UserName = usuario.UserName,
                     Email = usuario.Email,
                     IdPermission = usuario.IdPermission,
@@ -49,7 +50,8 @@ namespace MyFinance.Controllers
                     Login = usuario.Login,
                     PassWord = usuario.PassWord,
                     CreateDate = usuario.CreateDate,
-                    IdPermission = usuario.IdPermission
+                    TipoPermissao = usuario.PermissionType.ToString()
+                    
                 };
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
                 return RedirectToAction("_PartialMenu", "Menu");

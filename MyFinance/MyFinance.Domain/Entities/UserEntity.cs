@@ -37,5 +37,9 @@ namespace MyFinance.Domain.Entities
         public ICollection<EmployeeEntity> Employee { get; set; }
         public ICollection<StockEntity> Stock { get; set; }
 
+        [NotMapped]
+        public virtual PermissionsEntity Permission { get; set; }
+
+
     }
 }

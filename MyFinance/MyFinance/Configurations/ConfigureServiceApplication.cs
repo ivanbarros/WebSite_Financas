@@ -10,7 +10,7 @@ namespace MyFinance.Configurations
         {
             services.AddScoped<IUserServiceApplication, UserServiceApplication>();
             services.AddScoped<IContaServiceApplication, ContaServiceApplication>();
-            //services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<ICashFlowServiceApplication, CashFlowServiceApplication>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IWaiterService, WaiterService>();
             //services.AddScoped<IOneSignalService, OneSignalService>();

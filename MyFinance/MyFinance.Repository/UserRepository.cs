@@ -77,6 +77,7 @@ namespace MyFinance.Repository
                 var users = _context.Usuario.Where(c => c.UserName.Equals(usuario.UserName) && c.PassWord.Equals(usuario.PassWord)).AsAsyncEnumerable();
                 await foreach (var item in users)
                 {
+                    usuario.Id = item.Id;
                     usuario.UserName = item.UserName;
                     usuario.IdPermission = item.IdPermission;
                     usuario.IsActive = item.IsActive;
