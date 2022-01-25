@@ -1,4 +1,5 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
@@ -23,6 +24,8 @@ namespace MyFinance.Domain.Entities
             set { cnpj = value; }
 
         }
+        public AddressEntity Endereco { get; set; }
+
         private string email;
 
         public string Email
@@ -30,15 +33,21 @@ namespace MyFinance.Domain.Entities
             get { return email; }
             set { email = value; }
         }
-        private bool isActive;
 
+        private int tel;
+        public int Tel
+        {
+            get { return tel; }
+            set { tel = value; }
+        }
+
+        private bool isActive;
         public bool IsActive
         {
             get { return isActive; }
             set { isActive = value; }
         }
-
-        public EnderecoEntity Endereco { get; set; }
+        public ICollection<ProductEntity> Product { get; set; }
     }
 }
 
