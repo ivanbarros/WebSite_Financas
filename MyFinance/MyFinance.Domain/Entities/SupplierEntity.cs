@@ -47,7 +47,7 @@ namespace MyFinance.Domain.Entities
             get { return isActive; }
             set { isActive = value; }
         }
-        public AddressEntity Endereco { get; set; }
+
 
         public ICollection<ProductEntity> Product { get; set; }
     }

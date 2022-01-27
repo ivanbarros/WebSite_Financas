@@ -21,6 +21,8 @@ namespace MyFinance.Domain.Entities
 
         [Column("IdEmployeeEntity")]
         public int IdEmployeeEntity { get; set; }
+        [NotMapped]
+
         public virtual EmployeeEntity Employee { get; set; }
 
         [Column("IdPaymentMethodEntity")]
@@ -29,7 +31,10 @@ namespace MyFinance.Domain.Entities
 
         [Column("IdCustomerEntity")]
         public int IdCustomerEntity { get; set; }
+        [NotMapped]
+
         public virtual CustomerEntity Customer { get; set; }
+        [NotMapped]
 
         public ICollection<DevolutionEntity> Devolution { get; set; }
 

@@ -7,44 +7,32 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
-
-    public class ContaService : IContaService
+    public class ExtractService : IExtractService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
-        private readonly IContaRepository _repository;
+        private readonly IExtractRepository _repository;
 
-        public ContaService(IHttpContextAccessor httpContextAccessor, IContaRepository repository)
+        public ExtractService(IHttpContextAccessor httpContextAccessor, IExtractRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
         }
-
         public void Excluir(int id)
         {
             _repository.Delete(id);
         }
 
-        public Task<IEnumerable<AccountEntity>> GetAll()
+        public Task<IEnumerable<ExtractEntity>> GetAll()
         {
-
             var result = _repository.GetAll();
             return result;
         }
 
-        public void Insert(AccountEntity conta)
+        public void Insert(ExtractEntity item)
         {
-            
-            
-            _repository.Add(conta);
-            
-        }
+            throw new System.NotImplementedException();
 
-        public List<AccountEntity> ListaConta(int id)
-        {
-            var result =  _repository.ListaConta(id);
-            return result;
-        }
 
-      
+        }
     }
 }

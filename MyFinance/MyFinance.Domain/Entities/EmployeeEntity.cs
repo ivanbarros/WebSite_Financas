@@ -111,15 +111,17 @@ namespace MyFinance.Domain.Entities
 
         [Column("IdAddressEntity")]
         public int IdAddressEntity { get; set; }
+        [NotMapped]
+
         public virtual AddressEntity Address { get; set; }
 
         [Column("IdTypeContractEntity")]
         public int IdTypeContractEntity { get; set; }
         public virtual TypeContractEntity TypeContract { get; set; }
 
+        [NotMapped]
         public ICollection<SalesEntity> Sales { get; set; }
 
-        public AddressEntity Endereco { get; set; }
 
     }
 }
