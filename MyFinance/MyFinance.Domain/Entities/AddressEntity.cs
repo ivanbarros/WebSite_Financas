@@ -1,7 +1,6 @@
 ﻿using MyFinance.Domain.Entities.BaseEntities;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
@@ -15,6 +14,8 @@ namespace MyFinance.Domain.Entities
         public string NeighborHood { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        [NotMapped]
+
         public ICollection<EmployeeEntity> Employee { get; set; }
     }
 }
