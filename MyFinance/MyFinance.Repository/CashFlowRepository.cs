@@ -86,9 +86,9 @@ namespace MyFinance.Repository
 
         }
 
-        public List<CashFlowEntity> GetDespesaReceita(int Id,string decision)
+        public List<CashFlowEntity> GetDespesaReceita(int Id,string decision, string nameCategoria)
         {
-            var lista = _context.CashFlow.Where(c=>c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision)).ToList();
+            var lista = _context.CashFlow.Where(c=>c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.Category.Equals(nameCategoria)).ToList();
             return lista;
         }
     }

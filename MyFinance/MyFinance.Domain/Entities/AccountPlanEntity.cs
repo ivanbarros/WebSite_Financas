@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities.BaseEntities;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFinance.Domain.Entities
 {
+    [NotMapped]
     public class AccountPlanEntity : BaseEntity
     {
         public AccountPlanEntity()

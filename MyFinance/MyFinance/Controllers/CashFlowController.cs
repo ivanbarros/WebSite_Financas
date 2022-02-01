@@ -19,13 +19,16 @@ namespace MyFinance.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+
+        
+       
         public IActionResult Index()
         {
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-            var result = _service.ListaPlanoContas(idUsuario);
+            //var result = _service.ListaPlanoContas(idUsuario);
 
-            ViewBag.ListaFluxo = result;
+            //ViewBag.ListaFluxo = result;
             return View();
         }
 
@@ -44,21 +47,21 @@ namespace MyFinance.Controllers
         [HttpGet]
         public PartialViewResult FluxoCaixa()
         {
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             return PartialView("FluxoCaixa");
         }
 
-        [HttpGet]
-        public PartialViewResult GetDespesaReceita(string decision)
+        
+        public IActionResult GetDespesaReceita(string categoryName,string decision)
         {
-            string id_usuario_logado = _httpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-            var result = _service.GetDespesaReceita(idUsuario, decision);
-            return PartialView(result);
+            var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
+            return PartialView("GetDespesaReceita",result);
         }
 
-        public PartialViewResult GetAllDespesas()
+        public IActionResult GetAllDespesas()
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);

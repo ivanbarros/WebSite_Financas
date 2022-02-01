@@ -43,9 +43,9 @@ namespace MyFinance.ServicesApplication
             _service.Insert(item);
         }
 
-        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision)
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
         {
-            var result = _service.GetDespesaReceita(Id,decision);
+            var result = _service.GetDespesaReceita(Id,decision, nameCategoria);
             return result;
         }
     }

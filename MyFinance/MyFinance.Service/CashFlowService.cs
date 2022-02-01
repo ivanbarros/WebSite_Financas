@@ -43,9 +43,48 @@ namespace MyFinance.Service
             _repository.Add(item);
         }
 
-        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision)
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
         {
-            var result = _repository.GetDespesaReceita(Id,decision);
+          
+            switch (nameCategoria)
+            {
+                case "0":
+                    nameCategoria = "mercado";
+                    break;
+                
+                case "1":
+                    nameCategoria = "lazer";
+                    break;
+                
+                case "2":
+                    nameCategoria = "contas";
+                    break;
+                
+                case "3":
+                    nameCategoria = "vestuario";
+                    break;
+                
+                case "4":
+                    nameCategoria = "saude";
+                    break;
+                       
+                default:
+                    break;
+            }
+            
+            switch (decision)
+            {
+                case "0":
+                    decision = "receita";
+                        break;
+                
+                case "1":
+                    decision = "despesa";
+                        break;
+                default:
+                    break;
+            }
+            var result = _repository.GetDespesaReceita(Id,decision,nameCategoria);
             return result;
         }
     }

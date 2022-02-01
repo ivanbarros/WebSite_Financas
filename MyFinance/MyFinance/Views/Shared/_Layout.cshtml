@@ -90,7 +90,6 @@
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
-                    
                     <!-- Tasks -->
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -185,7 +184,7 @@
                 </div>
                 <div class="info-container">
 
-                    
+
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="NomeUsuarioLogado"></span></div>
                     <div class="email"><span id="EmailUsuarioLogado"></span></div>
                     <div class="btn-group user-helper-dropdown">
@@ -297,9 +296,9 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                  
-                        <p>&copy; @DateTime.Now.Year - My Finance</p>
-                   .
+
+                    <p>&copy; @DateTime.Now.Year - My Finance</p>
+                    .
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.5
@@ -315,17 +314,17 @@
         <div class="container-fluid">
             <div class="container body-content">
                 @RenderBody()
-           </div>
+            </div>
 
         </div>
-       
+
     </section>
 
     <!-- Jquery Core Js -->
-    <script src="~/plugins/jquery/jquery.js"></script>
+    <script src="~/plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="~/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Select Plugin Js -->
     <script src="~/plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -360,7 +359,7 @@
     <script src="~/plugins/jquery-sparkline/jquery.sparkline.js"></script>
     <script src="~/plugins/jquery-sparkline/src/utils.js"></script>
     <!-- Moment Plugin Js -->
-    
+
     <script src="~/plugins/momentjs/moment-with-locale.js"></script>
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
     <script src="~/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
@@ -396,10 +395,11 @@
         }
     }
     </script>
-    <script src="~/js/Transacao/registrar.js"></script>
-    <script src="~/js/Transacao/index.js"></script>
+    @*<script src="~/js/Transacao/registrar.js"></script>*@
+    @*<script src="~/js/Transacao/index.js"></script>*@
+    <script src="~/js/modals.js"></script>
+    <script src="~/js/CashFlow/CashFlowController.js"></script>
 
 
- 
 </body>
 </html>
