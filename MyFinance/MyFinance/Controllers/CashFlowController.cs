@@ -9,27 +9,22 @@ namespace MyFinance.Controllers
     public class CashFlowController : Controller
     {
         private readonly ICashFlowServiceApplication _service;
-        
+
         IHttpContextAccessor _httpContextAccessor;
 
         public CashFlowController(ICashFlowServiceApplication service, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
-            
+
             _httpContextAccessor = httpContextAccessor;
         }
 
-
-        
-       
         public IActionResult Index()
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-            var result = _service.ListaPlanoContas(idUsuario);
-
-            ViewBag.ListaFluxo = result;
             return View();
+
         }
 
         [HttpPost]
@@ -52,14 +47,15 @@ namespace MyFinance.Controllers
             return PartialView("FluxoCaixa");
         }
 
-        
-        public IActionResult GetDespesaReceita(string categoryName,string decision)
+
+        public IActionResult GetDespesaReceita(string categoryName, string decision)
         {
+           
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
             ViewBag.ListaDespesaReceita = result;
-            return PartialView("GetDespesaReceita",result);
+            return PartialView("GetDespesaReceita");
         }
 
         public IActionResult GetAllDespesas()
@@ -69,7 +65,7 @@ namespace MyFinance.Controllers
             var result = _service.ListaPlanoContas(idUsuario);
 
             ViewBag.ListaFluxo = result;
-            return PartialView("GetAllDespesas");
+            return View();
         }
     }
 }
