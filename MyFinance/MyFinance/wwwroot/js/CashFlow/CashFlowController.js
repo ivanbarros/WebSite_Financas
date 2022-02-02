@@ -16,20 +16,14 @@ $('#buttonSearch').on("click", function () {
                 '</div>'+
                 '<div class="modal-footer">'+
                     '<button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Cancel</button>'+
-                    '<button type="button" class="btn btn-link waves-effect" id="confirmed_btn">Yes</button>'+
+                    '<button type="button" class="btn btn-link waves-effect" data-dismiss="modal" id="confirmed_btn">Yes</button>'+
                 '</div>'+
             '</div>'+
     '</div >'+
 '</div >');
-        $('#confirmed_btn').on("click", function (evt) {
-
-            evt.preventDefault();
-            evt.stopPropagation();
-            var $detailsDivResult = $('#resultIdDiv'),
-                url = $(this).data('url');
-            $.get(url, function (data) {
-                $detailsDivResult.replaceWith(data);
-            });
+        $('#confirmed_btn').on("click", function (/*evt*/) {
+            
+            
             $.ajax({
                 url: '/CashFlow/GetAllDespesas',
                 dataType: "json",
@@ -40,26 +34,43 @@ $('#buttonSearch').on("click", function () {
                     categoryName: $('#CategoryTypeId').val(),
                     decision: $('#CashFlowTypeId').val()
                 }
-                ,
-                success: function (response) {
+                //,
+                //success: function (response) {
 
-                    //$('#resultIdDiv').show();
-                    //$('#resultIdDiv').innerHTML = data;
-                    /* $('#resultIdDiv').show();*/
-                    //$(document).ready(function () {
-                    alert("sucesso");
-                    $('#resultIdDiv').load('@Url.Action("GetAllDespesas", "CashFlow")')
+                //    $('#resultIdDiv').show();
+                //    $('#resultIdDiv').innerHTML = data;
+                //     $('#resultIdDiv').show();
+                //    $(document).ready(function () {
+                //    alert(" sucesso");
+                //    debugger;
+                //    $('#resultIdDiv').load('@Url.Action("GetAllDespesas", "CashFlow")')
+                //    evt.preventDefault();
+                //    evt.stopPropagation();
+                //        url = $(this).data('url');
+                //    $.get(url, function (data) {
+                //    $('#resultIdDiv').replaceWith(data);
+                //    });
 
-                    //});
-                },
-                error: function (response) {
-                    //alert(response + " erro");
-                    /* $('#resultIdDiv').show();*/
-                    //$('#resultIdDiv').innerHTML = data;
-                    alert("erro!");
-                    $('#resultIdDiv').load('@Url.Action("GetAllDespesas", "CashFlow")')
+                //    });
+                //},
+                //error: function (response) {
+                //    alert(response + " erro");
+                //     $('#resultIdDiv').show();
+                //    $('#resultIdDiv').innerHTML = data;
+                //    alert(response + " erro!");
+                //    debugger;
+                //     $('#resultIdDiv').load('@Url.Action("GetAllDespesas", "CashFlow")')
+                //    evt.preventDefault();
+                //    evt.stopPropagation();
+                    
+                //        url = $(this).data('url');
+                //    $.get(url, function (data) {
+                //        $('#resultIdDiv').load(data);
+                //    });
+                   
 
-                }
+
+                //}
             });
         });
     }
@@ -76,24 +87,24 @@ $('#buttonSearch').on("click", function () {
                 categoryName: $('#CategoryTypeId').val(),
                 decision: $('#CashFlowTypeId').val()
             }
-            ,
-            success: function (response) {
+            //,
+            //success: function (response) {
 
-                //$('#resultIdDiv').show();
-                //$('#resultIdDiv').innerHTML = data;
-                /* $('#resultIdDiv').show();*/
-                //$(document).ready(function () {
-                alert(response);
+            //    //$('#resultIdDiv').show();
+            //    //$('#resultIdDiv').innerHTML = data;
+            //    /* $('#resultIdDiv').show();*/
+            //    //$(document).ready(function () {
+            //    alert(response);
 
-                //});
-            },
-            error: function (response) {
-                //alert(response + " erro");
-                /* $('#resultIdDiv').show();*/
-                //$('#resultIdDiv').innerHTML = data;
-                alert(response + " erro!")
+            //    //});
+            //},
+            //error: function (response) {
+            //    //alert(response + " erro");
+            //    /* $('#resultIdDiv').show();*/
+            //    //$('#resultIdDiv').innerHTML = data;
+            //    alert(response + " erro!")
 
-            }
+            //}
         });
     }
 });
