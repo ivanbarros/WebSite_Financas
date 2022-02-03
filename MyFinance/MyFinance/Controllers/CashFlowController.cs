@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
+using Newtonsoft.Json;
 using System;
+
 
 namespace MyFinance.Controllers
 {
@@ -47,25 +49,25 @@ namespace MyFinance.Controllers
             return PartialView("FluxoCaixa");
         }
 
-
         public IActionResult GetDespesaReceita(string categoryName, string decision)
         {
-           
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
+            
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
+            //var convert = JsonConvert.SerializeObject(result, Formatting.Indented);
             ViewBag.ListaDespesaReceita = result;
-            return PartialView("GetDespesaReceita");
+            return PartialView(result);
         }
 
-        public IActionResult GetAllDespesas()
+        public PartialViewResult GetAllDespesas()
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var result = _service.ListaPlanoContas(idUsuario);
 
             ViewBag.ListaFluxo = result;
-            return View();
+            return PartialView("GetAllDespesas", ViewBag.ListaFluxo);
         }
     }
 }

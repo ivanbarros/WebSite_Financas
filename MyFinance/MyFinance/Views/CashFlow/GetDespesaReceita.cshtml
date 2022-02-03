@@ -1,15 +1,9 @@
 ﻿@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
 
 @{
-    ViewData["Title"] = "Finanças";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-
-@{
-
-    if (ViewBag.ListaDespesaReceita != null)
-    {
+//if (ViewBag.ListaDespesaReceita != null)
+//{
         <table class="table">
             <thead>
                 <tr>
@@ -35,51 +29,53 @@
                 </tr>
             </thead>
             <tbody>
+                @*@foreach (var item in Model)*@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tipo)
-                        </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category)
-                        </td>
+                    {
+                        <tr>
+                            <td >
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td >
+                            <td >
+                                @Html.DisplayFor(modelItem => item.Tipo)
+                            </td >
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ValueCash)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateDate)
-                        </td>
-                        <td>
-                        <td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ValueCash)
+                            </td>
 
-                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreateDate)
+                            </td>
+                            <td>
+                            <td>
 
-                        <td>
-                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                                Excluir
-                                <i class="material-icons" style="color:#fff;">delete_forever</i>
-                            </button>
-                        </td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
+                                <button type = "button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
+                            </td>
+
+                            <td>
+                                <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                                    Excluir
+                                    <i class="material-icons" style="color:#fff;">delete_forever</i>
+                                </button>
+                            </td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            @*}
     else
     {
         <div>TESTE</div>
-    }
-}
+    }*@
+                }
 

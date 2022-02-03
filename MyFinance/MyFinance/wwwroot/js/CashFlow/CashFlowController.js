@@ -23,6 +23,18 @@ function getDespesaReceita() {
         data: {
             categoryName: $('#CategoryTypeId').val(),
             decision: $('#CashFlowTypeId').val()
+        },
+        success: function (data) {
+            debugger;
+            
+                //$('#resultDespesaSelectedDiv').html(JSON.stringify(data));
+            $('#resultDespesaSelectedDiv').html(JSON.stringify(data));
+        },
+        error: function (data) {
+            debugger;
+          
+            /*$('#resultDespesaSelectedDiv').html(JSON.stringify(data));*/
+            $('#resultDespesaSelectedDiv').html(JSON.stringify(data));
         }
     });
 }
@@ -40,12 +52,13 @@ function getAllDespesas() {
         success: function (data) {
             debugger;
             alert("sucesso"),
-            $('#resultDespesaSelectedDiv').html(data);
+                //$('#resultDespesaSelectedDiv').html(JSON.stringify(data));
+                $('#resultDespesaSelectedDiv').html('<object data="https://localhost:5001/CashFlow/GetAllDespesas" width="800" height="700"/>');
         },
-        error: function () {
+        error: function (data) {
             debugger;
             alert("erro")
-            $('#resultDespesaSelectedDiv').html(data);
+            $('#resultDespesaSelectedDiv').html('<object data="https://localhost:5001/CashFlow/GetAllDespesas" width="auto" height="auto"/>');
         }
     });
 }

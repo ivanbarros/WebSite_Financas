@@ -1,5 +1,5 @@
-﻿@*@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>*@
-@model MyFinance.Domain.Entities.CashFlowEntity
+﻿@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+@*@model MyFinance.Domain.Entities.CashFlowEntity*@
 
 @{
     if (ViewBag.ListaFluxo != null)
@@ -10,10 +10,10 @@
                     <tr>
                         <th></th>
                         <th></th>
-                        <th>@Html.LabelFor(model => model.Descricao)</th>
-                        <th>@Html.LabelFor(model => model.Tipo)</th>
-                        <th>@Html.LabelFor(model => model.ValueCash)</th>
-                        <th>@Html.LabelFor(model => model.Category)</th>
+                        <th> @Html.DisplayNameFor(model => model.Descricao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                        <th>@Html.DisplayNameFor(model => model.ValueCash)</th>
+                        <th>@Html.DisplayNameFor(model => model.Category)</th>
 
                     </tr>
                 </thead>
@@ -21,10 +21,10 @@
                     <tr>
                         <th></th>
                         <th></th>
-                        <th>@Html.LabelFor(model => model.Descricao)</th>
-                        <th>@Html.LabelFor(model => model.Tipo)</th>
-                        <th>@Html.LabelFor(model => model.ValueCash)</th>
-                        <th>@Html.LabelFor(model => model.Category)</th>
+                        <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                        <th>@Html.DisplayNameFor(model => model.ValueCash)</th>
+                        <th>@Html.DisplayNameFor(model => model.Category)</th>
                     </tr>
                 </tfoot>
 
