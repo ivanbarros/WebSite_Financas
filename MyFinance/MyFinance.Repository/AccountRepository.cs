@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    public class ContaRepository : IContaRepository
+    public class AccountRepository : IAccountRepository
     {
         SqlContext _context = new SqlContext();
         private DbSet<AccountEntity> _dataset;
 
-        public ContaRepository(SqlContext context)
+        public AccountRepository(SqlContext context)
         {
             _context = context;
             _dataset = context.Set<AccountEntity>();
