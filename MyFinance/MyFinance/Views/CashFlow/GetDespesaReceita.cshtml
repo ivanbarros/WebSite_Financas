@@ -1,10 +1,15 @@
-﻿@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+﻿<html>
+<head>
+    
+@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+</head>
 
-@{
+<body>
+    @{
 
-//if (ViewBag.ListaDespesaReceita != null)
-//{
-        <table class="table">
+        //if (ViewBag.ListaDespesaReceita != null)
+        //{
+        <table class="table" id="tableDespesaReceita">
             <thead>
                 <tr>
                     <th>
@@ -32,50 +37,53 @@
                 @*@foreach (var item in Model)*@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
-                    {
-                        <tr>
-                            <td >
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td >
-                            <td >
-                                @Html.DisplayFor(modelItem => item.Tipo)
-                            </td >
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Category)
-                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ValueCash)
-                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValueCash)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreateDate)
-                            </td>
-                            <td>
-                            <td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateDate)
+                        </td>
+                        
+                        <td>
 
-                                <button type = "button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
-                            </td>
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
+                        </td>
 
-                            <td>
-                                <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                                    Excluir
-                                    <i class="material-icons" style="color:#fff;">delete_forever</i>
-                                </button>
-                            </td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-            @*}
-    else
-    {
-        <div>TESTE</div>
-    }*@
+                        <td>
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            </button>
+                        </td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+                        
+                    </tr>
                 }
+            </tbody>
+        </table>
+        @*}
+            else
+            {
+                <div>TESTE</div>
+            }*@
+    }
 
+
+</body>
+</html>

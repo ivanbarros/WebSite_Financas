@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
-using Newtonsoft.Json;
 using System;
-
 
 namespace MyFinance.Controllers
 {
@@ -25,6 +23,7 @@ namespace MyFinance.Controllers
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
+
             return View();
 
         }
@@ -55,9 +54,11 @@ namespace MyFinance.Controllers
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
-            //var convert = JsonConvert.SerializeObject(result, Formatting.Indented);
+
             ViewBag.ListaDespesaReceita = result;
-            return PartialView(result);
+             
+            
+            return PartialView("GetDespesaReceita");
         }
 
         public PartialViewResult GetAllDespesas()
