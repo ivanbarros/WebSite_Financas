@@ -22,6 +22,8 @@ namespace MyFinance.Data.Context
         public DbSet<PermissionEntity> Permissions { get; set; }
         public DbSet<CashFlowEntity> CashFlow { get; set; }
         public DbSet<ExtractEntity> Extract { get; set; }
+        public DbSet<CustomerEntity> Customer { get; set; }
+        public DbSet<AccountPlanEntity> AccountPlan { get; set; }
 
         public SqlContext()
         {

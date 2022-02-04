@@ -9,7 +9,7 @@ namespace MyFinance.Configurations
         public static void ConfigureDependenciesServiceAppication(this IServiceCollection services)
         {
             services.AddScoped<IUserServiceApplication, UserServiceApplication>();
-            services.AddScoped<IContaServiceApplication, ContaServiceApplication>();
+            services.AddScoped<IAccountServiceApplication, AccountServiceApplication>();
             services.AddScoped<ICashFlowServiceApplication, CashFlowServiceApplication>();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IWaiterService, WaiterService>();

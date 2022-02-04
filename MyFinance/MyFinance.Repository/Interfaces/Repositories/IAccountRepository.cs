@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface IContaRepository : IRepositoryBase<AccountEntity,SqlContext>
+    public interface IAccountRepository : IRepositoryBase<AccountEntity,SqlContext>
     {
         List<AccountEntity> ListaConta(int id);
         void Add(object extract);

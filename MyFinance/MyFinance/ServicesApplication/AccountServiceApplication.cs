@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyFinance.ServicesApplication
 {
-    public class ContaServiceApplication : IContaServiceApplication
+    public class AccountServiceApplication : IAccountServiceApplication
     {
-        private readonly IContaService _service;
+        private readonly IAccountService _service;
 
-        public ContaServiceApplication(IContaService service)
+        public AccountServiceApplication(IAccountService service)
         {
             _service = service;
         }

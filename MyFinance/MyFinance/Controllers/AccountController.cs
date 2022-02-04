@@ -3,20 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
 using MyFinance.Service.Interfaces.Services;
+using MyFinance.ServicesApplication;
 using System;
 
 namespace MyFinance.Controllers
 {
-    public class ContaController : Controller
+    public class AccountController : Controller
     {
-        private readonly IContaServiceApplication _service;
-        private readonly IUserService _userService;
+        private readonly AccountServiceApplication _service;
         IHttpContextAccessor _httpContextAccessor;
 
-        public ContaController(IContaServiceApplication service, IUserService userService, IHttpContextAccessor httpContextAccessor)
+        public AccountController(AccountServiceApplication service, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
-            _userService = userService;
+            
             _httpContextAccessor = httpContextAccessor;
         }
 
