@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace MyFinance.Service
 {
 
-    public class ContaService : IContaService
+    public class AccountService : IAccountService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
-        private readonly IContaRepository _repository;
+        private readonly IAccountRepository _repository;
 
-        public ContaService(IHttpContextAccessor httpContextAccessor, IContaRepository repository)
+        public AccountService(IHttpContextAccessor httpContextAccessor, IAccountRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
