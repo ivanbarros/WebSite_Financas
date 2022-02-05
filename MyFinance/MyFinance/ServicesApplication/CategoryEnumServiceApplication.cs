@@ -1,4 +1,7 @@
-﻿using MyFinance.Interfaces.Services.InterfaceBase;
+﻿using MyFinance.Domain.Entities;
+using MyFinance.Interfaces.Services.InterfaceBase;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyFinance.ServicesApplication
 {
@@ -9,7 +12,7 @@ namespace MyFinance.ServicesApplication
             throw new System.NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CategoryEnumEntity>> GetAll()
+        public Task<IEnumerable<CategoryEnumEntity>> GetAll()
         {
             throw new System.NotImplementedException();
         }

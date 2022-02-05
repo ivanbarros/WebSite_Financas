@@ -32,11 +32,7 @@ namespace MyFinance.Service
             _repository.Add(item);
         }
 
-        public List<CashFlowEntity> ListaPlanoContas(int id)
-        {
-            var result = _repository.ListaPlanoContas(id);
-            return result;
-        }
+        
 
         public void Insert(CashFlowEntity item)
         {
@@ -67,6 +63,14 @@ namespace MyFinance.Service
                 case "4":
                     nameCategoria = "saude";
                     break;
+
+                case "5":
+                    nameCategoria = "salario";
+                    break;
+                
+                case "6":
+                    nameCategoria = "poupança";
+                    break;
                        
                 default:
                     break;
@@ -85,7 +89,15 @@ namespace MyFinance.Service
                     break;
             }
             var result = _repository.GetDespesaReceita(Id,decision,nameCategoria);
-            return result;
+           
+            List<CashFlowEntity> lista = new List<CashFlowEntity>();
+            
+            foreach (var item in result)
+            {
+                lista.Add(item);
+            }
+            
+            return lista;
         }
     }
 }

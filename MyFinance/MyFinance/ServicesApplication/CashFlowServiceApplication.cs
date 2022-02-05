@@ -32,11 +32,6 @@ namespace MyFinance.ServicesApplication
             _service.Insert(item);
         }
 
-        public List<CashFlowEntity> ListaPlanoContas(int id)
-        {
-            var result = _service.ListaPlanoContas(id);
-            return result;
-        }
 
         public void Insert(CashFlowEntity item)
         {

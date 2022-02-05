@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace MyFinance.Domain.Entities.Enums
 {
@@ -19,6 +18,10 @@ namespace MyFinance.Domain.Entities.Enums
         vestuario,
 
         [Description("Saúde")]
-        saude
+        saude,
+        [Description("salário")]
+        salario,
+        [Description("poupança")]
+        poupança
     }
 }

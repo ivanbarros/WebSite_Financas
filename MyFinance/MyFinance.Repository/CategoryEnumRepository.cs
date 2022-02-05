@@ -1,4 +1,5 @@
-﻿using MyFinance.Repository.Interfaces.Repositories;
+﻿using MyFinance.Domain.Entities;
+using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;

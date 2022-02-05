@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyFinance.Service.Interfaces.Services
 {
-    public interface ICashFlowTypeEnumService : IServiceBase<CashFlowTypeEnumEntity>
+    public interface ICashFlowTypeEnumService //: IServiceBase<CashFlowTypeEnumEntity>
     {
         
     }

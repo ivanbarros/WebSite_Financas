@@ -56,19 +56,8 @@ namespace MyFinance.Controllers
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
 
             ViewBag.ListaDespesaReceita = result;
-             
-            
+
             return PartialView("GetDespesaReceita");
-        }
-
-        public PartialViewResult GetAllDespesas()
-        {
-            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
-            var idUsuario = Convert.ToInt32(id_usuario_logado);
-            var result = _service.ListaPlanoContas(idUsuario);
-
-            ViewBag.ListaFluxo = result;
-            return PartialView("GetAllDespesas", ViewBag.ListaFluxo);
         }
     }
 }

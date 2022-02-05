@@ -1,4 +1,5 @@
-﻿using MyFinance.Service.Interfaces.Services;
+﻿using MyFinance.Domain.Entities;
+using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;

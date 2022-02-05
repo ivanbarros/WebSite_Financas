@@ -29,12 +29,20 @@ namespace MyFinance.Repository
                 entity.CreateDate = DateTime.Now;
                 entity.Category = Convert.ToString(entity.CategoryEnum);
                 entity.IsActive = true;
+                if (entity.Pago.ToString() == "Sim")
+                {
+                    entity.IsPago = true;
+                }
+                else
+                {
+                    entity.IsPago = false;
+                }
 
                 _dataset.Add(entity);
                 _context.SaveChanges();
                 return Task.FromResult(entity);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -67,29 +75,35 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<CashFlowEntity> Get(int id)
+        public Task<CashFlowEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
-
-        public List<CashFlowEntity> ListaPlanoContas(int id)
-        {
-            List<CashFlowEntity> lista = new List<CashFlowEntity>();
-
-            var result = _context.CashFlow.Where(c => c.Usuario_id.Equals(id)).ToList();
-
-            foreach (var item in result)
-            {
-                lista.Add(item);
-            }
-            return lista;
-
-        }
-
+        
         public List<CashFlowEntity> GetDespesaReceita(int Id,string decision, string nameCategoria)
         {
-            var lista = _context.CashFlow.Where(c=>c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.Category.Equals(nameCategoria)).ToList();
-            return lista;
+            List<CashFlowEntity> result;
+            if (String.IsNullOrEmpty(nameCategoria) && !String.IsNullOrWhiteSpace(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.IsActive.Equals(true)).ToList();
+                result = lista;
+            }
+            else if (!String.IsNullOrEmpty(nameCategoria) && String.IsNullOrWhiteSpace(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) &&  c.Category.Equals(nameCategoria) && c.IsActive.Equals(true)).ToList();
+                result = lista;
+            }
+            else
+            {
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.Category.Equals(nameCategoria) && c.IsActive.Equals(true)).ToList();
+                result = lista;
+            }
+            if (String.IsNullOrEmpty(nameCategoria)&& String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).ToList();
+                result = lista;
+            }
+            return result;
         }
     }
 }

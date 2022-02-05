@@ -7,6 +7,9 @@
 <body>
     @{
 
+        decimal total = 0.0M;
+
+
         //if (ViewBag.ListaDespesaReceita != null)
         //{
         <table class="table" id="tableDespesaReceita">
@@ -30,58 +33,83 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CreateDate)
                     </th>
-                    <th></th>
+                    <th>
+                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => model.IsPago)</label>
+                    </th>
+
                 </tr>
             </thead>
             <tbody>
-                @*@foreach (var item in Model)*@
+
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tipo)
-                        </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category)
-                        </td>
+                    total += item.ValueCash;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ValueCash)
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateDate)
-                        </td>
-                        
-                        <td>
+                    <td>
+                        R$ @Html.DisplayFor(modelItem => item.ValueCash)
+                    </td>
 
-                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+                    </td>
+                    @if (item.IsPago == true)
+                    {
+                <td>
+                    @*<input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" checked="checked">*@
+                   Pagamento efetuado
 
-                        <td>
-                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                                Excluir
-                                <i class="material-icons" style="color:#fff;">delete_forever</i>
-                            </button>
-                        </td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
-                        
-                    </tr>
+                </td>
+                    }
+                    else
+                    {
+                <td>
+                    Pagamento não efetuado
+
+                </td>
+                    }
+
+
+                    <td>
+
+                        <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                            Excluir
+                            <i class="material-icons" style="color:#fff;">delete_forever</i>
+                        </button>
+                    </td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+
+                </tr>
+
                 }
             </tbody>
+            <tfoot>
+                <tr>
+                    <th><strong>@Html.DisplayNameFor(model => model.ValorTotal)</strong></th>
+
+                    <th>R$ @((double)total)</th>
+                </tr>
+            </tfoot>
         </table>
-        @*}
-            else
-            {
-                <div>TESTE</div>
-            }*@
+       
     }
 
 

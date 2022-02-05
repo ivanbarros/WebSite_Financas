@@ -21,7 +21,7 @@
                         @Html.LabelFor(model => model.CategoryEnum, htmlAttributes: new { @class = "control-label col-md-8" })
                         <div class="col-md-10">
                             <select asp-for="CategoryEnum" id="CategoryTypeId" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()">
-                                <option selected="selected" value="">Selecione</option>
+                                <option selected="selected" value="">Todos</option>
                             </select>
                             @*@Html.DropDownList("Categoria",
                         Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>(),
@@ -35,7 +35,7 @@
                         @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-8" })
                         <div class="col-md-10">
                             <select asp-for="TipoCashEnum" id="CashFlowTypeId" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()">
-                                <option selected="selected" value="">Selecione</option>
+                                <option selected="selected" value="">Todos</option>
                             </select>
 
                         </div>
