@@ -7,6 +7,8 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 <div class="table-responsive">
+        @{
+            decimal total = 0.0M;
     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
         <thead>
             <tr>
@@ -18,19 +20,11 @@
 
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th></th>
-                <th>@Html.LabelFor(model => model.NomeConta)</th>
-                <th>@Html.LabelFor(model => model.Saldo)</th>
-                <th>@Html.LabelFor(model => model.AccountType)</th>
-                <th>@Html.LabelFor(model => model.DescriptionAccount)</th>
-            </tr>
-        </tfoot>
-        @{
-            foreach (var item in (List<MyFinance.Domain.Entities.AccountEntity>)ViewBag.ListaConta)
-            {
+        
                 <tbody>
+            @foreach (var item in (List<MyFinance.Domain.Entities.AccountEntity>)ViewBag.ListaConta)
+            {
+                total += item.Saldo;
                     <tr>
                         <td>
                             <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
@@ -40,11 +34,11 @@
                         </td>
 
                         <td>@item.NomeConta.ToString()</td>
-                        <td>@item.Saldo.ToString()</td>
+                        <td>R$ @((double)item.Saldo)</td>
                         <td>@item.AccountType.ToString()</td>
                         @if (String.IsNullOrEmpty(item.DescriptionAccount))
                         {
-                        <td>Sem anotações</td>
+                            <td>Sem anotações</td>
 
                         }
                         else
@@ -53,11 +47,18 @@
                         }
                     </tr>
 
-                </tbody>
             }
-        }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th><strong>Valor Total</strong></th>
+
+                        <th>R$ @((double)total)</th>
+                    </tr>
+                </tfoot>
 
     </table>
+        }
 </div>
 
 <br />
@@ -65,6 +66,6 @@
 
 <script>
     function ExcluirConta(id_conta) {
-        window.location.href = "../Conta/ExcluirConta/" + id_conta;
+        window.location.href = "../Account/ExcluirConta/" + id_conta;
     }
 </script>

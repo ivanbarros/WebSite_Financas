@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFinance.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

@@ -1,20 +1,23 @@
-﻿using MyFinance.Interfaces.Services.InterfaceBase;
+﻿using MyFinance.Domain.Entities;
+using MyFinance.Domain.Entities.Enums;
+using MyFinance.Interfaces.Services.InterfaceBase;
+using System.Collections.Generic;
 
 namespace MyFinance.Interfaces.Services
 {
-    public class ICashFlowTypeEnumServiceApplication : IServiceApplicationBase<CashFlowTypeEnumEntity>
+    public interface ICashFlowTypeEnumServiceApplication : IServiceApplicationBase<CashFlowTypeEnumEntity>
     {
-        public void Excluir(int id)
+        public new void Excluir(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CashFlowTypeEnumEntity>> GetAll()
+        public new IEnumerable<CashFlowTypeEnum> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Insert(CashFlowTypeEnumEntity item)
+        public new void Insert(CashFlowTypeEnum item)
         {
             throw new System.NotImplementedException();
         }

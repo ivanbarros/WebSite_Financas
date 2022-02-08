@@ -34,5 +34,15 @@ namespace MyFinance.Service
 
 
         }
+
+        public Task<ExtractEntity> Update(ExtractEntity item)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<ExtractEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

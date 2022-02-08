@@ -1,75 +1,167 @@
-﻿@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+﻿<html>
+<head>
 
-@{
-    ViewData["Title"] = "Finanças";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+</head>
 
-<h2>Finanças</h2>
+<body>
+    @{
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
+        var totalDespesa = ViewBag.Despesa;
+        var totalReceita = ViewBag.Receita;
 
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
+        //decimal totalDespesa = 0.0M;
+        //decimal totalReceita = 0.0M;
 
-            <th>
-                @Html.DisplayNameFor(model => model.ValueCash)
-            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
+        //if (ViewBag.ListaDespesaReceita != null)
+        //{
+        <table class="table" id="tableDespesaReceita">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipo)
+                    </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ValueCash)
-            </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValueCash)
+                    </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-            <td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreateDate)
+                    </th>
+                    <th>
+                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => model.IsPago)</label>
+                    </th>
 
-                <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
-            </td>
+                </tr>
+            </thead>
+            <tbody>
 
-            <td>
-                <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                    Excluir
-                    <i class="material-icons" style="color:#fff;">delete_forever</i>
-                </button>
-            </td>
-            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
+
+                {
+                    //totalDespesa = item.ValorTotalDespesa;
+                    //totalReceita = item.ValorTotalReceita;
+                    <tr>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+
+                        <td>
+                            R$ @Html.DisplayFor(modelItem => item.ValueCash)
+                        </td>
+
+
+                        @if (item.IsPago == true)
+                        {
+                            <td>
+                                @*<input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" checked="checked">*@
+                                Pagamento efetuado
+
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Pagamento não efetuado
+
+                            </td>
+                        }
+
+
+                        <td>
+
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#DetalhePlanoConta" onclick="DetalhePlanoConta(@item.Id)" id="editButton">Detalhe</button>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            </button>
+                        </td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+
+                @{
+                    if (totalDespesa > 0.0M)
+                    {
+                        <tr>
+                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalDespesa)</strong></th>
+
+                            <th>
+                                R$ @totalDespesa
+
+                            </th>
+                        </tr>
+                    }
+                    if (totalReceita > 0.0M)
+                    {
+                        <tr>
+                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
+
+                            <th>
+                                R$ @totalReceita
+
+                            </th>
+                        </tr>
+                    }
+                }
+
+            </tfoot>
+        </table>
+
+        <div id="modalResult">
+            <div class="modal fade" id="DetalhePlanoConta" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-col-teal">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Detalhes</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="renderEditView">
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Ok</button>
+                            @*<button type="button" class="btn btn-link waves-effect" data-dismiss="modal" id="confirmed_btn">Yes</button>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>

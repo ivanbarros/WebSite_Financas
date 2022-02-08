@@ -1,0 +1,62 @@
+﻿@model MyFinance.Domain.Entities.CashFlowEntity
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueCash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValueCash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPago)
+        </dt>
+        @{
+            if (Model.IsPago == true)
+            {
+                <dd>
+                    Pagamento efetuado
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    Pagamento não efetuado
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -19,6 +19,7 @@ namespace MyFinance.Domain.Entities
         [Column("Balance")]
         [Required(ErrorMessage = "Informe o saldo")]
         [Display(Name = "Saldo")]
+        //[DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         public decimal Saldo { get; set; }
 
         [Column("AccountType")]

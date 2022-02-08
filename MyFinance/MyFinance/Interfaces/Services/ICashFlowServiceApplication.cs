@@ -6,7 +6,10 @@ namespace MyFinance.Interfaces.Services
 {
     public interface ICashFlowServiceApplication : IServiceApplicationBase<CashFlowEntity>
     {
-        public List<CashFlowEntity> ListaPlanoContas(int id);
-        List<CashFlowEntity> GetDespesaReceita(int Id, string decision);
+
+        CashFlowEntity Get(int id);
+        List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria);
+        decimal ValorTotalDespesa(int userId, string categoria, string decision);
+        decimal ValorTotalReceita(int userId, string categoryName, string decision);
     }
 }

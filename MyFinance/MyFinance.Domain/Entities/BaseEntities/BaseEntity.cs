@@ -7,6 +7,7 @@ namespace MyFinance.Domain.Entities.BaseEntities
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Inserido em")]
         public DateTime CreateDate { get; set; }
     }
 }
