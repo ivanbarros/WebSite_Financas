@@ -9,7 +9,7 @@ namespace MyFinance.Repository.Interfaces.Repositories
         where TContext : DbContext
     {
         Task<IEnumerable<T>> GetAll();
-        Task<T> Get(int id);
+       
         IEnumerable<T> GetByEmail(string username, string password);
         Task<T> Add(T entity);
         Task<T> Update(T entity);

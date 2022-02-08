@@ -12,12 +12,22 @@ namespace MyFinance.ServicesApplication
             throw new System.NotImplementedException();
         }
 
+        public Task<CashFlowTypeEnumEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<IEnumerable<CashFlowTypeEnumEntity>> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
         public void Insert(CashFlowTypeEnumEntity item)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<CashFlowTypeEnumEntity> Update(CashFlowTypeEnumEntity entity)
         {
             throw new System.NotImplementedException();
         }

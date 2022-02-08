@@ -44,8 +44,12 @@ namespace MyFinance.Domain.Entities
         public decimal ValueCash { get; set; }
 
         [NotMapped]
-        [Display(Name ="Valor Total")]
-        public decimal ValorTotal { get; set; }
+        [Display(Name ="Valor Total de Despesas")]
+        public decimal ValorTotalDespesa { get; set; }
+        
+        [NotMapped]
+        [Display(Name ="Valor Total de Receita")]
+        public decimal ValorTotalReceita { get; set; }
 
         [Column("IsPago")]
         [Display(Name ="Efetuado Pagamento")]

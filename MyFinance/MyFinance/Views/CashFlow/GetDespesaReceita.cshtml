@@ -1,13 +1,17 @@
 ﻿<html>
 <head>
-    
-@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
+
+    @model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
 </head>
 
 <body>
     @{
 
-        decimal total = 0.0M;
+        var totalDespesa = ViewBag.Despesa;
+        var totalReceita = ViewBag.Receita;
+
+        //decimal totalDespesa = 0.0M;
+        //decimal totalReceita = 0.0M;
 
 
         //if (ViewBag.ListaDespesaReceita != null)
@@ -44,72 +48,118 @@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
                 {
-
-                    total += item.ValueCash;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tipo)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-
-                    <td>
-                        R$ @Html.DisplayFor(modelItem => item.ValueCash)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateDate)
-                    </td>
-                    @if (item.IsPago == true)
-                    {
-                <td>
-                    @*<input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" checked="checked">*@
-                   Pagamento efetuado
-
-                </td>
-                    }
-                    else
-                    {
-                <td>
-                    Pagamento não efetuado
-
-                </td>
-                    }
+                    //totalDespesa = item.ValorTotalDespesa;
+                    //totalReceita = item.ValorTotalReceita;
+                    <tr>
 
 
-                    <td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
 
-                        <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#EditarPlanoConta" onclick="EditarPlanoConta(@item.Id)">Editar</button>
-                    </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
 
-                    <td>
-                        <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                            Excluir
-                            <i class="material-icons" style="color:#fff;">delete_forever</i>
-                        </button>
-                    </td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+                        <td>
+                            R$ @Html.DisplayFor(modelItem => item.ValueCash)
+                        </td>
 
-                </tr>
+
+                        @if (item.IsPago == true)
+                        {
+                            <td>
+                                @*<input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" checked="checked">*@
+                                Pagamento efetuado
+
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Pagamento não efetuado
+
+                            </td>
+                        }
+
+
+                        <td>
+
+                            <button type="button" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#DetalhePlanoConta" onclick="DetalhePlanoConta(@item.Id)" id="editButton">Detalhe</button>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
+                                Excluir
+                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            </button>
+                        </td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
+
+                    </tr>
 
                 }
             </tbody>
             <tfoot>
-                <tr>
-                    <th><strong>@Html.DisplayNameFor(model => model.ValorTotal)</strong></th>
 
-                    <th>R$ @((double)total)</th>
-                </tr>
+                @{
+                    if (totalDespesa > 0.0M)
+                    {
+                        <tr>
+                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalDespesa)</strong></th>
+
+                            <th>
+                                R$ @totalDespesa
+
+                            </th>
+                        </tr>
+                    }
+                    if (totalReceita > 0.0M)
+                    {
+                        <tr>
+                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
+
+                            <th>
+                                R$ @totalReceita
+
+                            </th>
+                        </tr>
+                    }
+                }
+
             </tfoot>
         </table>
-       
+
+        <div id="modalResult">
+            <div class="modal fade" id="DetalhePlanoConta" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-col-teal">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Detalhes</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="renderEditView">
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Ok</button>
+                            @*<button type="button" class="btn btn-link waves-effect" data-dismiss="modal" id="confirmed_btn">Yes</button>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 
 

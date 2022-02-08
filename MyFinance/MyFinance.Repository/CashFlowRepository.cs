@@ -45,7 +45,7 @@ namespace MyFinance.Repository
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
 
         }
@@ -72,38 +72,125 @@ namespace MyFinance.Repository
 
         public Task<CashFlowEntity> Update(CashFlowEntity entity)
         {
-            throw new NotImplementedException();
+            var registro = _context.CashFlow.Find(entity.Id);
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
+            return Task.FromResult(entity);
         }
 
-        public Task<CashFlowEntity> Get(int id)
+        public CashFlowEntity Get(int id)
         {
-            throw new NotImplementedException();
+            var registro = _context.CashFlow.Where(c => c.Id.Equals(id));  /* _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));*/
+            var cash = new CashFlowEntity();
+            foreach (var item in registro)
+            {
+                cash.Usuario_id = item.Usuario_id;
+                cash.Tipo = item.Tipo;
+                cash.IsPago = item.IsPago;
+                cash.Descricao = item.Descricao;
+                cash.CreateDate = item.CreateDate;
+                cash.Category = item.Category;
+                cash.ValueCash = item.ValueCash;
+            }
+
+            return cash;
         }
-        
-        public List<CashFlowEntity> GetDespesaReceita(int Id,string decision, string nameCategoria)
+
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
         {
-            List<CashFlowEntity> result;
+
+
+            List<CashFlowEntity> result = new List<CashFlowEntity>();
             if (String.IsNullOrEmpty(nameCategoria) && !String.IsNullOrWhiteSpace(decision))
             {
+
                 var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.IsActive.Equals(true)).ToList();
+                var total = lista.Sum(d => Convert.ToDecimal(d.ValueCash));
+
+
+                return lista;
+
+            }
+            if (String.IsNullOrEmpty(nameCategoria) && String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).ToList();
                 result = lista;
+                return result;
             }
             else if (!String.IsNullOrEmpty(nameCategoria) && String.IsNullOrWhiteSpace(decision))
             {
-                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) &&  c.Category.Equals(nameCategoria) && c.IsActive.Equals(true)).ToList();
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.Category.Equals(nameCategoria) && c.IsActive.Equals(true)).ToList();
+
                 result = lista;
+                return result;
             }
             else
             {
                 var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.Tipo.Equals(decision) && c.Category.Equals(nameCategoria) && c.IsActive.Equals(true)).ToList();
                 result = lista;
+                return result;
             }
-            if (String.IsNullOrEmpty(nameCategoria)&& String.IsNullOrEmpty(decision))
+        }
+
+        public decimal ValorTotalDespesa(int userId,string categoria, string decision)
+        {
+            
+            if (String.IsNullOrEmpty(categoria) && String.IsNullOrEmpty(decision))
             {
-                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).ToList();
-                result = lista;
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("despesa") && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
             }
-            return result;
+            else if (!String.IsNullOrEmpty(categoria) && !String.IsNullOrEmpty(decision))
+            {
+
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("despesa") && c.Category.Equals(categoria) && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+
+            }
+            else if (!String.IsNullOrEmpty(categoria) && String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Category.Equals(categoria)&& c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+               
+            }
+            
+            else if (String.IsNullOrEmpty(categoria) && !String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("despesa")&& c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+            }
+            return 0;
+
+
+        }
+
+        public decimal ValorReceita(int userId, string nameCategoria, string decision)
+        {
+            if (String.IsNullOrEmpty(nameCategoria) && String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("receita") && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+            }
+            else if (!String.IsNullOrEmpty(nameCategoria) && !String.IsNullOrEmpty(decision))
+            {
+
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("receita") && c.Category.Equals(nameCategoria) && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+
+            }
+            else if (!String.IsNullOrEmpty(nameCategoria) && String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Category.Equals(nameCategoria) && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+
+            }
+
+            else if (String.IsNullOrEmpty(nameCategoria) && !String.IsNullOrEmpty(decision))
+            {
+                var lista = _context.CashFlow.Where(c => c.Tipo.Equals("receita") && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                return lista;
+            }
+            return 0;
         }
     }
 }

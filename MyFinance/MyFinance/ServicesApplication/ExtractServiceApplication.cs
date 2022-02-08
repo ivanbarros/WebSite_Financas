@@ -32,5 +32,15 @@ namespace MyFinance.ServicesApplication
         {
             _service.Insert(item);
         }
+
+        public Task<ExtractEntity> Update(ExtractEntity entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<ExtractEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model MyFinance.Domain.Entities.CashFlowEntity
+
+@*@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="CategoryEnum" class="control-label"></label>
+                <input asp-for="CategoryEnum" class="form-control" />
+                <span asp-validation-for="CategoryEnum" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="TipoCashEnum" class="control-label"></label>
+                <input asp-for="TipoCashEnum" class="form-control" />
+                <span asp-validation-for="TipoCashEnum" class="text-danger"></span>
+            </div>
+           
+          
+            <div class="form-group">
+                <label asp-for="ValueCash" class="control-label"></label>
+                <input asp-for="ValueCash" class="form-control" />
+                <span asp-validation-for="ValueCash" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsPago" /> @Html.DisplayNameFor(model => model.IsPago)
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

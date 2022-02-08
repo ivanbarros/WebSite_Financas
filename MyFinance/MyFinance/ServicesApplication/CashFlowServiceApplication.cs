@@ -43,5 +43,34 @@ namespace MyFinance.ServicesApplication
             var result = _service.GetDespesaReceita(Id,decision, nameCategoria);
             return result;
         }
+
+        public Task<CashFlowEntity> Update(CashFlowEntity entity)
+        {
+            var result = _service.Update(entity);
+            return result;
+        }
+
+        public CashFlowEntity Get(int id)
+        {
+            var result = _service.Get(id);
+            CashFlowEntity cash = new CashFlowEntity();
+            foreach (var item in result.ValueCash.ToString())
+            {
+                cash.ValorTotalDespesa += item;
+            }
+            return result;
+        }
+
+        public decimal ValorTotalDespesa(int userId, string categoria, string decision)
+        {
+            var result = _service.ValorTotalDespesa(userId,categoria, decision);
+            return result;
+        }
+
+        public decimal ValorTotalReceita(int userId, string categoryName, string decision)
+        {
+            var result = _service.ValorTotalReceita(userId, categoryName, decision);
+            return result;
+        }
     }
 }

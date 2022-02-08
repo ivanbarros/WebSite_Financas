@@ -23,7 +23,6 @@ namespace MyFinance.Controllers
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-
             return View();
 
         }
@@ -52,12 +51,58 @@ namespace MyFinance.Controllers
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-            
+            var receita = 0.0M;
+            var despesa = 0.0M;
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
 
-            ViewBag.ListaDespesaReceita = result;
+            if (decision == "1" || String.IsNullOrEmpty(decision))
+            {
+
+                despesa = _service.ValorTotalDespesa(idUsuario,categoryName, decision);
+            }
+            if (decision =="0" || String.IsNullOrEmpty(decision))
+            {
+
+                receita = _service.ValorTotalReceita(idUsuario,categoryName, decision);
+            }
+            
+           
+
+            ViewBag.ListaDespesaReceita = result;            
+            ViewBag.Despesa = despesa;
+            ViewBag.Receita = receita;
 
             return PartialView("GetDespesaReceita");
+        }
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            _service.Get(id);
+            
+            return View();
+        }
+        
+        
+        [HttpPost]
+        public IActionResult Editar(CashFlowEntity entity)
+        {
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            _service.Update(entity);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Detalhes(int id) 
+        {
+            string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
+            var idUsuario = Convert.ToInt32(id_usuario_logado);
+            var result = _service.Get(id);
+            
+            return PartialView("Detalhes",result);
         }
     }
 }

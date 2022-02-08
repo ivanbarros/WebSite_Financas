@@ -8,5 +8,7 @@ namespace MyFinance.Service.Interfaces.Services
         Task<IEnumerable<T>> GetAll();
         void Insert( T item);
         void Excluir(int id);
+        Task<T> Update(T item);
+        
     }
 }
