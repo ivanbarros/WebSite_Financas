@@ -4,47 +4,46 @@ using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    public class DevolutionRepository : IDevolutionRepository
+    partial class PaymentMethodRepository : IPaymentMethodRepository
     {
         SqlContext _context = new SqlContext();
-        private DbSet<DevolutionEntity> _dataset;
+        private DbSet<PaymentMethodEntity> _dataset;
 
-        public DevolutionRepository(SqlContext context)
+        public PaymentMethodRepository(SqlContext context)
         {
             _context = context;
-            _dataset = context.Set<DevolutionEntity>();
+            _dataset = context.Set<PaymentMethodEntity>();
         }
-        public Task<DevolutionEntity> Add(DevolutionEntity entity)
+        public Task<PaymentMethodEntity> Add(PaymentMethodEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Delete(int id)
+        public Task<PaymentMethodEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Get(int id)
+        public Task<PaymentMethodEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<DevolutionEntity>> GetAll()
+        public Task<IEnumerable<PaymentMethodEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DevolutionEntity> GetByEmail(string username, string password)
+        public IEnumerable<PaymentMethodEntity> GetByEmail(string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Update(DevolutionEntity entity)
+        public Task<PaymentMethodEntity> Update(PaymentMethodEntity entity)
         {
             throw new NotImplementedException();
         }

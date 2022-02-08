@@ -2,18 +2,19 @@
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service.Interfaces.Services;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
-
-    public class AccountService : IAccountService
+    public class AccountPlanService : IAccountPlanService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
-        private readonly IAccountRepository _repository;
+        private readonly IAccountPlanRepository _repository;
 
-        public AccountService(IHttpContextAccessor httpContextAccessor, IAccountRepository repository)
+        public AccountPlanService(IHttpContextAccessor httpContextAccessor, IAccountPlanRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
@@ -24,24 +25,21 @@ namespace MyFinance.Service
             _repository.Delete(id);
         }
 
-        public Task<IEnumerable<AccountEntity>> GetAll()
+        public Task<IEnumerable<AccountPlanEntity>> GetAll()
         {
-
             var result = _repository.GetAll();
             return result;
         }
 
-        public void Insert(AccountEntity conta)
+        public void Insert(AccountPlanEntity item)
         {
-           _repository.Add(conta);
+            _repository.Add(conta);
         }
 
-        public List<AccountEntity> ListaConta(int id)
+        public List<AccountPlanEntity> ListaConta(int id)
         {
-            var result =  _repository.ListaConta(id);
+            var result = _repository.ListaConta(id);
             return result;
         }
-
-      
     }
 }

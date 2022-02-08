@@ -2,46 +2,37 @@
 using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
-
-    public class AccountService : IAccountService
+    public class DevolutionService : IDevolutionService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
-        private readonly IAccountRepository _repository;
+        private readonly IDevolutionRepository _repository;
 
-        public AccountService(IHttpContextAccessor httpContextAccessor, IAccountRepository repository)
+        public DevolutionService(IHttpContextAccessor httpContextAccessor, IDevolutionRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
+        }
+
+        public Task<IEnumerable<DevolutionEntity>> GetAll()
+        {
+            var result = _repository.GetAll();
+            return result;
+        }
+
+        public void Insert(DevolutionEntity item)
+        {
+            _repository.Add(item);
         }
 
         public void Excluir(int id)
         {
             _repository.Delete(id);
         }
-
-        public Task<IEnumerable<AccountEntity>> GetAll()
-        {
-
-            var result = _repository.GetAll();
-            return result;
-        }
-
-        public void Insert(AccountEntity conta)
-        {
-           _repository.Add(conta);
-        }
-
-        public List<AccountEntity> ListaConta(int id)
-        {
-            var result =  _repository.ListaConta(id);
-            return result;
-        }
-
-      
     }
 }

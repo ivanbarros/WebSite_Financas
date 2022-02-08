@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
-
-    public class AccountService : IAccountService
+    public class CustumerService : ICustomerService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
-        private readonly IAccountRepository _repository;
+        private readonly ICustomerRepository _repository;
 
-        public AccountService(IHttpContextAccessor httpContextAccessor, IAccountRepository repository)
+        public CustumerService(IHttpContextAccessor httpContextAccessor, ICustomerRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;
@@ -24,24 +23,15 @@ namespace MyFinance.Service
             _repository.Delete(id);
         }
 
-        public Task<IEnumerable<AccountEntity>> GetAll()
+        public Task<IEnumerable<CustomerEntity>> GetAll()
         {
-
             var result = _repository.GetAll();
             return result;
         }
 
-        public void Insert(AccountEntity conta)
+        public void Insert(CustomerEntity item)
         {
-           _repository.Add(conta);
+            _repository.Add(conta);
         }
-
-        public List<AccountEntity> ListaConta(int id)
-        {
-            var result =  _repository.ListaConta(id);
-            return result;
-        }
-
-      
     }
 }

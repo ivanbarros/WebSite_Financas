@@ -1,4 +1,6 @@
-﻿using MyFinance.Repository.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using MyFinance.Data.Context;
+using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +9,14 @@ namespace MyFinance.Repository
 {
     public class CategoryEnumRepository : ICategoryEnumRepository
     {
+        SqlContext _context = new SqlContext();
+        private DbSet<CategoryEnumEntity> _dataset;
+
+        public CategoryEnumRepository(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<CategoryEnumEntity>();
+        }
         public System.Threading.Tasks.Task<CategoryEnumEntity> Add(CategoryEnumEntity entity)
         {
             throw new NotImplementedException();

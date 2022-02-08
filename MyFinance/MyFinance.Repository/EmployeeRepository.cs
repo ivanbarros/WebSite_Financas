@@ -9,42 +9,42 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    public class DevolutionRepository : IDevolutionRepository
+    internal class EmployeeRepository : IEmployeeRepository
     {
         SqlContext _context = new SqlContext();
-        private DbSet<DevolutionEntity> _dataset;
+        private DbSet<EmployeeEntity> _dataset;
 
-        public DevolutionRepository(SqlContext context)
+        public EmployeeRepository(SqlContext context)
         {
             _context = context;
-            _dataset = context.Set<DevolutionEntity>();
+            _dataset = context.Set<EmployeeEntity>();
         }
-        public Task<DevolutionEntity> Add(DevolutionEntity entity)
+        public Task<EmployeeEntity> Add(EmployeeEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Delete(int id)
+        public Task<EmployeeEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Get(int id)
+        public Task<EmployeeEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<DevolutionEntity>> GetAll()
+        public Task<IEnumerable<EmployeeEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DevolutionEntity> GetByEmail(string username, string password)
+        public IEnumerable<EmployeeEntity> GetByEmail(string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Update(DevolutionEntity entity)
+        public Task<EmployeeEntity> Update(EmployeeEntity entity)
         {
             throw new NotImplementedException();
         }

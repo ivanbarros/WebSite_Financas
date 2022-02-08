@@ -9,42 +9,44 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    public class DevolutionRepository : IDevolutionRepository
+    public class PermissionRepository : IPermissionRepository
     {
-        SqlContext _context = new SqlContext();
-        private DbSet<DevolutionEntity> _dataset;
+        private readonly IPermissionRepository _permissionRepository;
 
-        public DevolutionRepository(SqlContext context)
+        SqlContext _context = new SqlContext();
+        private DbSet<PermissionEntity> _dataset;
+
+        public PermissionRepository(SqlContext context)
         {
             _context = context;
-            _dataset = context.Set<DevolutionEntity>();
+            _dataset = context.Set<PermissionEntity>();
         }
-        public Task<DevolutionEntity> Add(DevolutionEntity entity)
+        public Task<PermissionEntity> Add(PermissionEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Delete(int id)
+        public Task<PermissionEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Get(int id)
+        public Task<PermissionEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<DevolutionEntity>> GetAll()
+        public Task<IEnumerable<PermissionEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DevolutionEntity> GetByEmail(string username, string password)
+        public IEnumerable<PermissionEntity> GetByEmail(string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Update(DevolutionEntity entity)
+        public Task<PermissionEntity> Update(PermissionEntity entity)
         {
             throw new NotImplementedException();
         }
