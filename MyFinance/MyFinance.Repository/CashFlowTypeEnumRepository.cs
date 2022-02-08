@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MyFinance.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using MyFinance.Data.Context;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
@@ -22,27 +24,27 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<CashFlowTypeEnum> Delete(int id)
+        public Task<CashFlowTypeEnumEntity> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<CashFlowTypeEnum> Get(int id)
+        public Task<CashFlowTypeEnumEntity> Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<IEnumerable<CashFlowTypeEnum>> GetAll()
+        public Task<IEnumerable<CashFlowTypeEnumEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CashFlowTypeEnum> GetByEmail(string username, string password)
+        public IEnumerable<CashFlowTypeEnumEntity> GetByEmail(string username, string password)
         {
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task<CashFlowTypeEnum> Update(CashFlowTypeEnum entity)
+        public Task<CashFlowTypeEnumEntity> Update(CashFlowTypeEnumEntity entity)
         {
             throw new NotImplementedException();
         }

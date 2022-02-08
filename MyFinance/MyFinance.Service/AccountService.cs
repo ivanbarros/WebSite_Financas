@@ -42,6 +42,14 @@ namespace MyFinance.Service
             return result;
         }
 
-      
+        public Task<AccountEntity> Update(AccountEntity item)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<AccountEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -32,21 +32,190 @@ namespace MyFinance.Service
             _repository.Add(item);
         }
 
-        public List<CashFlowEntity> ListaPlanoContas(int id)
-        {
-            var result = _repository.ListaPlanoContas(id);
-            return result;
-        }
+
 
         public void Insert(CashFlowEntity item)
         {
             _repository.Add(item);
         }
 
-        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision)
+        public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
         {
-            var result = _repository.GetDespesaReceita(Id,decision);
+
+            switch (nameCategoria)
+            {
+                case "0":
+                    nameCategoria = "mercado";
+                    break;
+
+                case "1":
+                    nameCategoria = "lazer";
+                    break;
+
+                case "2":
+                    nameCategoria = "contas";
+                    break;
+
+                case "3":
+                    nameCategoria = "vestuario";
+                    break;
+
+                case "4":
+                    nameCategoria = "saude";
+                    break;
+
+                case "5":
+                    nameCategoria = "salario";
+                    break;
+
+                case "6":
+                    nameCategoria = "poupança";
+                    break;
+
+                default:
+                    break;
+            }
+
+            switch (decision)
+            {
+                case "0":
+                    decision = "receita";
+                    break;
+
+                case "1":
+                    decision = "despesa";
+                    break;
+                default:
+                    break;
+            }
+            var result = _repository.GetDespesaReceita(Id, decision, nameCategoria);
+
+            List<CashFlowEntity> lista = new List<CashFlowEntity>();
+
+            foreach (var item in result)
+            {
+                lista.Add(item);
+            }
+
+            return lista;
+        }
+
+        public Task<CashFlowEntity> Update(CashFlowEntity item)
+        {
+            var result = _repository.Update(item);
             return result;
         }
+
+        public CashFlowEntity Get(int id)
+        {
+            var result = _repository.Get(id);
+            return result;
+        }
+
+        public decimal ValorTotalDespesa(int userId, string nameCategoria, string decision)
+        {
+            switch (nameCategoria)
+            {
+                case "0":
+                    nameCategoria = "mercado";
+                    break;
+
+                case "1":
+                    nameCategoria = "lazer";
+                    break;
+
+                case "2":
+                    nameCategoria = "contas";
+                    break;
+
+                case "3":
+                    nameCategoria = "vestuario";
+                    break;
+
+                case "4":
+                    nameCategoria = "saude";
+                    break;
+
+                case "5":
+                    nameCategoria = "salario";
+                    break;
+
+                case "6":
+                    nameCategoria = "poupança";
+                    break;
+
+                default:
+                    break;
+            }
+
+            switch (decision)
+            {
+                case "0":
+                    decision = "receita";
+                    break;
+
+                case "1":
+                    decision = "despesa";
+                    break;
+                default:
+                    break;
+            }
+            var result = _repository.ValorTotalDespesa(userId, nameCategoria, decision);
+            return result;
+        }
+
+        public decimal ValorTotalReceita(int userId, string nameCategoria, string decision)
+        {
+            switch (nameCategoria)
+            {
+                case "0":
+                    nameCategoria = "mercado";
+                    break;
+
+                case "1":
+                    nameCategoria = "lazer";
+                    break;
+
+                case "2":
+                    nameCategoria = "contas";
+                    break;
+
+                case "3":
+                    nameCategoria = "vestuario";
+                    break;
+
+                case "4":
+                    nameCategoria = "saude";
+                    break;
+
+                case "5":
+                    nameCategoria = "salario";
+                    break;
+
+                case "6":
+                    nameCategoria = "poupança";
+                    break;
+
+                default:
+                    break;
+            }
+
+            switch (decision)
+            {
+                case "0":
+                    decision = "receita";
+                    break;
+
+                case "1":
+                    decision = "despesa";
+                    break;
+                default:
+                    break;
+            }
+            var result = _repository.ValorReceita(userId, nameCategoria, decision);
+            return result;
+        }
+
+       
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities.BaseEntities;
 using MyFinance.Domain.Entities.Enums;
 using System.ComponentModel.DataAnnotations;
@@ -44,7 +43,20 @@ namespace MyFinance.Domain.Entities
         [Display(Name = "Valor")]
         public decimal ValueCash { get; set; }
 
+        [NotMapped]
+        [Display(Name ="Valor Total de Despesas")]
+        public decimal ValorTotalDespesa { get; set; }
+        
+        [NotMapped]
+        [Display(Name ="Valor Total de Receita")]
+        public decimal ValorTotalReceita { get; set; }
 
+        [Column("IsPago")]
+        [Display(Name ="Efetuado Pagamento")]
+        public bool IsPago { get; set; }
+
+        [NotMapped]
+        public IsPagoEnum Pago { get; set; }
         [NotMapped]
         public IHttpContextAccessor HttpContextAccessor { get; set; }
     }

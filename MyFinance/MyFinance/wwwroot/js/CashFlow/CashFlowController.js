@@ -1,14 +1,22 @@
-﻿$("#buttonSearch").on("click", function () {
-    $.ajax(
-        {
-            type: "POST",
-            url: "CashFlow", "GetAllDespesas"),
-        dataType: "json",
-            success: function(result) {
-
-            },
-    error: function(x, e) {
-
-    }
+﻿debugger;
+$('#editButton').on("click", function () {
+    
+    EditarPlanoConta(id);
 });
+$('#buttonSearch').on("click", function () {
+
+    getDespesaReceita();
+
+
+    $('#CategoryTypeId').removeData($('#CategoryTypeId').val);
+    $('#CashFlowTypeId').removeData($('#CashFlowTypeId').val);
 });
+
+
+function getDespesaReceita() {
+    $('#resultDespesaSelectedDiv').load("/CashFlow/GetDespesaReceita?categoryName=" + $('#CategoryTypeId').val() + "&decision=" + $('#CashFlowTypeId').val());
+};
+
+function DetalhePlanoConta(id) {
+    $('#renderEditView').load("/CashFlow/Detalhes?id=" + id);
+};

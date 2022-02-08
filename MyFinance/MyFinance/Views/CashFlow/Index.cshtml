@@ -2,48 +2,73 @@
 @{
     ViewData["Title"] = "Fluxo de caixa";
 }
+<link href="~/css/CashFlow/CashFlowCss.css" rel="stylesheet" />
+<style>
+    .partialViewWrapper {
+        top: -20px;
+        height: 800px;
+        width: 800px;
+        overflow-y: auto;
+    }
+</style>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="card">
         <div class="body">
-            <form>
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CategoryEnum, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                <select asp-for="CategoryEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()"></select>
+            @*<form>*@
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CategoryEnum, htmlAttributes: new { @class = "control-label col-md-8" })
+                        <div class="col-md-10">
+                            <select asp-for="CategoryEnum" id="CategoryTypeId" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()">
+                                <option selected="selected" value="">Todos</option>
+                            </select>
+                            @*@Html.DropDownList("Categoria",
+                        Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>(),
+                        "Selecione", new { @id = "CategoryTypeId", @class = "form-control" })*@
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                <select asp-for="TipoCashEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()"></select>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="demo-google-material-icon">
-                            <button type="button" class="btn bg-cyan waves-effect" id="buttonSearch"><i class="material-icons">search</i><span class="icon-name">Pesquisar</span></button>
                         </div>
                     </div>
                 </div>
-            </form>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-8" })
+                        <div class="col-md-10">
+                            <select asp-for="TipoCashEnum" id="CashFlowTypeId" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()">
+                                <option selected="selected" value="">Todos</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="demo-google-material-icon">
+                        <button type="button" data-color="teal" class="btn bg-teal waves-effect" data-toggle="modal" data-target="#mdModal" id="buttonSearch"><i class="material-icons">search</i><span class="icon-name">Pesquisar</span></button>
+
+                    </div>
+                </div>
+                <p>
+
+
+
+                    <div class="partialViewWrapper" id="resultDespesaSelectedDiv">
+
+                    </div>
+                </p>
+            </div>
+            
         </div>
     </div>
 </div>
-<br />
 
-@*<div id="result">
+<!-- Button trigger modal -->
 
-            @{
-                Html.Partial("GetAllDespesas");
-            }
-
-    </div>*@
 <script>
-
+   
 </script>
+
+
+<!-- Modal -->
+<div id="modalResult"></div>
+
+

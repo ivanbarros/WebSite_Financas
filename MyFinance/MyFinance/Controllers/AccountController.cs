@@ -10,10 +10,10 @@ namespace MyFinance.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly AccountServiceApplication _service;
+        private readonly IAccountServiceApplication _service;
         IHttpContextAccessor _httpContextAccessor;
 
-        public AccountController(AccountServiceApplication service, IHttpContextAccessor httpContextAccessor)
+        public AccountController(IAccountServiceApplication service, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
             

@@ -6,7 +6,7 @@ namespace MyFinance.Controllers
 {
     public class AccountPlanController : Controller
     {
-        private readonly IAccountPlanServiceApplication _service;
+        //private readonly IAccountPlanServiceApplication _service;
         IHttpContextAccessor _httpContextAccessor;
     }
 }

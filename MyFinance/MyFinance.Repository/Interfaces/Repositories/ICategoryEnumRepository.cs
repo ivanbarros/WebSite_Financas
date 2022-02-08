@@ -2,7 +2,7 @@
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    public interface ICategoryEnumRepository : IRepositoryBase<CategoryEnumEntity,SqlContext>
+    public interface ICategoryEnumRepository //: IRepositoryBase<CategoryEnumEntity,SqlContext>
     {
 
     }

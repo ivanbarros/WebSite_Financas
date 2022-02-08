@@ -22,6 +22,11 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
+        public Task<UserEntity> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<UserEntity>> GetAll()
         {
             throw new NotImplementedException();
@@ -35,6 +40,10 @@ namespace MyFinance.Service
             _repository.Add(item);
         }
 
+        public Task<UserEntity> Update(UserEntity item)
+        {
+            throw new NotImplementedException();
+        }
 
         public UserEntity ValidarLogin(UserEntity usuario)
         {

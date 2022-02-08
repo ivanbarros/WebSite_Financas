@@ -20,6 +20,11 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
+        public Task<AccountEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<IEnumerable<AccountEntity>> GetAll()
         {
            var result =  _service.GetAll();
@@ -35,6 +40,11 @@ namespace MyFinance.ServicesApplication
         {
            var result =  _service.ListaConta(Id);
             return result;
+        }
+
+        public Task<AccountEntity> Update(AccountEntity entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
