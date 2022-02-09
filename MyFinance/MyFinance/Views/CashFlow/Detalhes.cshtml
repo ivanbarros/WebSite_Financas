@@ -1,8 +1,7 @@
 ﻿@model MyFinance.Domain.Entities.CashFlowEntity
-
+    
 <div>
-   
-    <hr />
+    
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Descricao)
@@ -34,6 +33,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.IsPago)
         </dt>
+        
         @{
             if (Model.IsPago == true)
             {
@@ -49,6 +49,21 @@
             }
         }
         <dt>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePaymentRealized)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.DatePaymentRealized.ToString())
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
         <dd>
@@ -57,6 +72,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a href="/CashFlow/Editar"  class="btn bg-teal waves-effect">Editar</a>
+    @*@Html.ActionLink("Edit", "Edit", new { @class="btn bg-teal waves-effect"})*@
+    @*<a asp-action="Index">Back to List</a>*@
 </div>

@@ -29,6 +29,14 @@ namespace MyFinance.Repository
                 entity.CreateDate = DateTime.Now;
                 entity.Category = Convert.ToString(entity.CategoryEnum);
                 entity.IsActive = true;
+                if (entity.DatePaymentRealized == null || entity.DatePaymentRealized == Convert.ToDateTime("01/01/0001 00:00:00"))
+                {
+                    entity.DatePaymentRealized = DateTime.MinValue;
+                }
+                if (entity.PaymentDate == null || entity.PaymentDate == Convert.ToDateTime("01/01/0001 00:00:00"))
+                {
+                    entity.PaymentDate = DateTime.MinValue;
+                }
                 if (entity.Pago.ToString() == "Sim")
                 {
                     entity.IsPago = true;

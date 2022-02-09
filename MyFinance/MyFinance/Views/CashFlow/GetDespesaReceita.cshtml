@@ -37,6 +37,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CreateDate)
                     </th>
+
                     <th>
                         <label for="md_checkbox_29"> @Html.DisplayNameFor(model => model.IsPago)</label>
                     </th>
@@ -64,6 +65,8 @@
                         <td>
                             R$ @Html.DisplayFor(modelItem => item.ValueCash)
                         </td>
+                        
+                        
 
 
                         @if (item.IsPago == true)
@@ -138,6 +141,7 @@
                     <div class="modal-content modal-col-teal">
                         <div class="modal-header">
                             <h5 class="modal-title" id="defaultModalLabel">Detalhes</h5>
+                            <hr />
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
