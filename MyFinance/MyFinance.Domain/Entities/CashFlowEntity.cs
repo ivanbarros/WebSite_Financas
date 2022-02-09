@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MyFinance.Domain.Entities.BaseEntities;
 using MyFinance.Domain.Entities.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -54,6 +55,14 @@ namespace MyFinance.Domain.Entities
         [Column("IsPago")]
         [Display(Name ="Efetuado Pagamento")]
         public bool IsPago { get; set; }
+
+        [Display(Name ="Data do pagamento")]
+        [Column("PaymentDate")]
+        public DateTime PaymentDate { get; set; }
+
+        [Display(Name ="Pagamento realizado")]
+        [Column("DatePaymentRealized")]
+        public DateTime DatePaymentRealized { get; set; }
 
         [NotMapped]
         public IsPagoEnum Pago { get; set; }

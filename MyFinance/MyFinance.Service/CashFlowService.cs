@@ -71,6 +71,22 @@ namespace MyFinance.Service
                 case "6":
                     nameCategoria = "poupança";
                     break;
+                case "7":
+                    nameCategoria = "recebimento por Boleto";
+                    break;
+
+                case "8":
+                    nameCategoria = "pix";
+                    break;
+
+                case "9":
+                    nameCategoria = "Depósito Bancário";
+                    break;
+
+                case "10":
+                    
+                    nameCategoria = "Transferência Bancária";
+                    break;
 
                 default:
                     break;
@@ -216,6 +232,6 @@ namespace MyFinance.Service
             return result;
         }
 
-       
+
     }
 }

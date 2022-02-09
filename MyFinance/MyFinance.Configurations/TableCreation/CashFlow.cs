@@ -22,12 +22,20 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("TypeCashFlow").AsString()
                 .NotNullable()
 
-
                 .WithColumn("ValueCash").AsDecimal()
                 .NotNullable()
 
                 .WithColumn("Category").AsString()
-                .NotNullable();
+                .NotNullable()
+
+                .WithColumn("PaymentDate").AsDateTime2()
+                .Nullable()
+
+               .WithColumn("DatePaymentRealized").AsDateTime2()
+               .Nullable()
+
+               .WithColumn("IsPago").AsBoolean()
+               .Nullable();
         }
     }
 }
