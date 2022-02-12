@@ -16,7 +16,7 @@ namespace MyFinance.ServicesApplication
         }
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+            _service.Excluir(id);
         }
 
         public Task<IEnumerable<ExtractEntity>> GetAll()

@@ -50,9 +50,9 @@ namespace MyFinance.ServicesApplication
             return result;
         }
 
-        public CashFlowEntity Get(int id)
+        public async Task<CashFlowEntity> Get(int id)
         {
-            var result = _service.Get(id);
+            var result = await _service.Get(id);
             CashFlowEntity cash = new CashFlowEntity();
             foreach (var item in result.ValueCash.ToString())
             {

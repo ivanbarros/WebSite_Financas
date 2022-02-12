@@ -1,12 +1,11 @@
-﻿debugger;
-$('#editButton').on("click", function () {
+﻿$('#editButton').on("click", function () {
     
     EditarPlanoConta(id);
 });
+
 $('#buttonSearch').on("click", function () {
 
     getDespesaReceita();
-
 
     $('#CategoryTypeId').removeData($('#CategoryTypeId').val);
     $('#CashFlowTypeId').removeData($('#CashFlowTypeId').val);

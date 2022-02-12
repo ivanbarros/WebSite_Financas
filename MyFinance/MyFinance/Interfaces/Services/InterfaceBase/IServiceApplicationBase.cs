@@ -9,6 +9,7 @@ namespace MyFinance.Interfaces.Services.InterfaceBase
         void Insert(T item);
         void Excluir(int id);
         Task<T> Update(T entity);
-        
+        Task<T> Get(int id);
+
     }
 }
