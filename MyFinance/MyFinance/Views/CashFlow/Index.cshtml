@@ -24,8 +24,8 @@
                                 <option selected="selected" value="">Todos</option>
                             </select>
                             @*@Html.DropDownList("Categoria",
-                        Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>(),
-                        "Selecione", new { @id = "CategoryTypeId", @class = "form-control" })*@
+                                Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>(),
+                                "Selecione", new { @id = "CategoryTypeId", @class = "form-control" })*@
 
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     </div>
                 </p>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -64,11 +64,12 @@
 <!-- Button trigger modal -->
 
 <script>
-   
+
 </script>
 
 
 <!-- Modal -->
 <div id="modalResult"></div>
-
-
+@section Scripts {
+    <script src="~/js/CashFlow/CashFlowController.js"></script>
+    }

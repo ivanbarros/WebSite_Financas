@@ -33,7 +33,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.IsPago)
         </dt>
-        
+
         @{
             if (Model.IsPago == true)
             {
@@ -51,18 +51,17 @@
         <dt>
             @Html.DisplayNameFor(model => model.PaymentDate)
         </dt>
-        
+
         <dd>
             @Html.DisplayFor(model => model.PaymentDate)
         </dd>
-        
         <dt>
             @Html.DisplayNameFor(model => model.DatePaymentRealized)
         </dt>
-        
         <dd>
-            @Html.DisplayFor(model => model.DatePaymentRealized.ToString())
+            @Html.DisplayFor(model => model.DatePaymentRealized)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
@@ -72,7 +71,7 @@
     </dl>
 </div>
 <div>
-    <a href="/CashFlow/Editar"  class="btn bg-teal waves-effect">Editar</a>
+    <a href="/CashFlow/Editar?Id=@Html.DisplayFor(model => model.Id)"  class="btn bg-teal waves-effect">Editar</a>
     @*@Html.ActionLink("Edit", "Edit", new { @class="btn bg-teal waves-effect"})*@
     @*<a asp-action="Index">Back to List</a>*@
 </div>

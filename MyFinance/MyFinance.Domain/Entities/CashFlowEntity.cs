@@ -56,12 +56,14 @@ namespace MyFinance.Domain.Entities
         [Display(Name ="Efetuado Pagamento")]
         public bool IsPago { get; set; }
 
-        [Display(Name ="Data do pagamento")]
         [Column("PaymentDate")]
+        [Display(Name ="Data do vencimento")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PaymentDate { get; set; }
 
-        [Display(Name ="Pagamento realizado")]
         [Column("DatePaymentRealized")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name ="Pagamento realizado")]
         public DateTime DatePaymentRealized { get; set; }
 
         [NotMapped]

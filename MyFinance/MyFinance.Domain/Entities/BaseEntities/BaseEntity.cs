@@ -7,7 +7,7 @@ namespace MyFinance.Domain.Entities.BaseEntities
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Inserido em")]
+        [Display(Name = "Data do cadastro")]
         public DateTime CreateDate { get; set; }
     }
 }

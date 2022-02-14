@@ -28,10 +28,10 @@ namespace MyFinance.Configurations.TableCreation
                 .WithColumn("Category").AsString()
                 .NotNullable()
 
-                .WithColumn("PaymentDate").AsDateTime2()
+                .WithColumn("PaymentDate").AsDateTime()
                 .Nullable()
 
-               .WithColumn("DatePaymentRealized").AsDateTime2()
+               .WithColumn("DatePaymentRealized").AsDateTime()
                .Nullable()
 
                .WithColumn("IsPago").AsBoolean()
