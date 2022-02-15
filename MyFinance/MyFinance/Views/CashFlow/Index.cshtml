@@ -1,4 +1,4 @@
-﻿@model MyFinance.Domain.Entities.CashFlowEntity
+@model MyFinance.Domain.Entities.CashFlowEntity
 @{
     ViewData["Title"] = "Fluxo de caixa";
 }
@@ -11,6 +11,7 @@
         overflow-y: auto;
     }
 </style>
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="card">
         <div class="body">
@@ -63,13 +64,8 @@
 
 <!-- Button trigger modal -->
 
-<script>
-
-</script>
-
-
 <!-- Modal -->
 <div id="modalResult"></div>
-@section Scripts {
-    <script src="~/js/CashFlow/CashFlowController.js"></script>
-    }
+@section Scripts{
+    <script type="text/javascript" src="~/js/CashFlow/CashFlowController.js"></script>
+}

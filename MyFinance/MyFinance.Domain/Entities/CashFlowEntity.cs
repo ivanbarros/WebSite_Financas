@@ -42,6 +42,7 @@ namespace MyFinance.Domain.Entities
 
         [Column("ValueCash")]
         [Display(Name = "Valor")]
+        [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         public decimal ValueCash { get; set; }
 
         [NotMapped]

@@ -1,11 +1,20 @@
-﻿namespace MyFinance.Domain.Entities.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyFinance.Domain.Entities.Enums
 {
     public enum PaymentMethodEnum
     {
+        [Display(Name = "Dinheiro")]
         cash,
+        [Display(Name = "Debito")]
         debit,
+        [Display(Name = "Crédito")]
         credit,
+        [Display(Name = "Cheque")]
         check,
-        pix
+        [Display(Name = "Pix")]
+        pix,
+        [Display(Name = "Transferência")]
+        transfer
     }
 }

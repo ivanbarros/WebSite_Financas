@@ -1,5 +1,6 @@
 ﻿using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services.InterfaceBase;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,6 +23,11 @@ namespace MyFinance.ServicesApplication
             throw new System.NotImplementedException();
         }
 
+        public Task<IEnumerable<CalendarEventEntity>> GetAll(DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(CategoryEnumEntity item)
         {
             throw new System.NotImplementedException();
@@ -31,5 +37,7 @@ namespace MyFinance.ServicesApplication
         {
             throw new System.NotImplementedException();
         }
+
+       
     }
 }

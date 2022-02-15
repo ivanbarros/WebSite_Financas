@@ -18,8 +18,8 @@ namespace MyFinance.Configurations.DependencyInjections
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICashFlowService, CashFlowService>();
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddScoped<IWaiterService, WaiterService>();
+            services.AddScoped<ICalendarEventService, CalendarEventService>();
+            services.AddScoped<IExtractService, ExtractService>();
             //services.AddScoped<IOneSignalService, OneSignalService>();
         }
     }

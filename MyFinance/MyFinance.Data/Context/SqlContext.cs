@@ -24,6 +24,8 @@ namespace MyFinance.Data.Context
         public DbSet<ExtractEntity> Extract { get; set; }
         public DbSet<CustomerEntity> Customer { get; set; }
         public DbSet<AccountPlanEntity> AccountPlan { get; set; }
+        public DbSet<CalendarEventEntity> Events { get; set; }
+        public DbSet<TransactionEntity> Transaction { get; set; }
 
         public SqlContext()
         {

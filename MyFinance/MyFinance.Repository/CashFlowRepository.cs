@@ -86,7 +86,7 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
-        public CashFlowEntity Get(int id)
+        public async Task<CashFlowEntity> Get(int id)
         {
             var registro =  _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
 

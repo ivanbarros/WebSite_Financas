@@ -37,7 +37,9 @@ namespace MyFinance
             ConfigureServiceApplication.ConfigureDependenciesServiceAppication(services);
             ConfigureRepository.ConfigureDependenciesRepositories(services);
             var connection = Configuration["sqlDb:connectionString"];
+            
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
+            
             services.AddSqlDatabase(Configuration);
             services.AddSession(options =>
             {

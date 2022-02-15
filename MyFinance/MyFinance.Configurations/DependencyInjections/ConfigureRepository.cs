@@ -20,7 +20,8 @@ namespace MyFinance.Configurations.DependencyInjections
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICashFlowRepository, CashFlowRepository>();
-            //services.AddScoped<ILogRepository, LogRepository>();
+            services.AddScoped<ICalendarEventRepository, CalendarEventRepository>();
+            services.AddScoped<IExtractRepository, ExtractRepository>();
 
         }
     }
