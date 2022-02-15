@@ -33,9 +33,10 @@
           
             <div class="form-group">
                 <div class="checkbox">
-                    <label>
-                        <input asp-for="IsPago" /> @Html.DisplayNameFor(model => model.IsPago)
-                    </label>
+                    @*<input type="checkbox" id="md_checkbox_10" class="chk-col-green" name="md_checkbox_10" @(Model.IsPago ? "checked='checked'" : "")>*@
+                    @Html.CheckBoxFor(x=>x.IsPago, new {  @class = "chk-col-green"})
+                    <label asp-for="IsPago">@Html.DisplayNameFor(model => model.IsPago)</label>
+                    <span asp-validation-for="IsPago" class="text-danger"></span>
                 </div>
             </div>
 

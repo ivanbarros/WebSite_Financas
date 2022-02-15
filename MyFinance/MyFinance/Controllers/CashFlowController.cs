@@ -59,18 +59,18 @@ namespace MyFinance.Controllers
             {
 
                 despesa = _service.ValorTotalDespesa(idUsuario,categoryName, decision);
+                ViewBag.Despesa = despesa;
             }
             if (decision =="0" || String.IsNullOrEmpty(decision))
             {
 
                 receita = _service.ValorTotalReceita(idUsuario,categoryName, decision);
+                ViewBag.Receita = receita;
             }
             
            
 
             ViewBag.ListaDespesaReceita = result;            
-            ViewBag.Despesa = despesa;
-            ViewBag.Receita = receita;
 
             return PartialView("GetDespesaReceita");
         }
@@ -80,9 +80,11 @@ namespace MyFinance.Controllers
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
-            _service.Get(id);
-            
-            return View();
+           var result =  _service.Get(id);
+            //ViewBag.EditCash = result;
+
+
+            return View(result);
         }
         
         

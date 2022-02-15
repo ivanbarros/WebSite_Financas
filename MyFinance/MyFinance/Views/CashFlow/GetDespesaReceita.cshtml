@@ -10,12 +10,7 @@
         var totalDespesa = ViewBag.Despesa;
         var totalReceita = ViewBag.Receita;
 
-        //decimal totalDespesa = 0.0M;
-        //decimal totalReceita = 0.0M;
-
-
-        //if (ViewBag.ListaDespesaReceita != null)
-        //{
+       
         <table class="table" id="tableDespesaReceita">
             <thead>
                 <tr>
@@ -49,12 +44,13 @@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
                 {
-                    //totalDespesa = item.ValorTotalDespesa;
-                    //totalReceita = item.ValorTotalReceita;
                     <tr>
 
 
                         <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                         <td>
                             @Html.DisplayFor(modelItem => item.Tipo)
                         </td>
 
@@ -64,6 +60,10 @@
 
                         <td>
                             R$ @Html.DisplayFor(modelItem => item.ValueCash)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateDate)
                         </td>
                         
                         
@@ -97,9 +97,6 @@
                                 <i class="material-icons" style="color:#fff;">delete_forever</i>
                             </button>
                         </td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id/* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id/* id=item.PrimaryKey */ })*@
 
                     </tr>
 
@@ -119,7 +116,7 @@
                             </th>
                         </tr>
                     }
-                    if (totalReceita > 0.0M)
+                    if (totalReceita != totalDespesa)
                     {
                         <tr>
                             <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
@@ -156,7 +153,7 @@
                         </div>
                         <div class="modal-footer">
 
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Ok</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">OK</button>
                             @*<button type="button" class="btn btn-link waves-effect" data-dismiss="modal" id="confirmed_btn">Yes</button>*@
 
                         </div>

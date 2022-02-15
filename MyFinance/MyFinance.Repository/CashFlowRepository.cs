@@ -88,20 +88,9 @@ namespace MyFinance.Repository
 
         public async Task<CashFlowEntity> Get(int id)
         {
-            var registro = _context.CashFlow.Where(c => c.Id.Equals(id));  /* _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));*/
-            var cash = new CashFlowEntity();
-            foreach (var item in registro)
-            {
-                cash.Usuario_id = item.Usuario_id;
-                cash.Tipo = item.Tipo;
-                cash.IsPago = item.IsPago;
-                cash.Descricao = item.Descricao;
-                cash.CreateDate = item.CreateDate;
-                cash.Category = item.Category;
-                cash.ValueCash = item.ValueCash;
-            }
+            var registro =  _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
 
-            return cash;
+            return registro.Result;
         }
 
         public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
