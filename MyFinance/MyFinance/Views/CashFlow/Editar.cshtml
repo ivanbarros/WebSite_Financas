@@ -2,113 +2,49 @@
 
 
 <hr />
-@*<div class="row">
-        <div class="col-md-4">
-            <form asp-action="Editar">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Descricao" class="control-label"></label>
-                    <input asp-for="Descricao" class="form-control" value=" @Html.TextBoxFor(model => model.Descricao).ToString()" />
-
-                    <span asp-validation-for="Descricao" class="text-danger"></span>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="CategoryEnum" class="control-label"></label>
+                <input asp-for="CategoryEnum" class="form-control" />
+                <span asp-validation-for="CategoryEnum" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="TipoCashEnum" class="control-label"></label>
+                <input asp-for="TipoCashEnum" class="form-control" />
+                <span asp-validation-for="TipoCashEnum" class="text-danger"></span>
+            </div>
+           
+          
+            <div class="form-group">
+                <label asp-for="ValueCash" class="control-label"></label>
+                <input asp-for="ValueCash" class="form-control" />
+                <span asp-validation-for="ValueCash" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <div class="checkbox">
+                    @*<input type="checkbox" id="md_checkbox_10" class="chk-col-green" name="md_checkbox_10" @(Model.IsPago ? "checked='checked'" : "")>*@
+                    @Html.CheckBoxFor(x=>x.IsPago, new {  @class = "chk-col-green"})
+                    <label asp-for="IsPago">@Html.DisplayNameFor(model => model.IsPago)</label>
+                    <span asp-validation-for="IsPago" class="text-danger"></span>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="CategoryEnum" class="control-label"></label>
-                    <input asp-for="CategoryEnum" class="form-control" />
-                    <span asp-validation-for="CategoryEnum" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="TipoCashEnum" class="control-label"></label>
-                    <input asp-for="TipoCashEnum" class="form-control" />
-                    <span asp-validation-for="TipoCashEnum" class="text-danger"></span>
-                </div>
-
-
-                <div class="form-group">
-                    <label asp-for="ValueCash" class="control-label"></label>
-                    <input asp-for="ValueCash" class="form-control" />
-                    <span asp-validation-for="ValueCash" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="IsPago" /> @Html.DisplayNameFor(model => model.IsPago)
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
-    </div>*@
-
-
-<div>
-
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.Descricao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.Tipo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValueCash)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.ValueCash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPago)
-        </dt>
-
-
-        <dd>
-            @Html.TextBoxFor(model => model.IsPago)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentDate)
-        </dt>
-
-        <dd>
-            @Html.TextBoxFor(model => model.PaymentDate,new{ @placeholder = $"{ @Html.DisplayFor(model => model.PaymentDate)}",@requried = "required"})
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePaymentRealized)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.DatePaymentRealized)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-        <dd>
-            @Html.TextBoxFor(model => model.CreateDate)
-        </dd>
-    </dl>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div>
@@ -116,5 +52,5 @@
 </div>
 
 @*@section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }*@
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

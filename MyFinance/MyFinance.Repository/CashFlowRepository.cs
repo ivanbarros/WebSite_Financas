@@ -88,20 +88,7 @@ namespace MyFinance.Repository
 
         public CashFlowEntity Get(int id)
         {
-            var registro = /*_context.CashFlow.Where(c => c.Id.Equals(id));*/ _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
-            //var cash = new CashFlowEntity();
-            //foreach (var item in registro)
-            //{
-            //    cash.Usuario_id = item.Usuario_id;
-            //    cash.Tipo = item.Tipo;
-            //    cash.IsPago = item.IsPago;
-            //    cash.Descricao = item.Descricao;
-            //    cash.CreateDate = item.CreateDate;
-            //    cash.Category = item.Category;
-            //    cash.ValueCash = item.ValueCash;
-            //    cash.PaymentDate = item.PaymentDate;
-            //    cash.DatePaymentRealized = item.DatePaymentRealized;
-            //}
+            var registro =  _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
 
             return registro.Result;
         }
