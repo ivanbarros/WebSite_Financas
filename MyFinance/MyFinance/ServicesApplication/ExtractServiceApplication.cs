@@ -38,7 +38,7 @@ namespace MyFinance.ServicesApplication
             throw new System.NotImplementedException();
         }
 
-        public Task<ExtractEntity> Get(int id)
+        public ExtractEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

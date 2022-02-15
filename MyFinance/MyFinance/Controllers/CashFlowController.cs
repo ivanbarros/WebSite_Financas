@@ -104,7 +104,7 @@ namespace MyFinance.Controllers
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var result = _service.Get(id);
             
-            return PartialView("Detalhes",result);
+            return PartialView(result);
         }
     }
 }

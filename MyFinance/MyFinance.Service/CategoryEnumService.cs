@@ -14,7 +14,7 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public Task<CategoryEnumEntity> Get(int id)
+        public CategoryEnumEntity Get(int id)
         {
             throw new NotImplementedException();
         }

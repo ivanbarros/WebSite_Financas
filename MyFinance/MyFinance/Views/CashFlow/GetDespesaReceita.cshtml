@@ -116,7 +116,7 @@
                             </th>
                         </tr>
                     }
-                    if (totalReceita != totalDespesa)
+                    if (totalReceita > 0.0M)
                     {
                         <tr>
                             <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
@@ -145,9 +145,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <div id="renderEditView">
-
-                            </div>
+                            <div id="renderEditView"></div>
 
 
                         </div>

@@ -19,7 +19,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<CashFlowTypeEnumEntity> Get(int id)
+        public CashFlowTypeEnumEntity Get(int id)
         {
             throw new NotImplementedException();
         }

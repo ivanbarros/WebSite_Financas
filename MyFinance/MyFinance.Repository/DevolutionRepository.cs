@@ -19,7 +19,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<DevolutionEntity> Get(int id)
+        public DevolutionEntity Get(int id)
         {
             throw new NotImplementedException();
         }

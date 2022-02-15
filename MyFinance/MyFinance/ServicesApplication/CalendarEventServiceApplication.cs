@@ -22,9 +22,9 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public async Task<CalendarEventEntity> Get(int id)
+        public CalendarEventEntity Get(int id)
         {
-            var result = await _service.Get(id);
+            var result =  _service.Get(id);
             return result;
         }
 

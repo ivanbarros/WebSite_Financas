@@ -50,7 +50,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<UserEntity> Get(int id)
+        public UserEntity Get(int id)
         {
             throw new NotImplementedException();
         }

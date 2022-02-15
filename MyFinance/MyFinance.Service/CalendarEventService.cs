@@ -22,9 +22,9 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public async Task<CalendarEventEntity> Get(int id)
+        public CalendarEventEntity Get(int id)
         {
-            var result = await _repository.Get(id);
+            var result = _repository.Get(id);
             return result;
         }
 

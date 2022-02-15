@@ -86,11 +86,25 @@ namespace MyFinance.Repository
             return Task.FromResult(entity);
         }
 
-        public async Task<CashFlowEntity> Get(int id)
+        public  CashFlowEntity Get(int id)
         {
-            var registro =  _dataset.SingleOrDefaultAsync(p => p.Id.Equals(id));
+            var registro =  /*_context.CashFlow.Where(c => c.Id.Equals(id)).FirstOrDefault();*/   _dataset.SingleOrDefault(p => p.Id.Equals(id));
+            var cash = new CashFlowEntity {
 
-            return registro.Result;
+                Usuario_id = registro.Usuario_id,
+                Tipo = registro.Tipo,
+                IsPago = registro.IsPago,
+                Descricao = registro.Descricao,
+                CreateDate = registro.CreateDate,
+                Category = registro.Category,
+                ValueCash = registro.ValueCash,
+                DatePaymentRealized = registro.DatePaymentRealized,
+                PaymentDate = registro.PaymentDate,
+                Id = registro.Id
+            };
+            
+
+            return cash;
         }
 
         public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
@@ -146,7 +160,7 @@ namespace MyFinance.Repository
             }
             else if (!String.IsNullOrEmpty(categoria) && String.IsNullOrEmpty(decision))
             {
-                var lista = _context.CashFlow.Where(c => c.Category.Equals(categoria)&& c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                var lista = _context.CashFlow.Where(c => c.Category.Equals(categoria) && c.Tipo.Equals("despesa")&& c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
                 return lista;
                
             }
@@ -177,7 +191,7 @@ namespace MyFinance.Repository
             }
             else if (!String.IsNullOrEmpty(nameCategoria) && String.IsNullOrEmpty(decision))
             {
-                var lista = _context.CashFlow.Where(c => c.Category.Equals(nameCategoria) && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
+                var lista = _context.CashFlow.Where(c => c.Category.Equals(nameCategoria) && c.Category.Equals("receita") && c.Usuario_id.Equals(userId)).Sum(c => c.ValueCash);
                 return lista;
 
             }
