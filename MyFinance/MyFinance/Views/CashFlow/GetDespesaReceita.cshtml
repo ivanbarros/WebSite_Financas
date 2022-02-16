@@ -9,7 +9,6 @@
 
         var totalDespesa = ViewBag.Despesa;
         var totalReceita = ViewBag.Receita;
-
        
         <table class="table" id="tableDespesaReceita">
             <thead>
@@ -44,6 +43,7 @@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
                 {
+                    
                     <tr>
 
 
@@ -59,14 +59,15 @@
                         </td>
 
                         <td>
-                            R$ @Html.DisplayFor(modelItem => item.ValueCash)
+                            R$  @Convert.ToDouble(item.ValueCash)
                         </td>
-                        
+
+
                         <td>
                             @Html.DisplayFor(modelItem => item.CreateDate)
                         </td>
-                        
-                        
+
+
 
 
                         @if (item.IsPago == true)
@@ -111,7 +112,7 @@
                             <th><strong>@Html.DisplayNameFor(model => model.ValorTotalDespesa)</strong></th>
 
                             <th>
-                                R$ @totalDespesa
+                                R$ @Convert.ToDouble(totalDespesa)
 
                             </th>
                         </tr>
@@ -122,7 +123,7 @@
                             <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
 
                             <th>
-                                R$ @totalReceita
+                                R$ @Convert.ToDouble(totalReceita)
 
                             </th>
                         </tr>

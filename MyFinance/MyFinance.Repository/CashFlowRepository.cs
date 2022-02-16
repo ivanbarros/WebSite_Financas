@@ -29,6 +29,7 @@ namespace MyFinance.Repository
                 entity.CreateDate = DateTime.Now;
                 entity.Category = Convert.ToString(entity.CategoryEnum);
                 entity.IsActive = true;
+                
                 if (entity.DatePaymentRealized == null || entity.DatePaymentRealized == Convert.ToDateTime("01/01/0001 00:00:00"))
                 {
                     entity.DatePaymentRealized = DateTime.MinValue;
@@ -79,8 +80,7 @@ namespace MyFinance.Repository
         }
 
         public Task<CashFlowEntity> Update(CashFlowEntity entity)
-        {
-            var registro = _context.CashFlow.Find(entity.Id);
+        {;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
             return Task.FromResult(entity);
@@ -88,7 +88,7 @@ namespace MyFinance.Repository
 
         public  CashFlowEntity Get(int id)
         {
-            var registro =  /*_context.CashFlow.Where(c => c.Id.Equals(id)).FirstOrDefault();*/   _dataset.SingleOrDefault(p => p.Id.Equals(id));
+            var registro = _dataset.SingleOrDefault(p => p.Id.Equals(id));
             var cash = new CashFlowEntity {
 
                 Usuario_id = registro.Usuario_id,
@@ -100,7 +100,8 @@ namespace MyFinance.Repository
                 ValueCash = registro.ValueCash,
                 DatePaymentRealized = registro.DatePaymentRealized,
                 PaymentDate = registro.PaymentDate,
-                Id = registro.Id
+                Id = registro.Id,
+                IsActive = registro.IsActive
             };
             
 
@@ -124,6 +125,8 @@ namespace MyFinance.Repository
             }
             if (String.IsNullOrEmpty(nameCategoria) && String.IsNullOrEmpty(decision))
             {
+                List<CashFlowEntity> listaCash = new List<CashFlowEntity>();
+                var cash = new CashFlowEntity();
                 var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).ToList();
                 result = lista;
                 return result;

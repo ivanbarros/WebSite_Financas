@@ -2,16 +2,23 @@
 
 @{
     Layout = "../Shared/_LayoutLogin.cshtml";
-    @*try
+    try
+    {
+        if (ViewBag.LoginUser != null)
         {
-            if (TempData["LoginIvalido"].ToString() != "")
-            {
-                <div class="alert alert-danger" role="alert">
-                    <strong>ATENÇÃO!!!</strong> @TempData["LoginIvalido"]
-                </div>
-            }
+
+            <div data-notify="container" class="bootstrap-notify-container alert alert-dismissible alert-danger p-r-35 animated fadeInDown fadeOutUp" role="alert" data-notify-position="bottom-left" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; bottom: 20px; left: 20px;">
+    <button type="button" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1033;">×</button>
+    <span data-notify="icon">
+        </span>
+    <span data-notify="title">
+        </span>
+    <span data-notify="message"><strong>ATENÇÃO!!!</strong> @ViewBag.LoginUser</span>
+    <a href="#" target="_blank" data-notify="url"></a></div>
+           
         }
-        catch { }*@
+    }
+    catch (Exception ex) { throw ex; }
 
 }
 <div class="d-flex justify-content-center h-100">

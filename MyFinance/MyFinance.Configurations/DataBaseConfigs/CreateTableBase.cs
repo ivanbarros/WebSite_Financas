@@ -17,7 +17,7 @@ namespace MyFinance.Configurations.DataBaseConfigs
                 .WithColumn("IsActive").AsBoolean()
                 .NotNullable()
 
-                .WithColumn("CreateDate").AsDateTime()
+                .WithColumn("CreateDate").AsDateTime2()
                 .NotNullable();
 
             if (userFK)

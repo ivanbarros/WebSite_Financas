@@ -13,15 +13,15 @@
             </div>
            
             <div class="form-group">
-                <label asp-for="CategoryEnum" class="control-label"></label>
-                <input asp-for="CategoryEnum" class="form-control" />
-                <span asp-validation-for="CategoryEnum" class="text-danger"></span>
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
             </div>
            
             <div class="form-group">
-                <label asp-for="TipoCashEnum" class="control-label"></label>
-                <input asp-for="TipoCashEnum" class="form-control" />
-                <span asp-validation-for="TipoCashEnum" class="text-danger"></span>
+                <label asp-for="Tipo" class="control-label"></label>
+                <input asp-for="Tipo" class="form-control" />
+                <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
            
           
@@ -29,6 +29,34 @@
                 <label asp-for="ValueCash" class="control-label"></label>
                 <input asp-for="ValueCash" class="form-control" />
                 <span asp-validation-for="ValueCash" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="PaymentDate" class="control-label"></label>
+                <input asp-for="PaymentDate" class="form-control" />
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DatePaymentRealized" class="control-label"></label>
+                <input asp-for="DatePaymentRealized" class="form-control" />
+                <span asp-validation-for="DatePaymentRealized" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+               
+                <input asp-for="Id" class="form-control" type="hidden" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input asp-for="Usuario_id" class="form-control" type="hidden" />
+                <span asp-validation-for="Usuario_id" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input asp-for="IsActive" class="form-control" type="hidden" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
             </div>
           
             <div class="form-group">
@@ -41,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </form>
     </div>
@@ -51,6 +79,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@*@section Scripts {
+@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
+}

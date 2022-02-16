@@ -15,10 +15,10 @@ namespace MyFinance.Configurations.DependencyInjections
         public static void ConfigureDependenciesRepositories(this IServiceCollection services)
         {
 
-            services.AddTransient(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IAccountRepository, AccountRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICashFlowRepository, CashFlowRepository>();
             services.AddScoped<ICalendarEventRepository, CalendarEventRepository>();
             services.AddScoped<IExtractRepository, ExtractRepository>();
