@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MyFinance.Service
 {
 
-    public class AccountService : IAccountService
+    public class AccountService : IAccounPlantService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
         private readonly IAccountRepository _repository;

@@ -4,6 +4,7 @@ using MyFinance.Repository.Interfaces.Repositories;
 using MyFinance.Service.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,13 +34,18 @@ namespace MyFinance.Service
 
         public void Insert(AccountPlanEntity item)
         {
-            _repository.Add(conta);
+            _repository.Add(item);
         }
 
         public List<AccountPlanEntity> ListaConta(int id)
         {
-            var result = _repository.ListaConta(id);
+            var result = _repository.ListaConta(id).ToList();
             return result;
+        }
+
+        public Task<AccountPlanEntity> Update(AccountPlanEntity item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

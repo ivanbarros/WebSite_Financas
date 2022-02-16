@@ -11,6 +11,8 @@ namespace MyFinance.Repository
 {
     public class AccountRepository : IAccountRepository
     {
+        private readonly IAccountRepository _accountRepository;
+
         SqlContext _context = new SqlContext();
         private DbSet<AccountEntity> _dataset;
 
@@ -19,7 +21,6 @@ namespace MyFinance.Repository
             _context = context;
             _dataset = context.Set<AccountEntity>();
         }
-
         public Task<AccountEntity> Add(AccountEntity entity)
         {
             

@@ -19,7 +19,7 @@ namespace MyFinance.Repository
             _context = context;
             _dataset = context.Set<CashFlowTypeEnumEntity>();
         }
-        public System.Threading.Tasks.Task<CashFlowTypeEnum> Add(CashFlowTypeEnum entity)
+        public Task<CashFlowTypeEnumEntity> Add(CashFlowTypeEnumEntity entity)
         {
             throw new NotImplementedException();
         }

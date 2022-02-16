@@ -32,7 +32,12 @@ namespace MyFinance.Service
 
         public void Insert(AddressEntity item)
         {
-            _repository.Add(conta);
+            _repository.Add(item);
+        }
+
+        public Task<AddressEntity> Update(AddressEntity item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

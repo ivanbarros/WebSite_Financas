@@ -31,7 +31,12 @@ namespace MyFinance.Service
 
         public void Insert(CustomerEntity item)
         {
-            _repository.Add(conta);
+            _repository.Add(item);
+        }
+
+        public Task<CustomerEntity> Update(CustomerEntity item)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

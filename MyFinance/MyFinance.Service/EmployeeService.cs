@@ -34,5 +34,10 @@ namespace MyFinance.Service
         {
             _repository.Add(item);
         }
+
+        public Task<EmployeeEntity> Update(EmployeeEntity item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

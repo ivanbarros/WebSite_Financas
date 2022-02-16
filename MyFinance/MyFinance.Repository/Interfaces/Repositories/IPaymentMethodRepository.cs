@@ -3,7 +3,7 @@ using MyFinance.Domain.Entities;
 
 namespace MyFinance.Repository.Interfaces.Repositories
 {
-    partial interface IPaymentMethodRepository : IRepositoryBase<PaymentMethodEntity,SqlContext>
+    public interface IPaymentMethodRepository : IRepositoryBase<PaymentMethodEntity,SqlContext>
     {
 
     }

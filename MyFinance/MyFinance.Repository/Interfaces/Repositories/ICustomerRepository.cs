@@ -5,5 +5,6 @@ namespace MyFinance.Repository.Interfaces.Repositories
 {
     public interface ICustomerRepository : IRepositoryBase<CustomerEntity,SqlContext>
     {
+
     }
 }

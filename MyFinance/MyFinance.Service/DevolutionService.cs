@@ -34,5 +34,10 @@ namespace MyFinance.Service
         {
             _repository.Delete(id);
         }
+
+        public Task<DevolutionEntity> Update(DevolutionEntity item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
