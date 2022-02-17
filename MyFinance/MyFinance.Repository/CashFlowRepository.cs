@@ -30,14 +30,7 @@ namespace MyFinance.Repository
                 entity.Category = Convert.ToString(entity.CategoryEnum);
                 entity.IsActive = true;
                 
-                if (entity.DatePaymentRealized == null || entity.DatePaymentRealized == Convert.ToDateTime("01/01/0001 00:00:00"))
-                {
-                    entity.DatePaymentRealized = DateTime.MinValue;
-                }
-                if (entity.PaymentDate == null || entity.PaymentDate == Convert.ToDateTime("01/01/0001 00:00:00"))
-                {
-                    entity.PaymentDate = DateTime.MinValue;
-                }
+
                 if (entity.Pago.ToString() == "Sim")
                 {
                     entity.IsPago = true;
@@ -80,7 +73,8 @@ namespace MyFinance.Repository
         }
 
         public Task<CashFlowEntity> Update(CashFlowEntity entity)
-        {;
+        {
+            entity.UpdatedDate = DateTime.Now;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
             return Task.FromResult(entity);
@@ -88,7 +82,7 @@ namespace MyFinance.Repository
 
         public  CashFlowEntity Get(int id)
         {
-            var registro = _dataset.SingleOrDefault(p => p.Id.Equals(id));
+            var registro = _dataset.SingleOrDefault(p => p.Id.Equals(id)&& p.IsActive.Equals(true));
             var cash = new CashFlowEntity {
 
                 Usuario_id = registro.Usuario_id,

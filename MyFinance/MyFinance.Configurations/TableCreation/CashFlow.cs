@@ -35,6 +35,9 @@ namespace MyFinance.Configurations.TableCreation
                .Nullable()
 
                .WithColumn("IsPago").AsBoolean()
+               .Nullable()
+               
+               .WithColumn("UpdatedDate").AsDateTime2()
                .Nullable();
         }
     }

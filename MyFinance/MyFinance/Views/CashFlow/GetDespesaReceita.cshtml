@@ -29,7 +29,7 @@
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.CreateDate)
+                        @Html.DisplayNameFor(model => model.PaymentDate)
                     </th>
 
                     <th>
@@ -64,28 +64,14 @@
 
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.CreateDate)
+                            @Html.DisplayFor(modelItem => item.PaymentDate)
                         </td>
 
-
-
-
-                        @if (item.IsPago == true)
-                        {
-                            <td>
-                                @*<input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" checked="checked">*@
-                                Pagamento efetuado
-
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                Pagamento não efetuado
-
-                            </td>
-                        }
-
+                    <td>
+                        <input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green"  @(item.IsPago ? "checked='checked'" : "") disabled>
+                        
+                        <label for="md_checkbox_30"></label>
+                    </td>
 
                         <td>
 

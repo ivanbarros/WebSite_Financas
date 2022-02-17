@@ -19,3 +19,7 @@ function getDespesaReceita() {
 function DetalhePlanoConta(id) {
     $('#renderEditView').load("/CashFlow/Detalhes?id=" + id);
 };
+
+function ExcluirConta(id_conta) {
+    window.location.href = "../PlanoConta/ExcluirPlanoConta/" + id_conta;
+}

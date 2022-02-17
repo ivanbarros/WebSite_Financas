@@ -21,6 +21,7 @@ namespace MyFinance.Domain.Entities
 
 
         [NotMapped]
+        [Required(ErrorMessage = "Informe a Categoria")]
         [Display(Name = "Categoria")]
         public CategoryEnum CategoryEnum { get; set; }
 
@@ -31,6 +32,7 @@ namespace MyFinance.Domain.Entities
 
 
         [NotMapped]
+        [Required(ErrorMessage = "Informe Despesa ou Receita")]
         [Display(Name = "Despsa/Receita")]
         public CashFlowTypeEnum TipoCashEnum { get; set; }
 
@@ -42,6 +44,7 @@ namespace MyFinance.Domain.Entities
 
         [Column("ValueCash")]
         [Display(Name = "Valor")]
+        [Required(ErrorMessage = "Informe o valor")]
         [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         public decimal ValueCash { get; set; }
 
@@ -54,18 +57,27 @@ namespace MyFinance.Domain.Entities
         public decimal ValorTotalReceita { get; set; }
 
         [Column("IsPago")]
+        [Required(ErrorMessage = "Informe Pagamento efetuado")]
         [Display(Name ="Efetuado Pagamento")]
         public bool IsPago { get; set; }
 
         [Column("PaymentDate")]
+        [Required(ErrorMessage = "Informe a data de vencimento")]
         [Display(Name ="Data do vencimento")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PaymentDate { get; set; }
 
         [Column("DatePaymentRealized")]
+        [Required(ErrorMessage = "Informe Pagamento realizado")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name ="Pagamento realizado")]
         public DateTime DatePaymentRealized { get; set; }
+
+        [Column("UpdatedDate")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Ultima atualização")]
+        public DateTime UpdatedDate { get; set; }
+
 
         [NotMapped]
         public IsPagoEnum Pago { get; set; }

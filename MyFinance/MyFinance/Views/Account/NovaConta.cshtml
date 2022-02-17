@@ -15,9 +15,9 @@
     <fieldset>
         <legend>Nova Conta</legend>
         <div class="form-group">
-            @Html.LabelFor(model => model.NomeConta, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NomeConta, htmlAttributes: new { @class = "control-label col-md-2", @data_val = "true", @required = "required" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeConta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NomeConta, new { htmlAttributes = new { @class = "form-control", @data_val="true", @required="required" } })
                 @Html.ValidationMessageFor(model => model.NomeConta, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Saldo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Saldo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Saldo, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.Saldo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DescriptionAccount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DescriptionAccount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DescriptionAccount, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.DescriptionAccount, "", new { @class = "text-danger" })
             </div>
         </div>
