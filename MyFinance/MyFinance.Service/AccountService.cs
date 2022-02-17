@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MyFinance.Service
 {
 
-    public class AccountService : IAccountService
+    public class AccountService : IAccounPlantService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
         private readonly IAccountRepository _repository;
@@ -33,10 +33,7 @@ namespace MyFinance.Service
 
         public void Insert(AccountEntity conta)
         {
-            
-            
-            _repository.Add(conta);
-            
+           _repository.Add(conta);
         }
 
         public List<AccountEntity> ListaConta(int id)

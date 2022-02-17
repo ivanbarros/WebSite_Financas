@@ -1,5 +1,6 @@
 ﻿using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
+using MyFinance.Service;
 using MyFinance.Service.Interfaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace MyFinance.ServicesApplication
 {
     public class AccountServiceApplication : IAccountServiceApplication
     {
-        private readonly IAccountService _service;
+        private readonly AccountService _service;
 
-        public AccountServiceApplication(IAccountService service)
+        public AccountServiceApplication(AccountService service)
         {
             _service = service;
         }
@@ -27,7 +28,7 @@ namespace MyFinance.ServicesApplication
 
         public Task<IEnumerable<AccountEntity>> GetAll()
         {
-           var result =  _service.GetAll();
+            var result =  _service.GetAll();
             return result;
         }
 

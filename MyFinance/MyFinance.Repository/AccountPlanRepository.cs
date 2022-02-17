@@ -34,6 +34,11 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
+        public List<AccountPlanEntity> ListaConta(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<AccountPlanEntity> Update(AccountPlanEntity entity)
         {
             throw new NotImplementedException();

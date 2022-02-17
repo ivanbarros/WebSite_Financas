@@ -1,4 +1,6 @@
-﻿using MyFinance.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyFinance.Data.Context;
+using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,14 @@ namespace MyFinance.Repository
 {
     public class AddressRepository : IAddressRepository
     {
+        SqlContext _context = new SqlContext();
+        private DbSet<AddressEntity> _dataset;
+
+        public AddressRepository(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<AddressEntity>();
+        }
         public Task<AddressEntity> Add(AddressEntity entity)
         {
             throw new NotImplementedException();

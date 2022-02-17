@@ -32,7 +32,6 @@ namespace MyFinance.Service
         {
             throw new System.NotImplementedException();
 
-
         }
 
         public Task<ExtractEntity> Update(ExtractEntity item)
@@ -41,6 +40,11 @@ namespace MyFinance.Service
         }
 
         public ExtractEntity Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<ExtractEntity>> GetAll(object result)
         {
             throw new System.NotImplementedException();
         }
