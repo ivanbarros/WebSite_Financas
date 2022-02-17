@@ -1,4 +1,6 @@
 ﻿using MyFinance.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using MyFinance.Data.Context;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,14 @@ namespace MyFinance.Repository
 {
     public class CashFlowTypeEnumRepository : ICashFlowTypeEnumRepository
     {
+        SqlContext _context = new SqlContext();
+        private DbSet<CashFlowTypeEnumEntity> _dataset;
+
+        public CashFlowTypeEnumRepository(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<CashFlowTypeEnumEntity>();
+        }
         public Task<CashFlowTypeEnumEntity> Add(CashFlowTypeEnumEntity entity)
         {
             throw new NotImplementedException();

@@ -1,4 +1,6 @@
-﻿using MyFinance.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyFinance.Data.Context;
+using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,14 @@ namespace MyFinance.Repository
 {
     public class DevolutionRepository : IDevolutionRepository
     {
+        SqlContext _context = new SqlContext();
+        private DbSet<DevolutionEntity> _dataset;
+
+        public DevolutionRepository(SqlContext context)
+        {
+            _context = context;
+            _dataset = context.Set<DevolutionEntity>();
+        }
         public Task<DevolutionEntity> Add(DevolutionEntity entity)
         {
             throw new NotImplementedException();

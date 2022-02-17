@@ -9,5 +9,6 @@ namespace MyFinance.Repository.Interfaces.Repositories
 {
     public interface ICashFlowTypeEnumRepository : IRepositoryBase<CashFlowTypeEnumEntity,SqlContext>
     {
+
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Interfaces.Services
 {
-    public interface IAccountServiceApplication: IServiceApplicationBase<AccountEntity>
+    public interface IAccountServiceApplication : IServiceApplicationBase<AccountEntity>
     {
         List<AccountEntity> ListaConta(int id);
 
