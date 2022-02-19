@@ -54,7 +54,13 @@ namespace MyFinance.Repository
 
         public Task<CashFlowEntity> Delete(int id)
         {
-            throw new NotImplementedException();
+            CashFlowEntity c = (from x in _context.CashFlow
+                          where x.Id == id
+             select x).First();
+            _context.CashFlow.Update(c);
+            c.IsActive = false;
+            _context.SaveChanges();
+            return Task.FromResult(c);
         }
 
         public List<CashFlowEntity> GetById(int id)

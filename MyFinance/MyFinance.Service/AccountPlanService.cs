@@ -47,5 +47,10 @@ namespace MyFinance.Service
         {
             throw new NotImplementedException();
         }
+
+        public AccountPlanEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

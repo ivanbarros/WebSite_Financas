@@ -31,6 +31,11 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
+        public SupplierEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<SupplierEntity>> GetAll()
         {
             throw new NotImplementedException();

@@ -20,6 +20,11 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
+        public EmployeeEntity Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<IEnumerable<EmployeeEntity>> GetAll()
         {
             var result = _service.GetAll();

@@ -9,7 +9,7 @@
 
         var totalDespesa = ViewBag.Despesa;
         var totalReceita = ViewBag.Receita;
-       
+
         <table class="table" id="tableDespesaReceita">
             <thead>
                 <tr>
@@ -43,14 +43,14 @@
                 @foreach (var item in (List<MyFinance.Domain.Entities.CashFlowEntity>)ViewBag.ListaDespesaReceita)
 
                 {
-                    
+
                     <tr>
 
 
                         <td>
                             @Html.DisplayFor(modelItem => item.Descricao)
                         </td>
-                         <td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Tipo)
                         </td>
 
@@ -67,11 +67,11 @@
                             @Html.DisplayFor(modelItem => item.PaymentDate)
                         </td>
 
-                    <td>
-                        <input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green"  @(item.IsPago ? "checked='checked'" : "") disabled>
-                        
-                        <label for="md_checkbox_30"></label>
-                    </td>
+                        <td>
+                            <input type="checkbox" id="md_checkbox_30" class="filled-in chk-col-green" @(item.IsPago ? "checked='checked'" : "") disabled>
+
+                            <label for="md_checkbox_30"></label>
+                        </td>
 
                         <td>
 
@@ -79,10 +79,9 @@
                         </td>
 
                         <td>
-                            <button class="btn btn-danger" type="submit" onclick="ExcluirConta(@item.Id)">
-                                Excluir
-                                <i class="material-icons" style="color:#fff;">delete_forever</i>
+                            <button class="btn btn-danger waves-effect" type="button" data-toggle="modal" data-target="#DeleteConfirmation" onclick="ExcluirConta(@item.Id)" id="deleteButton">Excluir<i class="material-icons" style="color:#fff;">delete_forever</i>
                             </button>
+                           
                         </td>
 
                     </tr>
@@ -124,7 +123,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content modal-col-teal">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="defaultModalLabel">Detalhes</h5>
+                            <h5 class="modal-title" id="DetalhesModalLabel">Detalhes</h5>
                             <hr />
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -146,8 +145,10 @@
                 </div>
             </div>
         </div>
+
+        <div id="DeleteModal">
+        </div>
     }
-
-
+   
 </body>
 </html>

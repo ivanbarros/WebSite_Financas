@@ -2,11 +2,7 @@
 using MyFinance.Domain.UnitOfWorkConfig;
 using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Service;
-using MyFinance.Service.Interfaces;
 using MyFinance.Service.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyFinance.Configurations.DependencyInjections
 {

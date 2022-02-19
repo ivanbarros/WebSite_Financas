@@ -4,7 +4,6 @@ using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Repository
@@ -27,6 +26,11 @@ namespace MyFinance.Repository
         }
 
         public Task<ProductEntity> Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProductEntity Get(int id)
         {
             throw new NotImplementedException();
         }

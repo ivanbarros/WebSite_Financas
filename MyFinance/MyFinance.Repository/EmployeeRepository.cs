@@ -48,5 +48,10 @@ namespace MyFinance.Repository
         {
             throw new NotImplementedException();
         }
+
+        EmployeeEntity IRepositoryBase<EmployeeEntity, SqlContext>.Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

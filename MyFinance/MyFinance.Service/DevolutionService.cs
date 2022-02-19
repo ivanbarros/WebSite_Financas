@@ -39,5 +39,10 @@ namespace MyFinance.Service
         {
             throw new NotImplementedException();
         }
+
+        public DevolutionEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

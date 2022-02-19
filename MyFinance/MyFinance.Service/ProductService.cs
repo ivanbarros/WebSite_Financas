@@ -40,5 +40,10 @@ namespace MyFinance.Service
         {
             throw new NotImplementedException();
         }
+
+        public ProductEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

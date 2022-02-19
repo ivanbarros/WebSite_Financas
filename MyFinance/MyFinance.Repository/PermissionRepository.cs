@@ -50,5 +50,10 @@ namespace MyFinance.Repository
         {
             throw new NotImplementedException();
         }
+
+        PermissionEntity IRepositoryBase<PermissionEntity, SqlContext>.Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

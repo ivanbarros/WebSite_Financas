@@ -43,16 +43,18 @@ namespace MyFinance.Domain.Entities
         public bool IsActive { get; set; }
 
         [Column("ValueCash")]
-        [Display(Name = "Valor")]
         [Required(ErrorMessage = "Informe o valor")]
+        [Display(Name = "Valor")]
         [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         public decimal ValueCash { get; set; }
 
         [NotMapped]
+        [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         [Display(Name ="Valor Total de Despesas")]
         public decimal ValorTotalDespesa { get; set; }
         
         [NotMapped]
+        [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         [Display(Name ="Valor Total de Receita")]
         public decimal ValorTotalReceita { get; set; }
 

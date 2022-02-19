@@ -18,7 +18,16 @@ namespace MyFinance.ServicesApplication
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _service.Excluir(id);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()

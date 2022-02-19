@@ -38,5 +38,10 @@ namespace MyFinance.Service
         {
             throw new System.NotImplementedException();
         }
+
+        public CustomerEntity Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

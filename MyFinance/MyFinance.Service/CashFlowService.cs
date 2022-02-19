@@ -18,7 +18,7 @@ namespace MyFinance.Service
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+           _repository.Delete(id);
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()

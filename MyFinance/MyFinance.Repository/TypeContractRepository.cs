@@ -31,6 +31,11 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
+        public TypeContractEntity Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<TypeContractEntity>> GetAll()
         {
             throw new NotImplementedException();
