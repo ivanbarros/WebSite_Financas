@@ -19,6 +19,11 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
+        public Task<PaymentMethodEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<IEnumerable<PaymentMethodEntity>> GetAll()
         {
             var result = _service.GetAll();

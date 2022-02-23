@@ -41,5 +41,10 @@ namespace MyFinance.Service
         {
             throw new NotImplementedException();
         }
+
+        public Task<PaymentMethodEntity> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
