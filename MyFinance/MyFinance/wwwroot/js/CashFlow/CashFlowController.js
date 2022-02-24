@@ -1,4 +1,5 @@
-﻿$('#editButton').on("click", function () {
+﻿getDespesaReceita();
+$('#editButton').on("click", function () {
 
     EditarPlanoConta(id);
 });
@@ -60,6 +61,7 @@ function DeleteConfirmationRegister(id_conta) {
         dataType: "json"
     });
     //ReloadGetDespesas();
+    window.location.reload(true);
 
 };
 
