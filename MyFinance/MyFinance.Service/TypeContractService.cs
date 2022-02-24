@@ -39,5 +39,10 @@ namespace MyFinance.Service
         {
             throw new NotImplementedException();
         }
+
+        public Task<TypeContractEntity> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

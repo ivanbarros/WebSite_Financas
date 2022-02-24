@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    internal class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         SqlContext _context = new SqlContext();
         private DbSet<EmployeeEntity> _dataset;

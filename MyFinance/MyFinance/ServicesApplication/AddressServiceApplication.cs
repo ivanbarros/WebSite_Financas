@@ -15,6 +15,11 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
+        public Task<AddressEntity> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Task<IEnumerable<AddressEntity>> GetAll()
         {
             var result = _service.GetAll();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    partial class PaymentMethodRepository : IPaymentMethodRepository
+    public class PaymentMethodRepository : IPaymentMethodRepository
     {
         SqlContext _context = new SqlContext();
         private DbSet<PaymentMethodEntity> _dataset;
