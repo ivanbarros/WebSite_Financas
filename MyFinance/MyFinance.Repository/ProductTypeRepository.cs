@@ -38,7 +38,8 @@ namespace MyFinance.Repository
 
         public Task<IEnumerable<ProductTypeEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _repository.GetAll();
+            return result;
         }
 
         public IEnumerable<ProductTypeEntity> GetByEmail(string username, string password)

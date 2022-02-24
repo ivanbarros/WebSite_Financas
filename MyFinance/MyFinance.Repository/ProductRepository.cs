@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Repository
 {
-    internal class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly IProductRepository _repository;
 
@@ -37,7 +37,8 @@ namespace MyFinance.Repository
 
         public Task<IEnumerable<ProductEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _repository.GetAll();
+            return result;
         }
 
         public IEnumerable<ProductEntity> GetByEmail(string username, string password)

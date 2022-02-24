@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MyFinance.Service
 {
-    public class CustumerService : ICustomerService
+    public class CustomerService : ICustomerService
     {
         public IHttpContextAccessor _HttpContextAccessor { get; set; }
         private readonly ICustomerRepository _repository;
 
-        public CustumerService(IHttpContextAccessor httpContextAccessor, ICustomerRepository repository)
+        public CustomerService(IHttpContextAccessor httpContextAccessor, ICustomerRepository repository)
         {
             _HttpContextAccessor = httpContextAccessor;
             _repository = repository;

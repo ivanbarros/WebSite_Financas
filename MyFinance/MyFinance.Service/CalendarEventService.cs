@@ -19,7 +19,7 @@ namespace MyFinance.Service
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public CalendarEventEntity Get(int id)
@@ -36,12 +36,13 @@ namespace MyFinance.Service
 
         public Task<IEnumerable<CalendarEventEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _repository.GetAll();
+            return result;
         }
 
         public void Insert(CalendarEventEntity item)
         {
-            throw new NotImplementedException();
+            _repository.Add(item);
         }
 
         public async Task<CalendarEventEntity> Update(CalendarEventEntity item)
