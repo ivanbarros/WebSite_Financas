@@ -15,7 +15,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<AddressEntity> Get(int id)
+        public AddressEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }
