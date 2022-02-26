@@ -19,7 +19,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<PermissionEntity> Get(int id)
+        public PermissionEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

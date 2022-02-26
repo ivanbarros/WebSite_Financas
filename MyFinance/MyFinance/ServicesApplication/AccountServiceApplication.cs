@@ -9,9 +9,9 @@ namespace MyFinance.ServicesApplication
 {
     public class AccountServiceApplication : IAccountServiceApplication
     {
-        private readonly AccountService _service;
+        private readonly IAccountService _service;
 
-        public AccountServiceApplication(AccountService service)
+        public AccountServiceApplication(IAccountService service)
         {
             _service = service;
         }
@@ -21,7 +21,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<AccountEntity> Get(int id)
+        public AccountEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

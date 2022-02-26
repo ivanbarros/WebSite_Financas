@@ -29,7 +29,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<StockEntity> Get(int id)
+        public StockEntity Get(int id)
         {
             throw new NotImplementedException();
         }

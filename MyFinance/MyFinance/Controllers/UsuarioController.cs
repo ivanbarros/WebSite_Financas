@@ -35,7 +35,7 @@ namespace MyFinance.Controllers
         public IActionResult ValidarLogin(UserEntity usuario)
         {
             var login = _serviceApplication.ValidarLogin(usuario);
-            if (login.UserName!=null)
+            if (login.Id>0)
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.UserName);
                 HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
@@ -53,12 +53,13 @@ namespace MyFinance.Controllers
                     CreateDate = usuario.CreateDate
                 };
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userInfo));
+                ViewBag.LoginUser = null;
                 return RedirectToAction("_PartialMenu", "Menu");
             }
             else
             {
-                TempData["LoginIvalido"] = "Usuario ou senha não estão corretos!";                
-                return RedirectToAction("Login");
+                ViewBag.LoginUser = "Usuario ou senha não estão corretos!";                
+                return View("Login");
             }
         }
 

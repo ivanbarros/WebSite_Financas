@@ -31,7 +31,7 @@ namespace MyFinance.Repository
             return calendarEvent;
         }
 
-        public async Task<CalendarEventEntity> Get(int id)
+        public CalendarEventEntity Get(int id)
         {
             var result = _context.Events.Where(c => c.Id.Equals(id));
             var calendario = new CalendarEventEntity();

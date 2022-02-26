@@ -19,7 +19,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<ProductEntity> Get(int id)
+        public ProductEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

@@ -15,13 +15,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
+                <input asp-for="Descricao" class="form-control" required />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="ValueCash" class="control-label"></label>
-                <input asp-for="ValueCash" class="form-control" />
+                <input asp-for="ValueCash" class="form-control" required  />
                 <span asp-validation-for="ValueCash" class="text-danger"></span>
             </div>
             
@@ -30,7 +30,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CategoryEnum, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <select asp-for="CategoryEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()"></select>
+                    <select asp-for="CategoryEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CategoryEnum>()"  required ></select>
 
                 </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.TipoCashEnum, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <select asp-for="TipoCashEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()"></select>
+                    <select asp-for="TipoCashEnum" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.CashFlowTypeEnum>()" required ></select>
 
                 </div>
             </div>
@@ -46,20 +46,20 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Pago, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <select asp-for="Pago" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.IsPagoEnum>()"></select>
+                    <select asp-for="Pago" asp-items="Html.GetEnumSelectList<MyFinance.Domain.Entities.Enums.IsPagoEnum>()" required ></select>
 
                 </div>
                 </div>
 
             <div class="form-group">
                 <label asp-for="PaymentDate" class="control-label"></label>
-                <input asp-for="PaymentDate" class="form-control" />
+                <input asp-for="PaymentDate" class="form-control" required  />
                 <span asp-validation-for="PaymentDate" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label asp-for="DatePaymentRealized" class="control-label"></label>
-                <input asp-for="DatePaymentRealized" class="form-control" />
+                <input asp-for="DatePaymentRealized" class="form-control" required  />
                 <span asp-validation-for="DatePaymentRealized" class="text-danger"></span>
             </div>
             <p>

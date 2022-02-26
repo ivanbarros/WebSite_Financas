@@ -4,7 +4,6 @@ using MyFinance.Domain.Entities;
 using MyFinance.Repository.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinance.Repository
@@ -31,7 +30,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<SalesEntity> Get(int id)
+        public SalesEntity Get(int id)
         {
             throw new NotImplementedException();
         }

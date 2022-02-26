@@ -48,7 +48,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<AccountEntity> Get(int id)
+        public AccountEntity Get(int id)
 
         {
             throw new NotImplementedException();

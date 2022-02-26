@@ -18,7 +18,7 @@ namespace MyFinance.Controllers
 
             _httpContextAccessor = httpContextAccessor;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
@@ -53,6 +53,7 @@ namespace MyFinance.Controllers
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var receita = 0.0M;
             var despesa = 0.0M;
+           
             var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
 
             if (decision == "1" || String.IsNullOrEmpty(decision))
@@ -104,7 +105,14 @@ namespace MyFinance.Controllers
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var result = _service.Get(id);
             
-            return PartialView("Detalhes",result);
+            return PartialView(result);
+        }
+
+        public IActionResult Excluir(int Id) 
+        {
+            _service.Excluir(Id);
+
+            return RedirectToAction("Index");
         }
     }
 }

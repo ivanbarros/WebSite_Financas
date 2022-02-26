@@ -22,7 +22,7 @@ namespace MyFinance.Service
             _repository.Delete(id);
         }
 
-        public Task<UserEntity> Get(int id)
+        public UserEntity Get(int id)
         {
             throw new NotImplementedException();
         }

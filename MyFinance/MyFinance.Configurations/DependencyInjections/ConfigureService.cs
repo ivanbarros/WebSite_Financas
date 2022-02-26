@@ -2,11 +2,7 @@
 using MyFinance.Domain.UnitOfWorkConfig;
 using MyFinance.Domain.UnitOfWorkConfig.Interface;
 using MyFinance.Service;
-using MyFinance.Service.Interfaces;
 using MyFinance.Service.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyFinance.Configurations.DependencyInjections
 {
@@ -14,6 +10,7 @@ namespace MyFinance.Configurations.DependencyInjections
     {
         public static void ConfigureDependenciesService(this IServiceCollection services)
         {
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountPlanService, AccountPlanService>();
             services.AddScoped<IAddressService, AddressService>();
@@ -34,7 +31,6 @@ namespace MyFinance.Configurations.DependencyInjections
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<ITypeContractService, TypeContractService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUserService, UserService>();
 
             //services.AddScoped<IOneSignalService, OneSignalService>();
         }

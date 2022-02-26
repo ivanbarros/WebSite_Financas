@@ -1,7 +1,7 @@
 ﻿@model MyFinance.Domain.Entities.CashFlowEntity
-    
+
 <div>
-    
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Descricao)
@@ -68,10 +68,15 @@
         <dd>
             @Html.DisplayFor(model => model.CreateDate)
         </dd>
+        <dd>
+
+        <input type="hidden" value="@Html.DisplayFor(model=>model.Id)" />
+        </dd>
+        
+        
     </dl>
 </div>
 <div>
-    <a href="/CashFlow/Editar?Id=@Html.DisplayFor(model => model.Id)"  class="btn bg-teal waves-effect">Editar</a>
-    @*@Html.ActionLink("Edit", "Edit", new { @class="btn bg-teal waves-effect"})*@
-    @*<a asp-action="Index">Back to List</a>*@
+    <a href="/CashFlow/Editar?Id=@Html.DisplayFor(model => model.Id)" class="btn bg-teal waves-effect">Editar</a>
+  
 </div>

@@ -18,7 +18,7 @@ namespace MyFinance.Service
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+           _repository.Delete(id);
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()
@@ -122,7 +122,7 @@ namespace MyFinance.Service
             return result;
         }
 
-        public Task<CashFlowEntity> Get(int id)
+        public CashFlowEntity Get(int id)
         {
             var result = _repository.Get(id);
             return result;

@@ -47,5 +47,10 @@ namespace MyFinance.Repository
         {
             throw new NotImplementedException();
         }
+
+        CategoryEnumEntity IRepositoryBase<CategoryEnumEntity, SqlContext>.Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

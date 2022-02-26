@@ -19,7 +19,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<PaymentMethodEntity> Get(int id)
+        public PaymentMethodEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

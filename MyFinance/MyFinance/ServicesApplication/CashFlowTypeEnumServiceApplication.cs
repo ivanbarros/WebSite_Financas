@@ -12,7 +12,7 @@ namespace MyFinance.ServicesApplication
             throw new System.NotImplementedException();
         }
 
-        public Task<CashFlowTypeEnumEntity> Get(int id)
+        public CashFlowTypeEnumEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

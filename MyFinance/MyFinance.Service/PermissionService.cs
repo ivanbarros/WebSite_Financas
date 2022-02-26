@@ -42,7 +42,7 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public Task<PermissionEntity> Get(int id)
+        public PermissionEntity Get(int id)
         {
             throw new NotImplementedException();
         }

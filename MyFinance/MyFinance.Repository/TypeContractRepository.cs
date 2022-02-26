@@ -31,7 +31,7 @@ namespace MyFinance.Repository
             throw new NotImplementedException();
         }
 
-        public Task<TypeContractEntity> Get(int id)
+        public TypeContractEntity Get(int id)
         {
             throw new NotImplementedException();
         }

@@ -18,7 +18,16 @@ namespace MyFinance.ServicesApplication
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _service.Excluir(id);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public Task<IEnumerable<CashFlowEntity>> GetAll()
@@ -40,7 +49,7 @@ namespace MyFinance.ServicesApplication
 
         public List<CashFlowEntity> GetDespesaReceita(int Id, string decision, string nameCategoria)
         {
-            var result = _service.GetDespesaReceita(Id,decision, nameCategoria);
+            var result = _service.GetDespesaReceita(Id, decision, nameCategoria);
             return result;
         }
 
@@ -50,20 +59,29 @@ namespace MyFinance.ServicesApplication
             return result;
         }
 
-        public async Task<CashFlowEntity> Get(int id)
+        public CashFlowEntity Get(int id)
         {
-            var result = await _service.Get(id);
-            CashFlowEntity cash = new CashFlowEntity();
-            foreach (var item in result.ValueCash.ToString())
-            {
-                cash.ValorTotalDespesa += item;
-            }
+            var result =  _service.Get(id);
+            //CashFlowEntity cash = new CashFlowEntity();
+            //foreach (var item in result.ValueCash.ToString())
+            //{
+            //    if (result.Tipo == "despesa")
+            //    {
+
+            //        cash.ValorTotalDespesa += item;
+            //        cash.ValorTotalReceita = 0.0M;
+            //    }
+            //    if (result.Tipo == "receita")
+            //    {
+            //        cash.ValorTotalReceita += item;
+            //    }
+            //}
             return result;
         }
 
         public decimal ValorTotalDespesa(int userId, string categoria, string decision)
         {
-            var result = _service.ValorTotalDespesa(userId,categoria, decision);
+            var result = _service.ValorTotalDespesa(userId, categoria, decision);
             return result;
         }
 

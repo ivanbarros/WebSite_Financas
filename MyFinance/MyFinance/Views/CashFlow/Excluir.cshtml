@@ -1,0 +1,116 @@
+﻿@model MyFinance.Domain.Entities.CashFlowEntity
+
+<h3> Você tem certeza que deseja excluir esse item?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryEnum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryEnum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoCashEnum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoCashEnum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario_id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Usuario_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValueCash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValueCash)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotalDespesa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotalDespesa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotalReceita)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotalReceita)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPago)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsPago)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePaymentRealized)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatePaymentRealized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pago)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Excluir">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

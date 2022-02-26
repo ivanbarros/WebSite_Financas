@@ -40,7 +40,7 @@ namespace MyFinance.Service
             throw new NotImplementedException();
         }
 
-        public Task<SalesEntity> Get(int id)
+        public SalesEntity Get(int id)
         {
             throw new NotImplementedException();
         }

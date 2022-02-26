@@ -21,7 +21,7 @@ namespace MyFinance
         
             WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
-            .UseKestrel()
+            //.UseKestrel()
             .UseIISIntegration()
             .Build();
         

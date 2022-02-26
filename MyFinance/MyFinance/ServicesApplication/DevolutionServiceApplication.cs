@@ -19,7 +19,7 @@ namespace MyFinance.ServicesApplication
             _service.Excluir(id);
         }
 
-        public Task<DevolutionEntity> Get(int id)
+        public DevolutionEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }

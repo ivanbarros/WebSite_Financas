@@ -47,7 +47,7 @@ namespace MyFinance.Service
             throw new System.NotImplementedException();
         }
 
-        public Task<AccountEntity> Get(int id)
+        public AccountEntity Get(int id)
         {
             throw new System.NotImplementedException();
         }
