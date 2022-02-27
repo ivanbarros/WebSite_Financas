@@ -127,7 +127,8 @@ namespace MyFinance.Repository
             {
                 List<CashFlowEntity> listaCash = new List<CashFlowEntity>();
                 var cash = new CashFlowEntity();
-                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).ToList();
+                var lista = _context.CashFlow.Where(c => c.Usuario_id.Equals(Id) && c.IsActive.Equals(true)).AsNoTracking()
+                                        .AsQueryable().ToList();
                 result = lista;
                 return result;
             }

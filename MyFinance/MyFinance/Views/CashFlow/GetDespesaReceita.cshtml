@@ -1,18 +1,21 @@
-﻿<html>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<MyFinance.Domain.Entities.CashFlowEntity>
+<html>
 <head>
 
-    @model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
 </head>
 
 <body>
     @{
-
+        <div>
+            <vc:pager paging-list="@Model"></vc:pager>
+        </div>
         var totalDespesa = ViewBag.Despesa;
         var totalReceita = ViewBag.Receita;
 
         <table class="table" id="tableDespesaReceita">
             <thead>
                 <tr>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.Descricao)
                     </th>
@@ -79,9 +82,10 @@
                         </td>
 
                         <td>
-                            <button class="btn btn-danger waves-effect" type="button" data-toggle="modal" data-target="#DeleteConfirmation" onclick="ExcluirConta(@item.Id)" id="deleteButton">Excluir<i class="material-icons" style="color:#fff;">delete_forever</i>
+                            <button class="btn btn-danger waves-effect" type="button" data-toggle="modal" data-target="#DeleteConfirmation" onclick="ExcluirConta(@item.Id)" id="deleteButton">
+                                Excluir<i class="material-icons" style="color:#fff;">delete_forever</i>
                             </button>
-                           
+
                         </td>
 
                     </tr>
@@ -149,6 +153,6 @@
         <div id="DeleteModal">
         </div>
     }
-   
+
 </body>
 </html>

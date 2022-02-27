@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
+using ReflectionIT.Mvc.Paging;
 using System;
 
 namespace MyFinance.Controllers
@@ -71,9 +72,9 @@ namespace MyFinance.Controllers
             
            
 
-            ViewBag.ListaDespesaReceita = result;            
-
-            return PartialView("GetDespesaReceita");
+            ViewBag.ListaDespesaReceita = result;
+            var model =  PagingList.Create(result, 5, 1);
+            return PartialView("GetDespesaReceita", model);
         }
 
         [HttpGet]

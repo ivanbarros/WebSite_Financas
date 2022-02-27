@@ -9,6 +9,7 @@ using MyFinance.Configurations;
 using MyFinance.Configurations.DataBaseConfigs;
 using MyFinance.Configurations.DependencyInjections;
 using MyFinance.Data.Context;
+using ReflectionIT.Mvc.Paging;
 using System;
 
 namespace MyFinance
@@ -51,6 +52,10 @@ namespace MyFinance
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // Adicione eessa linha para que seu projeto volte a funcionar normalmente.
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSession();
+            services.AddPaging(options => {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
