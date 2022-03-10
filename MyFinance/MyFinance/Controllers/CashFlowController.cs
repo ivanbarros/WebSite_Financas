@@ -48,16 +48,15 @@ namespace MyFinance.Controllers
             return PartialView("FluxoCaixa");
         }
 
-        public IActionResult GetDespesaReceita(string categoryName, string decision, int? page)
+        public IActionResult GetDespesaReceita(string categoryName, string decision)
         {
-            var itemByPage = 10;
-            var currentPage = page??1;
+            
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var receita = 0.0M;
             var despesa = 0.0M;
            
-            var result = _service.GetDespesaReceita(idUsuario, decision, categoryName).ToPagedList(currentPage,itemByPage);
+            var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
 
             if (decision == "1" || String.IsNullOrEmpty(decision))
             {
