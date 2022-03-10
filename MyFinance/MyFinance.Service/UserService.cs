@@ -19,7 +19,7 @@ namespace MyFinance.Service
 
         public void Excluir(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public UserEntity Get(int id)

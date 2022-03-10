@@ -9,26 +9,26 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Descricao)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Descricao)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Tipo)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Category)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Tipo)
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.ValueCash)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Category)
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.PaymentDate)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValueCash)
                     </th>
 
                     <th>
-                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => model.IsPago)</label>
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().PaymentDate)
+                    </th>
+
+                    <th>
+                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().IsPago)</label>
                     </th>
 
                 </tr>
@@ -89,7 +89,7 @@
                     if (totalDespesa > 0.0M)
                     {
                         <tr>
-                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalDespesa)</strong></th>
+                            <th><strong>@Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValorTotalDespesa)</strong></th>
 
                             <th>
                                 R$ @Convert.ToDouble(totalDespesa)
@@ -100,7 +100,7 @@
                     if (totalReceita > 0.0M)
                     {
                         <tr>
-                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
+                            <th><strong>@Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValorTotalReceita)</strong></th>
 
                             <th>
                                 R$ @Convert.ToDouble(totalReceita)
@@ -112,7 +112,7 @@
 
             </tfoot>
         </table>
-
+    @Html.PagedListPager(Model,page=> Url.Action("GetDespesaReceita",new {page}))
         <div id="modalResult">
             <div class="modal fade" id="DetalhePlanoConta" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">

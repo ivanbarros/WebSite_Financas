@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
 using System;
+using X.PagedList;
 
 namespace MyFinance.Controllers
 {
@@ -47,14 +48,16 @@ namespace MyFinance.Controllers
             return PartialView("FluxoCaixa");
         }
 
-        public IActionResult GetDespesaReceita(string categoryName, string decision)
+        public IActionResult GetDespesaReceita(string categoryName, string decision, int? page)
         {
+            var itemByPage = 10;
+            var currentPage = page??1;
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var receita = 0.0M;
             var despesa = 0.0M;
            
-            var result = _service.GetDespesaReceita(idUsuario, decision, categoryName);
+            var result = _service.GetDespesaReceita(idUsuario, decision, categoryName).ToPagedList(currentPage,itemByPage);
 
             if (decision == "1" || String.IsNullOrEmpty(decision))
             {

@@ -10,6 +10,11 @@ namespace MyFinance.ServicesApplication
     {
         private readonly IAddressService _service;
 
+        public AddressServiceApplication(IAddressService service)
+        {
+            _service = service;
+        }
+
         public void Excluir(int id)
         {
             _service.Excluir(id);
