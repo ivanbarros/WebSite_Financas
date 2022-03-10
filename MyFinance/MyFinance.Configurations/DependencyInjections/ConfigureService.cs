@@ -11,12 +11,12 @@ namespace MyFinance.Configurations.DependencyInjections
         public static void ConfigureDependenciesService(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAccounPlantService, AccountService>();
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICashFlowService, CashFlowService>();
             services.AddScoped<ICalendarEventService, CalendarEventService>();
             services.AddScoped<IExtractService, ExtractService>();
-            //services.AddScoped<IOneSignalService, OneSignalService>();
+            services.AddScoped<IAccountPlanService, AccountPlanService>();
         }
     }
 }

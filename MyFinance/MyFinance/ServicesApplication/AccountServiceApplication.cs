@@ -9,9 +9,9 @@ namespace MyFinance.ServicesApplication
 {
     public class AccountServiceApplication : IAccountServiceApplication
     {
-        private readonly AccountService _service;
+        private readonly IAccountService _service;
 
-        public AccountServiceApplication(AccountService service)
+        public AccountServiceApplication(IAccountService service)
         {
             _service = service;
         }
