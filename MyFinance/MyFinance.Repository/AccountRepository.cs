@@ -11,7 +11,6 @@ namespace MyFinance.Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        private readonly IAccountRepository _accountRepository;
 
         SqlContext _context = new SqlContext();
         private DbSet<AccountEntity> _dataset;

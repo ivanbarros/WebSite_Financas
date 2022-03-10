@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
-using MyFinance.Service.Interfaces.Services;
-using MyFinance.ServicesApplication;
 using System;
 
 namespace MyFinance.Controllers

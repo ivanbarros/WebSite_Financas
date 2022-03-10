@@ -15,6 +15,12 @@ $('#buttonSearch').on("click", function () {
 
 function getDespesaReceita() {
     $('#resultDespesaSelectedDiv').load("/CashFlow/GetDespesaReceita?categoryName=" + $('#CategoryTypeId').val() + "&decision=" + $('#CashFlowTypeId').val());
+    //$.ajax({
+    //    type: "POST",
+    //    url: "/CashFlow/GetDespesaReceita?categoryName=" + $('#CategoryTypeId').val() + "&decision=" + $('#CashFlowTypeId').val(),
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json"
+    //});
 };
 
 function DetalhePlanoConta(id) {

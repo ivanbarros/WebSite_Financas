@@ -4,6 +4,7 @@ using MyFinance.Domain.Entities;
 using MyFinance.Interfaces.Services;
 using ReflectionIT.Mvc.Paging;
 using System;
+using X.PagedList;
 
 namespace MyFinance.Controllers
 {
@@ -50,6 +51,7 @@ namespace MyFinance.Controllers
 
         public IActionResult GetDespesaReceita(string categoryName, string decision)
         {
+            
             string id_usuario_logado = HttpContext.Session.GetString("IdUsuarioLogado");
             var idUsuario = Convert.ToInt32(id_usuario_logado);
             var receita = 0.0M;

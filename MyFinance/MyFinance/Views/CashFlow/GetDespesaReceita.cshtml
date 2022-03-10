@@ -1,42 +1,34 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<MyFinance.Domain.Entities.CashFlowEntity>
-<html>
-<head>
+@model IEnumerable<MyFinance.Domain.Entities.CashFlowEntity>
 
-</head>
-
-<body>
     @{
-        <div>
-            <vc:pager paging-list="@Model"></vc:pager>
-        </div>
+
         var totalDespesa = ViewBag.Despesa;
         var totalReceita = ViewBag.Receita;
 
         <table class="table" id="tableDespesaReceita">
             <thead>
                 <tr>
-                    
                     <th>
-                        @Html.DisplayNameFor(model => model.Descricao)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Descricao)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Tipo)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Category)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Tipo)
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.ValueCash)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().Category)
                     </th>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.PaymentDate)
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValueCash)
                     </th>
 
                     <th>
-                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => model.IsPago)</label>
+                        @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().PaymentDate)
+                    </th>
+
+                    <th>
+                        <label for="md_checkbox_29"> @Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().IsPago)</label>
                     </th>
 
                 </tr>
@@ -82,10 +74,9 @@
                         </td>
 
                         <td>
-                            <button class="btn btn-danger waves-effect" type="button" data-toggle="modal" data-target="#DeleteConfirmation" onclick="ExcluirConta(@item.Id)" id="deleteButton">
-                                Excluir<i class="material-icons" style="color:#fff;">delete_forever</i>
+                            <button class="btn btn-danger waves-effect" type="button" data-toggle="modal" data-target="#DeleteConfirmation" onclick="ExcluirConta(@item.Id)" id="deleteButton">Excluir<i class="material-icons" style="color:#fff;">delete_forever</i>
                             </button>
-
+                           
                         </td>
 
                     </tr>
@@ -98,7 +89,7 @@
                     if (totalDespesa > 0.0M)
                     {
                         <tr>
-                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalDespesa)</strong></th>
+                            <th><strong>@Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValorTotalDespesa)</strong></th>
 
                             <th>
                                 R$ @Convert.ToDouble(totalDespesa)
@@ -109,7 +100,7 @@
                     if (totalReceita > 0.0M)
                     {
                         <tr>
-                            <th><strong>@Html.DisplayNameFor(model => model.ValorTotalReceita)</strong></th>
+                            <th><strong>@Html.DisplayNameFor(model => new MyFinance.Domain.Entities.CashFlowEntity().ValorTotalReceita)</strong></th>
 
                             <th>
                                 R$ @Convert.ToDouble(totalReceita)
@@ -121,7 +112,7 @@
 
             </tfoot>
         </table>
-
+    
         <div id="modalResult">
             <div class="modal fade" id="DetalhePlanoConta" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -153,6 +144,3 @@
         <div id="DeleteModal">
         </div>
     }
-
-</body>
-</html>
